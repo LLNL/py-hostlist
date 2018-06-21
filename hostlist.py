@@ -122,7 +122,36 @@ def expand(nodelist):
     else:
         print("No match")
 
+"""
+def expand_experiment(nodelist):
 
+
+
+    nodelist_match = r"([a-z]+[A-Z0-9]?-?)\[((,?[0-9]+,?-?[0-9]+-?){0,})\]([.a-zA-Z0-9]*)?"
+    if re.search(nodelist_match, nodelist):
+        match = re.search(nodelist_match, nodelist) 
+
+        print match.group(1)
+        print match.group(2)
+        print match.group(3)
+        print match.group(4)
+
+        oldstr = str(match.group(2))
+        left_br = oldstr.replace("[","")
+        right_br = left_br.replace("]","")
+        num_list = right_br.split(',')
+
+        print num_list
+
+        for i in range(len(num_list)):
+            if ( (num_list[0] == '0') & (int(num_list[i]) < 10) ):
+                num_list[i] = "{:02}".format(int(num_list[i]))
+
+        print num_list 
+
+
+expand_experiment('machine2-[02,3]vm1')
+"""
 
 
 
