@@ -1,0 +1,120 @@
+import unittest
+import hostlist as hl
+
+class TestHostlistMethods(unittest.TestCase):
+
+	# Test 1
+	# expand() returns correctly when input
+	# 	is just one range of nodes
+	def test_expand(self):
+		expected = 'quartz4,quartz5,quartz6,quartz7,quartz8'
+		test = hl.expand('quartz[4-8]')
+		self.assertEqual(test, expected)
+
+	# Test 2 
+	# expand() will also return correctly with
+	#	multiple sets of ranges
+	def test_expand_multi_range(self):
+		expected = 'node1,node2,node3,node4,node5,node6,node7,node8,' \
+				   'node9,node10,node11,node12,node13,node14,node15,' \
+				   'node16,node18,node19,node21,node22'
+		test = hl.expand('node[18-19,1-16,21-22]')
+		self.assertEqual(test, expected)
+
+	#Test 3
+	# expand() can also recognize a mix of 
+	# 	individual and ranges of nodes
+	def test_expand_mixed_range(self):
+		expected = 'node4,node5,node6,node7,node8,node12,node16,node17,' \
+				   'node18,node19,node20,node22,node24,node25,node26'
+		test = hl.expand('node[4-8,12,16-20,22,24-26]') 
+		self.assertEqual(test, expected)
+
+	# Test 4
+	# compress_range() can compress a single range of nodes
+	def test_compress_range_simple(self):
+		expected = 'node[1-4]'
+		test = hl.compress_range(['node1','node2','node3','node4'])
+		self.assertEqual(test, expected)
+
+	# Test 5
+	# compress_range() can compress a mix of ranges
+	#	and individual nodes
+	def test_compress_range_mixed(self):
+		expected = 'node[1-5,7-8,10-12]'
+		test = hl.compress_range(['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12'])
+		self.assertEqual(test, expected)
+
+	# Test 6
+	# compress() will return an ordered hostlist string 
+	def test_compress(self):
+		expected = '[node1,node2,node3,node4,node5,node7,node8,node10,node11,node12]'
+		test = hl.compress(['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12'])
+		self.assertEqual(test, expected)
+
+	# Test 7
+	# diff() will subtract nodelist2 from nodelist1 and return a 
+	# 	hostlist string of the remainder
+	def test_diff(self):
+		expected = '[node1,node10]'
+		list1 = ['node1','node2','node3','node4','node5','node6','node7','node8','node9','node10']
+		list2 = ['node2','node3','node4','node5','node6','node7','node8','node9']
+		test = hl.diff(list1,list2)
+		self.assertEqual(test, expected)
+
+	# Test 8
+	# intersect() can return a hostlist string of 
+	# 	intersecting nodes from two lists
+	def test_intersect_simple(self):
+		expected = '[node1,node8]'
+		list1 = ['node1','node2','node3','node4','node8']
+		list2 = ['node5','node6','node7','node8','node9','node1']
+		test = hl.intersect(list1,list2)
+		self.assertEqual(test, expected)
+
+	# Test 9
+	# intersect() can also return a hostlist string of
+	#	intersecting nodes from multiple lists
+	def test_intersect_multiple(self):
+		expected = '[node1,node6,node8]'
+		list1 = ['node1','node2','node3','node4','node8','node6']
+		list2 = ['node5','node6','node7','node8','node9','node1']
+		list3 = ['node1','node6','node8','node7']
+		test = hl.intersect(list1, list2, list3)
+		self.assertEqual(test, expected)
+
+	# Test 10
+	# union() will return an ordered hostslist of the 
+	#	union of two lists 
+	def test_union_simple(self):
+		expected = '[node1,node2,node3,node4,node5,node6,node7,node8,node9,node10,node11,node12]'
+		list1 = ['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12']
+		list2 = ['node5','node6','node7','node8','node9','node1']
+		test = hl.union_nodes(list1,list2)
+		self.assertEqual(test, expected)
+
+	# Test 11
+	# union() can also return an ordered hostlist of
+	#	multiple lists
+	def test_union_multiple(self):
+		expected = '[node1,node2,node3,node4,node5,node6]'
+		list1 = ['node1','node2']
+		list2 = ['node3','node4']
+		list3 = ['node6']
+		list4 = ['node5']
+		test = hl.union_nodes(list1, list2, list3, list4)
+		self.assertEqual(test, expected)
+
+	# Test 12
+	# sort_nodes() will return an ordered hostlist
+	# 	of a list of nodes 
+	def test_sort(self):
+		expected = '[node3,node4,node5,node7,node11,node16]'
+		test = hl.sort_nodes(['node5','node4','node7','node16','node11','node3'])
+		self.assertEqual(test, expected)
+
+
+if __name__ == '__main__':
+	unittest.main()
+
+unittest.main()
