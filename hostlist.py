@@ -1,36 +1,37 @@
 import re
 
-# This package processes slurm-style hostlist strings.
-#
-# expand(nodelist)
-#   returns a list of individual hostnames given a hostlist string
-#
-# compress_range(nodelist)
-#   returns an ordered hostlist string given a list of hostnames with a range
-#
-# compress(nodelist)
-#   returns an ordered hostlist string given a list of hostnames
-#
-# diff(nodelist1, nodelist2)
-#   subtract elements in list 2 from list 1 and return a remainding hostlist
-#  
-# sort_nodes(nodelist)
-#   sort will return a sorted hostlist in ascending order
-#
-# append_hostname(machine_name, num_list)
-#   helper method to append hostname to node numbers 
-#
-# intersect(*arg)
-#   return list of intersection nodes given n lists of nodes
-#
-# union(*arg)
-#   returns the union between n lists of nodes
-#
-#   
-# Author: Christopher Moussa (moussa1@llnl.gov)
-# Mentor: Elsa Gonsiorowski (gonsiorowski1@llnl.gov)
-# Date: June 15, 2018
+"""
+This package processes slurm-style hostlist strings.
 
+expand(nodelist)
+    returns a list of individual hostnames given a hostlist string
+
+compress_range(nodelist)
+    returns an ordered hostlist string given a list of hostnames with a range
+
+compress(nodelist)
+    returns an ordered hostlist string given a list of hostnames
+
+diff(nodelist1, nodelist2)
+    subtract elements in list 2 from list 1 and return a remainding hostlist
+  
+sort_nodes(nodelist)
+    sort will return a sorted hostlist in ascending order
+
+append_hostname(machine_name, num_list)
+    helper method to append hostname to node numbers 
+
+intersect(*arg)
+    return list of intersection nodes given n lists of nodes
+
+union(*arg)
+    returns the union between n lists of nodes
+
+   
+Author: Christopher Moussa (moussa1@llnl.gov)
+Mentor: Elsa Gonsiorowski (gonsiorowski1@llnl.gov)
+Date: June 15, 2018
+"""
 
 # ========== HELPER METHODS ========== #
 
@@ -68,21 +69,19 @@ def sort_nodes(nodelist):
 
 
 
-
-# expand will match an arbitrary number of ranges
-# ex. quartz[7,9,10-12] will return a hostlist string 
-#   quartz7,quartz9,quartz10,quartz11,quartz12
-# nodelist_match will put the expression into three control groups:
-#   (0) the full expression
-#   (1) the cluster name
-#   (2) the ranges of nodes
+"""
+expand will match an arbitrary number of ranges
+    ex. quartz[7,9,10-12] will return a hostlist string 
+    quartz7,quartz9,quartz10,quartz11,quartz12
+nodelist_match will put the expression into three control groups:
+    (0) the full expression
+    (1) the cluster name
+    (2) the ranges of nodes
+"""
 def expand(nodelist):
     nodelist_match = r"([a-z]+)\[((,?[0-9]+,?-?[0-9]+-?){0,})\]"
     if re.search(nodelist_match, nodelist):
         match = re.search(nodelist_match, nodelist)
-
-        # print("Cluster name: %s" % (match.group(1)))
-        # print("Range of nodes: %s" % (match.group(2)))
 
         # holds the ranges of nodes as a string
         # now we can manipulate the string and cast it to a list of numbers
@@ -114,8 +113,10 @@ def expand(nodelist):
 
 
 
-# compress_range will return a hostlist string compressed string given a list of hostnames
-# compress_range('cab1','cab2','cab3','cab4','cab6') will return cab[1-4,6]
+"""
+compress_range will return a hostlist string compressed string given a list of hostnames
+compress_range('cab1','cab2','cab3','cab4','cab6') will return cab[1-4,6]
+"""
 def compress_range(nodelist):
 
     list_of_nodes = nodelist
@@ -159,8 +160,10 @@ def compress_range(nodelist):
 
 
 
+"""
 # compress will return a hostlist string given a list of hostnames
 # compress('cab1','cab2','cab3','cab4','cab6') will return [cab1,cab2,cab3,cab4,cab6]
+"""
 def compress(nodelist):
 
     list_of_nodes = nodelist
@@ -169,8 +172,9 @@ def compress(nodelist):
     return '[%s]' % ','.join(map(str, nodelist))
 
 
-
-# diff will subtract elements in list 2 from list 1 and return remainder
+"""
+diff will subtract elements in list 2 from list 1 and return remainder
+"""
 def diff(nodelist1, nodelist2):
 
     list_of_nodes1 = set(nodelist1)
@@ -183,8 +187,9 @@ def diff(nodelist1, nodelist2):
     return '[%s]' % ','.join(map(str, diff_list))
 
     
-
-# given references to n lists, return list of intersecting nodes
+"""
+given references to n lists, return list of intersecting nodes
+"""
 def intersect(*arg):
     num_of_lists = len(arg)
     first_list = arg[0]
@@ -195,8 +200,9 @@ def intersect(*arg):
     return sort_nodes(first_list)
 
 
-
-# returns the union between n lists of nodes
+"""
+returns the union between n lists of nodes
+"""
 def union_nodes(*arg):
     num_of_lists = len(arg)
     first_list = arg[0]
