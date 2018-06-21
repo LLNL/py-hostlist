@@ -79,7 +79,7 @@ nodelist_match will put the expression into three control groups:
     (2) the ranges of nodes
 """
 def expand(nodelist):
-    nodelist_match = r"([a-z]+)\[((,?[0-9]+,?-?[0-9]+-?){0,})\]"
+    nodelist_match = r"([a-z]+[A-Z0-9]?)-?\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
     if re.search(nodelist_match, nodelist):
         match = re.search(nodelist_match, nodelist)
 
@@ -103,13 +103,26 @@ def expand(nodelist):
 
         # put final list in ascending order and append cluster name to each node number
         final_list.sort()
+
+#        print final_list
+
+#        for i in range(len(final_list)):
+#            final_list[i] = str(final_list[i])
+#            if (int(final_list[i]) < 10):
+#                final_list[i] = "{:02}".format(int(final_list[i]))
+
+#       print final_list                
+
         hostlist = append_hostname(match.group(1), final_list)
+
 
         print '%s' % ''.join(map(str, hostlist))
         return '%s' % ''.join(map(str, hostlist))
 
     else:
         print("No match")
+
+
 
 
 
