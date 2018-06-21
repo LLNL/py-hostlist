@@ -41,7 +41,7 @@ intersect will return a list of intersection nodes given n lists of nodes.
 
 union will return the union between n lists of nodes.
 
-**nth(nodelist, n)
+**nth(nodelist, n)**
 
 nth takes in two parameters: a hostlist string (similar to expand()'s parameter) and an index *n*. It will return the *nth* node in that range. 
 
