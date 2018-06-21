@@ -3,6 +3,12 @@ import re
 """
 This package processes slurm-style hostlist strings.
 
+append_hostname(machine_name, num_list)
+    helper method to append hostname to node numbers 
+
+sort_nodes(nodelist)
+    sort will return a sorted hostlist in ascending order
+
 expand(nodelist)
     returns a list of individual hostnames given a hostlist string
 
@@ -14,12 +20,6 @@ compress(nodelist)
 
 diff(nodelist1, nodelist2)
     subtract elements in list 2 from list 1 and return a remainding hostlist
-  
-sort_nodes(nodelist)
-    sort will return a sorted hostlist in ascending order
-
-append_hostname(machine_name, num_list)
-    helper method to append hostname to node numbers 
 
 intersect(*arg)
     return list of intersection nodes given n lists of nodes
