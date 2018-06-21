@@ -41,6 +41,8 @@ intersect will return a list of intersection nodes given n lists of nodes.
 
 union will return the union between n lists of nodes.
 
+### Helper Methods
+
 **append_hostname(machine_name, num_list)**
 
 append_hostname takes in two parameters: the name of the machine and its range of nodes; it is a helper method that will append the machine name (the host) to the node numbers it contains.
