@@ -113,6 +113,21 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.sort_nodes(['node5','node4','node7','node16','node11','node3'])
 		self.assertEqual(test, expected)
 
+	# Test 13
+	# nth should return the nth node in a host list 
+	def test_nth(self):
+		expected = 'quartz7'
+		test = hl.nth('quartz[4-8]', 4)
+		self.assertEqual(test, expected)
+
+	# Test 14 
+	# nth should just return a simple error message saying that 
+	# 	the index doesn't exist if it gets a bad index
+	def test_nth_doesnt_exist(self):
+		expected = 'nth node does not exist'
+		test = hl.nth('quartz[4-8]', 0)
+		self.assertEqual(test, expected)
+
 
 if __name__ == '__main__':
 	unittest.main()

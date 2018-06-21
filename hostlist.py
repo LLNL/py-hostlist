@@ -227,4 +227,41 @@ def union_nodes(*arg):
 
     return sort_nodes(union_list)
 
+"""
+returns the nth node from a list of nodes
+"""
+def nth(nodelist, n):
+    nodelist_match = r"([a-z]+[A-Z0-9]?)-?\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
+    if re.search(nodelist_match, nodelist):
+        match = re.search(nodelist_match, nodelist)
+
+        # holds the ranges of nodes as a string
+        # now we can manipulate the string and cast it to a list of numbers
+        oldstr = str(match.group(2))
+        left_br = oldstr.replace("[","")
+        right_br = left_br.replace("]","")
+        num_list = right_br.split(',')
+
+        final_list = []
+        for elem in num_list:
+            # if it is a range of numbers, break it by the hyphen and create a list
+            # will then be merged with final list
+            if '-' in elem:
+                tmp_list = elem.replace("-", ",").split(",")
+                rng_list = range(int(tmp_list[0]), int(tmp_list[1]) + 1)
+                final_list.extend(rng_list)
+            else:
+                final_list.append(int(elem))
+
+        # put final list in ascending order and append cluster name to each node number
+        final_list.sort()
+        hostlist = append_hostname(match.group(1), final_list)
+
+        # put sorted hostlist into a list, use comma as delimiter so it can be accessed by an index
+        hostlist_indexed = hostlist.split(",")
+
+        if (n not in range(1, len(hostlist_indexed)+1)):
+            return "nth node does not exist"
+        else:
+            return hostlist_indexed[n-1]
 
