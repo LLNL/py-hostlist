@@ -1,4 +1,5 @@
 import re
+import ast
 
 """
 This package processes slurm-style hostlist strings.
@@ -121,17 +122,23 @@ def expand(nodelist):
 
 """
 compress_range will return a hostlist string compressed string given a list of hostnames
-compress_range('cab1','cab2','cab3','cab4','cab6') will return cab[1-4,6]
+compress_range(['cab1','cab2','cab3','cab4','cab6']) will return cab[1-4,6]
 """
 def compress_range(nodelist):
 
     list_of_nodes = nodelist
+
+    if type(list_of_nodes) == str:
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        list_of_nodes = right_br.split(',')
+
     # get machine name and numbers for nodes
     # append the numbers of the nodes to num_list for compression
     count = 0
     num_list = []
-    for node in nodelist:
-        iter_node = nodelist[count]
+    for node in list_of_nodes:
+        iter_node = list_of_nodes[count]
         nodelist_match = r"([a-z]+)(\d+)"
         machine_name = re.search(nodelist_match, iter_node)
         num_list.append(int(machine_name.group(2)))
