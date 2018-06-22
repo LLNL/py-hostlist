@@ -79,9 +79,11 @@ nodelist_match will put the expression into three control groups:
     (2) the ranges of nodes
 """
 def expand(nodelist):
-    nodelist_match = r"([a-z]+[A-Z0-9]?)-?\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
+
+
+    nodelist_match = r"(\w+-?)\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
     if re.search(nodelist_match, nodelist):
-        match = re.search(nodelist_match, nodelist)
+        match = re.search(nodelist_match, nodelist) 
 
         # holds the ranges of nodes as a string
         # now we can manipulate the string and cast it to a list of numbers
@@ -104,54 +106,16 @@ def expand(nodelist):
         # put final list in ascending order and append cluster name to each node number
         final_list.sort()
 
-#        print final_list
-
-#        for i in range(len(final_list)):
-#            final_list[i] = str(final_list[i])
-#            if (int(final_list[i]) < 10):
-#                final_list[i] = "{:02}".format(int(final_list[i]))
-
-#       print final_list                
-
+        # attach the hostname to each node and split it into a list
         hostlist = append_hostname(match.group(1), final_list)
+        final_hostlist = hostlist.split(',')
 
+        # attach the suffix if the host has one (if not, will not attach anything)
+        for i in range(len(final_hostlist)):
+            final_hostlist[i] = final_hostlist[i] + match.group(4)
 
-        print '%s' % ''.join(map(str, hostlist))
-        return '%s' % ''.join(map(str, hostlist))
-
-    else:
-        print("No match")
-
-"""
-def expand_experiment(nodelist):
-
-
-
-    nodelist_match = r"([a-z]+[A-Z0-9]?-?)\[((,?[0-9]+,?-?[0-9]+-?){0,})\]([.a-zA-Z0-9]*)?"
-    if re.search(nodelist_match, nodelist):
-        match = re.search(nodelist_match, nodelist) 
-
-        print match.group(1)
-        print match.group(2)
-        print match.group(3)
-        print match.group(4)
-
-        oldstr = str(match.group(2))
-        left_br = oldstr.replace("[","")
-        right_br = left_br.replace("]","")
-        num_list = right_br.split(',')
-
-        print num_list
-
-        for i in range(len(num_list)):
-            if ( (num_list[0] == '0') & (int(num_list[i]) < 10) ):
-                num_list[i] = "{:02}".format(int(num_list[i]))
-
-        print num_list 
-
-
-expand_experiment('machine2-[02,3]vm1')
-"""
+        print '%s' % ','.join(map(str, final_hostlist))
+        return '%s' % ','.join(map(str, final_hostlist)) 
 
 
 
