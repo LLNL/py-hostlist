@@ -19,7 +19,7 @@ expand takes in a hostlist string and returns a list of individual hostnames. Fo
 - node[1-9].somesuffix.org
 - node[1-9,14-17,22,24-50]
 
-Note: the expand method will not return the suffix string in its final expansion, only the nodes.
+The expand method will return the suffix string in its final expansion; however, it will strip all leading zeros from the nodes.
 
 **compress_range(nodelist)**
 
