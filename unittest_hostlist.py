@@ -3,7 +3,6 @@ import hostlist as hl
 
 class TestHostlistMethods(unittest.TestCase):
 
-	# Test 1
 	# expand() returns correctly when input
 	# 	is just one range of nodes
 	def test_expand(self):
@@ -11,7 +10,6 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.expand('quartz[4-8]')
 		self.assertEqual(test, expected)
 
-	# Test 2 
 	# expand() will also return correctly with
 	#	multiple sets of ranges
 	def test_expand_multi_range(self):
@@ -21,7 +19,6 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.expand('node[18-19,1-16,21-22]')
 		self.assertEqual(test, expected)
 
-	#Test 3
 	# expand() can also recognize a mix of 
 	# 	individual and ranges of nodes
 	def test_expand_mixed_range(self):
@@ -30,14 +27,19 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.expand('node[4-8,12,16-20,22,24-26]') 
 		self.assertEqual(test, expected)
 
-	# Test 4
+	# expand() can attach suffixes as well as
+	# 	recognize hostnames with numbers and dashes
+	def test_expand_prefix_and_suffix(self):
+		expected = 'machine2-2vm1,machine2-3vm1,machine2-4vm1'
+		test = hl.expand('machine2-[02-4]vm1')
+		self.assertEqual(test, expected)
+
 	# compress_range() can compress a single range of nodes
 	def test_compress_range_simple(self):
 		expected = 'node[1-4]'
 		test = hl.compress_range(['node1','node2','node3','node4'])
 		self.assertEqual(test, expected)
 
-	# Test 5
 	# compress_range() can compress a mix of ranges
 	#	and individual nodes
 	def test_compress_range_mixed(self):
@@ -45,14 +47,12 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.compress_range(['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12'])
 		self.assertEqual(test, expected)
 
-	# Test 6
 	# compress() will return an ordered hostlist string 
 	def test_compress(self):
 		expected = '[node1,node2,node3,node4,node5,node7,node8,node10,node11,node12]'
 		test = hl.compress(['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12'])
 		self.assertEqual(test, expected)
 
-	# Test 7
 	# diff() will subtract nodelist2 from nodelist1 and return a 
 	# 	hostlist string of the remainder
 	def test_diff(self):
@@ -62,7 +62,6 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.diff(list1,list2)
 		self.assertEqual(test, expected)
 
-	# Test 8
 	# intersect() can return a hostlist string of 
 	# 	intersecting nodes from two lists
 	def test_intersect_simple(self):
@@ -72,7 +71,6 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.intersect(list1,list2)
 		self.assertEqual(test, expected)
 
-	# Test 9
 	# intersect() can also return a hostlist string of
 	#	intersecting nodes from multiple lists
 	def test_intersect_multiple(self):
@@ -83,7 +81,6 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.intersect(list1, list2, list3)
 		self.assertEqual(test, expected)
 
-	# Test 10
 	# union() will return an ordered hostslist of the 
 	#	union of two lists 
 	def test_union_simple(self):
@@ -93,7 +90,6 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.union_nodes(list1,list2)
 		self.assertEqual(test, expected)
 
-	# Test 11
 	# union() can also return an ordered hostlist of
 	#	multiple lists
 	def test_union_multiple(self):
@@ -105,7 +101,6 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.union_nodes(list1, list2, list3, list4)
 		self.assertEqual(test, expected)
 
-	# Test 12
 	# sort_nodes() will return an ordered hostlist
 	# 	of a list of nodes 
 	def test_sort(self):
@@ -113,14 +108,12 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.sort_nodes(['node5','node4','node7','node16','node11','node3'])
 		self.assertEqual(test, expected)
 
-	# Test 13
 	# nth should return the nth node in a host list 
 	def test_nth(self):
 		expected = 'quartz7'
 		test = hl.nth('quartz[4-8]', 4)
 		self.assertEqual(test, expected)
 
-	# Test 14 
 	# nth should just return a simple error message saying that 
 	# 	the index doesn't exist if it gets a bad index
 	def test_nth_doesnt_exist(self):
