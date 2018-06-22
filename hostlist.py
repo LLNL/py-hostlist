@@ -190,11 +190,21 @@ diff will subtract elements in list 2 from list 1 and return remainder
 """
 def diff(nodelist1, nodelist2):
 
-    list_of_nodes1 = set(nodelist1)
-    list_of_nodes2 = set(nodelist2)
+    list_of_nodes1 = nodelist1
+    list_of_nodes2 = nodelist2
+
+    if type(list_of_nodes1) == str:
+        left_br = list_of_nodes1.replace("[","")
+        right_br = left_br.replace("]","")
+        list_of_nodes1 = right_br.split(',') 
+
+    if type(list_of_nodes2) == str:
+        left_br = list_of_nodes2.replace("[","")
+        right_br = left_br.replace("]","")
+        list_of_nodes2 = right_br.split(',')  
 
     # use python's set features to get difference between two lists
-    diff_list = list_of_nodes1.difference(list_of_nodes2)
+    diff_list = set(list_of_nodes1).difference(set(list_of_nodes2))
 
     print '[%s]' % ','.join(map(str, diff_list))
     return '[%s]' % ','.join(map(str, diff_list))
