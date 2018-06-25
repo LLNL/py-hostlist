@@ -14,6 +14,16 @@ def diff(args):
 	param2 = args.param2
 	hl.diff(param1, param2)
 
+def inter(args):
+	param1 = args.param1
+	param2 = args.param2
+	hl.intersect(param1, param2)
+
+def union(args):
+	param1 = args.param1
+	param2 = args.param2
+	hl.union_nodes(param1, param2)
+
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()
 
@@ -29,6 +39,16 @@ diff_parser = subparsers.add_parser('diff')
 diff_parser.add_argument('param1')
 diff_parser.add_argument('param2')
 diff_parser.set_defaults(func=diff)
+
+inter_parser = subparsers.add_parser('inter')
+inter_parser.add_argument('param1')
+inter_parser.add_argument('param2')
+inter_parser.set_defaults(func=inter)
+
+union_parser = subparsers.add_parser('union')
+union_parser.add_argument('param1')
+union_parser.add_argument('param2')
+union_parser.set_defaults(func=union)
 
 
 args = parser.parse_args()
