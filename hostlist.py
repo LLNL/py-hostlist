@@ -301,8 +301,10 @@ def nth(nodelist, n):
         # put sorted hostlist into a list, use comma as delimiter so it can be accessed by an index
         hostlist_indexed = hostlist.split(",")
 
-        if (n not in range(1, len(hostlist_indexed)+1)):
-            return "nth node does not exist"
+        if (int(n) not in range(1, len(hostlist_indexed)+1)):
+            print "node does not exist"
+            return "node does not exist"
         else:
-            return hostlist_indexed[n-1]
+            print hostlist_indexed[int(n)-1]
+            return hostlist_indexed[int(n)-1]
 

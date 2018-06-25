@@ -117,7 +117,7 @@ class TestHostlistMethods(unittest.TestCase):
 	# nth should just return a simple error message saying that 
 	# 	the index doesn't exist if it gets a bad index
 	def test_nth_doesnt_exist(self):
-		expected = 'nth node does not exist'
+		expected = 'node does not exist'
 		test = hl.nth('quartz[4-8]', 0)
 		self.assertEqual(test, expected)
 

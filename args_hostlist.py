@@ -24,6 +24,11 @@ def union(args):
 	param2 = args.param2
 	hl.union_nodes(param1, param2)
 
+def nth(args):
+	param1 = args.param1
+	param2 = args.param2
+	hl.nth(param1, param2)
+
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()
 
@@ -49,6 +54,11 @@ union_parser = subparsers.add_parser('union')
 union_parser.add_argument('param1')
 union_parser.add_argument('param2')
 union_parser.set_defaults(func=union)
+
+nth_parser = subparsers.add_parser('nth')
+nth_parser.add_argument('param1')
+nth_parser.add_argument('param2')
+nth_parser.set_defaults(func=nth)
 
 
 args = parser.parse_args()
