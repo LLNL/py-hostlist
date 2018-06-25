@@ -1,5 +1,4 @@
 import re
-import ast
 
 """
 This package processes slurm-style hostlist strings.
@@ -185,6 +184,7 @@ def compress(nodelist):
     return '[%s]' % ','.join(map(str, nodelist))
 
 
+
 """
 diff will subtract elements in list 2 from list 1 and return remainder
 """
@@ -209,18 +209,34 @@ def diff(nodelist1, nodelist2):
     print '[%s]' % ','.join(map(str, diff_list))
     return '[%s]' % ','.join(map(str, diff_list))
 
+
     
 """
 given references to n lists, return list of intersecting nodes
 """
 def intersect(*arg):
+    
     num_of_lists = len(arg)
-    first_list = arg[0]
 
-    for i in range(1, len(arg)):
-        first_list = list(set(first_list) & set(arg[i]))
+    # will hold a list of the lists passed in
+    conv_lists = []
+    for lst in arg:
+        # check to see if the list passed in is a string; if it is, convert to list
+        if type(lst) == str:
+            left_br = lst.replace("[","")
+            right_br = left_br.replace("]","")
+            lst = right_br.split(',')
+            
+        conv_lists.append(lst)
+
+    first_list = conv_lists[0]
+
+    # use Boolean logic to find intersecting nodes between passed in lists
+    for i in range(1, len(conv_lists)):
+        first_list = list(set(first_list) & set(conv_lists[i]))
 
     return sort_nodes(first_list)
+
 
 
 """
@@ -236,6 +252,8 @@ def union_nodes(*arg):
     union_list = list(set(first_list))
 
     return sort_nodes(union_list)
+
+
 
 """
 returns the nth node from a list of nodes

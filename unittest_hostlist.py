@@ -79,7 +79,7 @@ class TestHostlistMethods(unittest.TestCase):
 		list2 = ['node5','node6','node7','node8','node9','node1']
 		list3 = ['node1','node6','node8','node7']
 		test = hl.intersect(list1, list2, list3)
-		self.assertEqual(test, expected)
+		self.assertEqual(test, expected)	
 
 	# union() will return an ordered hostslist of the 
 	#	union of two lists 
