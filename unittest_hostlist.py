@@ -1,6 +1,15 @@
 import unittest
 import hostlist as hl
 
+"""
+These are unit tests for hostlist.py. They go through each function
+and test its correctness.
+
+Author: Christopher Moussa (moussa1@llnl.gov)
+Mentor: Elsa Gonsiorowski (gonsiorowski1@llnl.gov)
+Date: June 21, 2018
+"""
+
 class TestHostlistMethods(unittest.TestCase):
 
 	# expand() returns correctly when input
@@ -40,6 +49,12 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.compress_range(['node1','node2','node3','node4'])
 		self.assertEqual(test, expected)
 
+	# compress_range() can take in a string as well
+	def test_compress_range_as_string(self):
+		expected = 'node[1-4]'
+		test = hl.compress_range('node1,node2,node3,node4')
+		self.assertEqual(test, expected)
+
 	# compress_range() can compress a mix of ranges
 	#	and individual nodes
 	def test_compress_range_mixed(self):
@@ -53,12 +68,26 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.compress(['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12'])
 		self.assertEqual(test, expected)
 
+	# compress() can take in a string as well
+	def test_compress_as_string(self):
+		expected = '[node1,node2,node3,node4]'
+		test = hl.compress('node1,node2,node3,node4')
+		self.assertEqual(test, expected)
+
 	# diff() will subtract nodelist2 from nodelist1 and return a 
 	# 	hostlist string of the remainder
 	def test_diff(self):
 		expected = '[node1,node10]'
 		list1 = ['node1','node2','node3','node4','node5','node6','node7','node8','node9','node10']
 		list2 = ['node2','node3','node4','node5','node6','node7','node8','node9']
+		test = hl.diff(list1,list2)
+		self.assertEqual(test, expected)
+
+	# diff() can take in a string as well
+	def test_diff_as_string(self):
+		expected = '[node1,node10]'
+		list1 = 'node1,node2,node3,node4,node5,node6,node7,node8,node9,node10'
+		list2 = 'node2,node3,node4,node5,node6,node7,node8,node9'
 		test = hl.diff(list1,list2)
 		self.assertEqual(test, expected)
 
@@ -79,7 +108,15 @@ class TestHostlistMethods(unittest.TestCase):
 		list2 = ['node5','node6','node7','node8','node9','node1']
 		list3 = ['node1','node6','node8','node7']
 		test = hl.intersect(list1, list2, list3)
-		self.assertEqual(test, expected)	
+		self.assertEqual(test, expected)
+
+	# intersect() can take in a string as well
+	def test_instersect_as_string(self):
+		expected = '[node1,node8]'
+		list1 = 'node1,node2,node3,node4,node8'
+		list2 = 'node5,node6,node7,node8,node9,node1'
+		test = hl.intersect(list1,list2)
+		self.assertEqual(test, expected)
 
 	# union() will return an ordered hostslist of the 
 	#	union of two lists 
@@ -99,7 +136,18 @@ class TestHostlistMethods(unittest.TestCase):
 		list3 = ['node6']
 		list4 = ['node5']
 		test = hl.union_nodes(list1, list2, list3, list4)
-		self.assertEqual(test, expected)		
+		self.assertEqual(test, expected)
+
+	# union() can take in a string as well
+	def test_union_as_string(self):
+		expected = '[node1,node2,node3,node4,node5,node6]'
+		list1 = ['node1','node2']
+		list2 = 'node3,node4'
+		list3 = ['node6']
+		list4 = 'node5'
+		test = hl.union_nodes(list1, list2, list3, list4)
+		self.assertEqual(test, expected)
+
 
 	# sort_nodes() will return an ordered hostlist
 	# 	of a list of nodes 
