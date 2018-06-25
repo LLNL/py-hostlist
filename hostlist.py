@@ -178,7 +178,10 @@ def compress_range(nodelist):
 """
 def compress(nodelist):
 
-    list_of_nodes = nodelist
+    if type(nodelist) == str:
+        left_br = nodelist.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
 
     print '[%s]' % ','.join(map(str, nodelist))
     return '[%s]' % ','.join(map(str, nodelist))

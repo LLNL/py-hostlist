@@ -9,6 +9,10 @@ def compress_range(args):
 	param1 = args.param1
 	hl.compress_range(param1)
 
+def compress(args):
+	param1 = args.param1
+	hl.compress(param1)
+
 def diff(args):
 	param1 = args.param1
 	param2 = args.param2
@@ -39,6 +43,10 @@ expand_parser.set_defaults(func=expand)
 compress_range_parser = subparsers.add_parser('compr')
 compress_range_parser.add_argument('param1')
 compress_range_parser.set_defaults(func=compress_range)
+
+compress_parser = subparsers.add_parser('comp')
+compress_parser.add_argument('param1')
+compress_parser.set_defaults(func=compress)
 
 diff_parser = subparsers.add_parser('diff')
 diff_parser.add_argument('param1')
