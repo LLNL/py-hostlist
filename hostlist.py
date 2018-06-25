@@ -243,11 +243,24 @@ def intersect(*arg):
 returns the union between n lists of nodes
 """
 def union_nodes(*arg):
-    num_of_lists = len(arg)
-    first_list = arg[0]
 
-    for i in range(1, len(arg)):
-        first_list = first_list + arg[i]
+    num_of_lists = len(arg)
+
+    # will hold a list of the lists passed in
+    conv_lists = []
+    for lst in arg:
+        # check to see if the list passed in is a string; if it is, convert to list
+        if type(lst) == str:
+            left_br = lst.replace("[","")
+            right_br = left_br.replace("]","")
+            lst = right_br.split(',')
+            
+        conv_lists.append(lst)
+
+    first_list = conv_lists[0]
+
+    for i in range(1, len(conv_lists)):
+        first_list = first_list + conv_lists[i]
 
     union_list = list(set(first_list))
 

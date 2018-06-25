@@ -99,7 +99,7 @@ class TestHostlistMethods(unittest.TestCase):
 		list3 = ['node6']
 		list4 = ['node5']
 		test = hl.union_nodes(list1, list2, list3, list4)
-		self.assertEqual(test, expected)
+		self.assertEqual(test, expected)		
 
 	# sort_nodes() will return an ordered hostlist
 	# 	of a list of nodes 
