@@ -1,11 +1,25 @@
 # py-hostlist: a tool for manipulating lists of hosts
 
 ##### Author: Christopher Moussa
-##### Mentor: Elsa Gonsiorowski
+#### Mentor: Elsa Gonsiorowski
 ****
 ## Description
 
 py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion. 
+****
+
+## Using the Command Line 
+
+You can use the command line to process your hostlist strings by using the following command:
+
+`python args_hostlist.py <method> <args>...`
+
+For example, let's say you wanted to expand the following hostlist **node[1-4]**. You could use the following command:
+
+`python args_hostlist.py expand node[1-4]`
+
+This will return **node1,node2,node3,node4**.
+
 ****
 
 ## Methods
@@ -53,4 +67,4 @@ append_hostname takes in two parameters: the name of the machine and its range o
 
 **sort_nodes(nodelist)**
 
-sort_nodes takes in a list of nodes; it is a helper method that will return a sorted string of those nodes in ascending order.
+sort_nodes takes in a list of nodes; it is a helper method that will return a sorted string of those nodes in ascending order.#
