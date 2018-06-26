@@ -70,16 +70,15 @@ def sort_nodes(nodelist):
 
 
 def expand(nodelist):
-"""
-expand will match an arbitrary number of ranges
-    ex. quartz[7,9,10-12] will return a hostlist string 
-    quartz7,quartz9,quartz10,quartz11,quartz12
-nodelist_match will put the expression into three control groups:
-    (0) the full expression
-    (1) the cluster name
-    (2) the ranges of nodes
-"""
-
+    """
+    expand will match an arbitrary number of ranges
+        ex. quartz[7,9,10-12] will return a hostlist string 
+        quartz7,quartz9,quartz10,quartz11,quartz12
+    nodelist_match will put the expression into three control groups:
+        (0) the full expression
+        (1) the cluster name
+        (2) the ranges of nodes
+    """
     nodelist_match = r"(\w+-?)\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
     if re.search(nodelist_match, nodelist):
         match = re.search(nodelist_match, nodelist) 
@@ -119,10 +118,10 @@ nodelist_match will put the expression into three control groups:
 
 
 def compress_range(nodelist):
-"""
-compress_range will return a hostlist string compressed string given a list of hostnames
-compress_range(['cab1','cab2','cab3','cab4','cab6']) will return cab[1-4,6]
-"""
+    """
+    compress_range will return a hostlist string compressed string given a list of hostnames
+    compress_range(['cab1','cab2','cab3','cab4','cab6']) will return cab[1-4,6]
+    """
 
     list_of_nodes = nodelist
 
@@ -172,10 +171,10 @@ compress_range(['cab1','cab2','cab3','cab4','cab6']) will return cab[1-4,6]
 
 
 def compress(nodelist):
-"""
-# compress will return a hostlist string given a list of hostnames
-# compress('cab1','cab2','cab3','cab4','cab6') will return [cab1,cab2,cab3,cab4,cab6]
-"""
+    """
+    # compress will return a hostlist string given a list of hostnames
+    # compress('cab1','cab2','cab3','cab4','cab6') will return [cab1,cab2,cab3,cab4,cab6]
+    """
 
     if type(nodelist) == str:
         left_br = nodelist.replace("[","")
@@ -188,9 +187,9 @@ def compress(nodelist):
 
 
 def diff(nodelist1, nodelist2):
-"""
-diff will subtract elements in list 2 from list 1 and return remainder
-"""
+    """
+    diff will subtract elements in list 2 from list 1 and return remainder
+    """
 
     list_of_nodes1 = nodelist1
     list_of_nodes2 = nodelist2
@@ -214,9 +213,9 @@ diff will subtract elements in list 2 from list 1 and return remainder
 
 
 def intersect(*arg):
-"""
-given references to n lists, return list of intersecting nodes
-"""
+    """
+    given references to n lists, return list of intersecting nodes
+    """
     
     num_of_lists = len(arg)
 
@@ -242,9 +241,9 @@ given references to n lists, return list of intersecting nodes
 
 
 def union_nodes(*arg):
-"""
-returns the union between n lists of nodes
-"""
+    """
+    returns the union between n lists of nodes
+    """
 
     num_of_lists = len(arg)
 
@@ -271,9 +270,9 @@ returns the union between n lists of nodes
 
 
 def nth(nodelist, n):
-"""
-returns the nth node from a list of nodes
-"""
+    """
+    returns the nth node from a list of nodes
+    """
 
     nodelist_match = r"([a-z]+[A-Z0-9]?)-?\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
     if re.search(nodelist_match, nodelist):
