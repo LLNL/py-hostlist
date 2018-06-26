@@ -181,6 +181,17 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.nth('quartz[4-8]', 0)
 		self.assertEqual(test, expected)
 
+	# find should return the index that the host is at
+	def test_find(self):
+		expected = 'At position 2'
+		test = hl.find('node[1-3]', 'node2')
+		self.assertEqual(test, expected)
+
+	# if find cannot find the host, then return a failure
+	def test_find_doesnt_exist(self):
+		expected = "node does not exist"
+		test = hl.find('node[1-3]', 'node0')
+		self.assertEqual(test, expected)
 
 if __name__ == '__main__':
 	unittest.main()

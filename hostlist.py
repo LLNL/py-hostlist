@@ -338,3 +338,30 @@ def nth(nodelist, n):
             print hostlist_indexed[int(n)-1]
             return hostlist_indexed[int(n)-1]
 
+
+
+def find(nodelist, node):
+
+    list_of_nodes = nodelist
+    list_of_nodes = expand(str(list_of_nodes))
+
+    if type(list_of_nodes) == str:
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',')  
+         
+
+    for i in range(1, len(nodelist)):
+        if (node == nodelist[i]):
+            print("At position " + str(i + 1))
+            return "At position " + str(i + 1)
+    
+    print "node does not exist"
+    return "node does not exist"
+
+
+
+
+find('node[1-3,4-9]', 'node0')
+
+
