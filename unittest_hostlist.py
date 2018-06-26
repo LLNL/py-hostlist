@@ -156,9 +156,16 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.sort_nodes(['node5','node4','node7','node16','node11','node3'])
 		self.assertEqual(test, expected)
 
+	# sort_nodes() can take in a string as well
 	def test_sort_as_string(self):
 		expected = '[node3,node4,node5,node7,node11,node16]'
 		test = hl.sort_nodes('[node5,node4,node7,node16,node11,node3]')
+		self.assertEqual(test, expected)
+
+	# makes sure that count() returns the correct value
+	def test_count(self):
+		expected = 5
+		test = hl.count('node1,node2,node3,node4,node5')
 		self.assertEqual(test, expected)
 
 	# nth should return the nth node in a host list 
