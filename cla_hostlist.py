@@ -29,6 +29,8 @@ parser.add_argument("-n", "--nth=N", dest="nth", nargs="*", help="Output the hos
 
 parser.add_argument("-s", "--sort", dest="sort", help="Return sorted HOSTLIST")
 
+parser.add_argument("-c", "--count", dest="count", help="Print the number of hosts")
+
 args = parser.parse_args()
 
 if args.expand:
@@ -47,3 +49,5 @@ if args.nth:
 	hl.nth(args.nth[0], args.nth[1])
 if args.sort:
 	hl.sort_nodes(args.sort)
+if args.count:
+	hl.count(args.count)
