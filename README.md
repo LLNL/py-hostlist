@@ -1,6 +1,6 @@
 # py-hostlist: a tool for manipulating lists of hosts
 
-##### Author: Christopher Moussa
+#### Author: Christopher Moussa
 #### Mentor: Elsa Gonsiorowski
 ****
 ## Description
