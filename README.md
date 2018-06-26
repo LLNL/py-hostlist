@@ -52,6 +52,10 @@ union will return the union between n lists of nodes.
 
 nth takes in two parameters: a hostlist string (similar to expand()'s parameter) and an index *n*. It will return the *nth* node in that range. 
 
+**find(nodelist, node)**
+
+find will return the position of the node in the passed in nodelist. 
+
 ### Helper Methods
 
 **append_hostname(machine_name, num_list)**
