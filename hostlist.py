@@ -321,22 +321,35 @@ def nth(nodelist, n):
 
 def find(nodelist, node):
 
-    list_of_nodes = nodelist
-    list_of_nodes = expand(str(list_of_nodes))
-
-    if type(list_of_nodes) == str:
+    if type(nodelist) == list:
+        if node in nodelist:
+            print("At position " + str(nodelist.index(node) + 1))
+            return "At position " + str(nodelist.index(node) + 1)
+        else:
+            print "node does not exist"
+            return "node does not exist"
+    elif "[" in nodelist:
+        list_of_nodes = expand(nodelist)
         left_br = list_of_nodes.replace("[","")
         right_br = left_br.replace("]","")
-        nodelist = right_br.split(',')  
-         
-
-    for i in range(1, len(nodelist)):
-        if (node == nodelist[i]):
-            print("At position " + str(i + 1))
-            return "At position " + str(i + 1)
-    
-    print "node does not exist"
-    return "node does not exist"
+        nodelist = right_br.split(',')
+        if node in nodelist:
+            print("At position " + str(nodelist.index(node) + 1))
+            return "At position " + str(nodelist.index(node) + 1)
+        else:
+            print "node does not exist"
+            return "node does not exist"
+    else:
+        list_of_nodes = nodelist
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
+        if node in nodelist:
+            print("At position " + str(nodelist.index(node) + 1))
+            return "At position " + str(nodelist.index(node) + 1)
+        else:
+            print "node does not exist"
+            return "node does not exist"       
 
 
 
