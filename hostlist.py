@@ -71,27 +71,6 @@ def sort_nodes(nodelist):
     print '[%s]' % ''.join(map(str, hostlist))
     return '[%s]' % ''.join(map(str, hostlist))
 
-def count(nodelist):
-
-    list_of_nodes = nodelist
-
-    if type(list_of_nodes) == str:
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',')
-
-    count = 0
-    num_list = []
-    for node in nodelist:
-        iter_node = nodelist[count]
-        nodelist_match = r"([a-z]+)(\d+)"
-        machine_name = re.search(nodelist_match, iter_node)
-        num_list.append(int(machine_name.group(2)))
-        count = count+1
-
-    print count
-    return count
-
 
 # ========== END OF HELPER METHODS =========== # 
 
@@ -358,5 +337,27 @@ def find(nodelist, node):
     
     print "node does not exist"
     return "node does not exist"
+
+
+
+def count(nodelist):
+
+    if type(nodelist) == list:
+        print len(nodelist)
+        return len(nodelist)
+    elif "[" in nodelist: 
+        list_of_nodes = expand(nodelist)
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
+        print len(nodelist)
+        return len(nodelist)         
+    else:
+        list_of_nodes = nodelist
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
+        print len(nodelist)
+        return len(nodelist)        
 
 
