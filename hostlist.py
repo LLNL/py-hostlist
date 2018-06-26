@@ -49,6 +49,13 @@ def append_hostname(machine_name, num_list):
 # sort_nodes will sort the nodes in ascending order
 def sort_nodes(nodelist):
 
+    list_of_nodes = nodelist
+
+    if type(list_of_nodes) == str:
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',')
+
     count = 0
     num_list = []
     for node in nodelist:
