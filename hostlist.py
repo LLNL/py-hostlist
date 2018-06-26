@@ -360,8 +360,3 @@ def find(nodelist, node):
     return "node does not exist"
 
 
-
-
-find('node[1-3,4-9]', 'node0')
-
-

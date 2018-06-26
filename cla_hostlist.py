@@ -31,6 +31,8 @@ parser.add_argument("-s", "--sort", dest="sort", help="Return sorted HOSTLIST")
 
 parser.add_argument("-c", "--count", dest="count", help="Print the number of hosts")
 
+parser.add_argument("-f", "--find", dest="find", nargs="*", help="Output position of HOST in result HOSTLIST")
+
 args = parser.parse_args()
 
 if args.expand:
@@ -51,3 +53,5 @@ if args.sort:
 	hl.sort_nodes(args.sort)
 if args.count:
 	hl.count(args.count)
+if args.find:
+	hl.find(args.find[0], args.find[1])
