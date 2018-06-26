@@ -26,14 +26,7 @@ This will return **node1,node2,node3,node4**.
 
 **expand(nodelist)**
 
-expand takes in a hostlist string and returns a list of individual hostnames. For example, the input string **node[1-4]** will return **node1,node2,node3,node4**. The expand method can recognize the following input strings:
-
-- node[1-9]
-- node1234[1-9]
-- node[1-9].somesuffix.org
-- node[1-9,14-17,22,24-50]
-
-The expand method will return the suffix string in its final expansion; however, it will strip all leading zeros from the nodes.
+expand takes in a hostlist string and returns a list of individual hostnames. For example, the input string **node[1-4]** will return **node1,node2,node3,node4**. The expand method will return the suffix string in its final expansion; however, it will strip all leading zeros from the nodes.
 
 **compress_range(nodelist)**
 
