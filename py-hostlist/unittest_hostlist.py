@@ -62,6 +62,18 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.compress_range(['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12'])
 		self.assertEqual(test, expected)
 
+	# compress_range() will keep the suffix in its result
+	def test_compress_range_suffix(self):
+		expected = 'node[1-3].suffix.com'
+		test = hl.compress_range('node1.suffix.com,node2.suffix.com,node3.suffix.com')
+		self.assertEqual(test, expected)
+
+	# compress_range() can recognize machines with hyphens before node numbers
+	def test_compress_range_with_hyphen(self):
+		expected = 'node1-[1-3].suffix.com'
+		test = hl.compress_range('node1-1.suffix.com,node1-2.suffix.com,node1-3.suffix.com')
+		self.assertEqual(test, expected)
+
 	# compress() will return an ordered hostlist string 
 	def test_compress(self):
 		expected = '[node1,node2,node3,node4,node5,node7,node8,node10,node11,node12]'

@@ -159,13 +159,22 @@ def compress_range(nodelist):
     # append the numbers of the nodes to num_list for compression
     count = 0
     num_list = []
-    for node in list_of_nodes:
-        iter_node = list_of_nodes[count]
-        nodelist_match = r"([a-z]+)(\d+)"
-        machine_name = re.search(nodelist_match, iter_node)
-        num_list.append(int(machine_name.group(2)))
-        count = count+1
 
+    # check if node is in the following format: <node1-2,node1-3,node1-4>
+    if "-" in list_of_nodes[0]:
+        for node in list_of_nodes:
+            iter_node = list_of_nodes[count]
+            nodelist_match = r"(\w+-?)(\d+)(.*)"
+            machine_name = re.search(nodelist_match, iter_node)
+            num_list.append(int(machine_name.group(2)))
+            count = count+1
+    else:
+        for node in list_of_nodes:
+            iter_node = list_of_nodes[count]
+            nodelist_match = r"([a-zA-Z]+)(\d+)(.*)"
+            machine_name = re.search(nodelist_match, iter_node)
+            num_list.append(int(machine_name.group(2)))
+            count = count+1
     
     # build the ranges
     final_list = []
@@ -190,8 +199,9 @@ def compress_range(nodelist):
         else:
             final_list.append(low)
 
-    print(machine_name.group(1) + '[%s]' % ','.join(map(str, final_list)))
-    return machine_name.group(1) + '[%s]' % ','.join(map(str, final_list))
+    result_str = machine_name.group(1) + '[%s]' % ','.join(map(str, final_list))
+    print(result_str + machine_name.group(3))
+    return result_str + machine_name.group(3)
 
 
 
