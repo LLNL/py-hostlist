@@ -63,7 +63,7 @@ def sort_nodes(nodelist):
     
     hostlist = append_hostname(machine_name.group(1), num_list)
 
-    print '[%s]' % ''.join(map(str, hostlist))
+    print('[%s]' % ''.join(map(str, hostlist)))
     return '[%s]' % ''.join(map(str, hostlist))
 
 
@@ -133,7 +133,7 @@ def expand(nodelist):
         for elem in hostlist_no_suffix:
             final_hostlist.append(elem + match.group(4))
 
-        print '%s' % ','.join(map(str, final_hostlist))
+        print('%s' % ','.join(map(str, final_hostlist)))
         return '%s' % ','.join(map(str, final_hostlist)) 
 
 
@@ -190,7 +190,7 @@ def compress_range(nodelist):
         else:
             final_list.append(low)
 
-    print machine_name.group(1) + '[%s]' % ','.join(map(str, final_list))
+    print(machine_name.group(1) + '[%s]' % ','.join(map(str, final_list)))
     return machine_name.group(1) + '[%s]' % ','.join(map(str, final_list))
 
 
@@ -211,7 +211,7 @@ def compress(nodelist):
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
 
-    print '[%s]' % ','.join(map(str, nodelist))
+    print('[%s]' % ','.join(map(str, nodelist)))
     return '[%s]' % ','.join(map(str, nodelist))
 
 
@@ -243,7 +243,7 @@ def diff(nodelist1, nodelist2):
     # use python's set features to get difference between two lists
     diff_list = set(list_of_nodes1).difference(set(list_of_nodes2))
 
-    print '[%s]' % ','.join(map(str, diff_list))
+    print('[%s]' % ','.join(map(str, diff_list)))
     return '[%s]' % ','.join(map(str, diff_list))
 
 
@@ -360,10 +360,10 @@ def nth(nodelist, n):
         hostlist_indexed = hostlist.split(",")
 
         if (int(n) not in range(1, len(hostlist_indexed)+1)):
-            print "node does not exist"
+            print("node does not exist")
             return "node does not exist"
         else:
-            print hostlist_indexed[int(n)-1]
+            print(hostlist_indexed[int(n)-1])
             return hostlist_indexed[int(n)-1]
 
 
@@ -388,7 +388,7 @@ def find(nodelist, node):
             print("At position " + str(nodelist.index(node) + 1))
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            print "node does not exist"
+            print("node does not exist")
             return "node does not exist"
     elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
@@ -399,7 +399,7 @@ def find(nodelist, node):
             print("At position " + str(nodelist.index(node) + 1))
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            print "node does not exist"
+            print("node does not exist")
             return "node does not exist"
     else:
         list_of_nodes = nodelist
@@ -410,7 +410,7 @@ def find(nodelist, node):
             print("At position " + str(nodelist.index(node) + 1))
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            print "node does not exist"
+            print("node does not exist")
             return "node does not exist"       
 
 
@@ -427,21 +427,21 @@ def count(nodelist):
     """
 
     if type(nodelist) == list:
-        print len(nodelist)
+        print(len(nodelist))
         return len(nodelist)
     elif "[" in nodelist: 
         list_of_nodes = expand(nodelist)
         left_br = list_of_nodes.replace("[","")
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
-        print len(nodelist)
+        print(len(nodelist))
         return len(nodelist)         
     else:
         list_of_nodes = nodelist
         left_br = list_of_nodes.replace("[","")
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
-        print len(nodelist)
+        print(len(nodelist))
         return len(nodelist)        
 
 
