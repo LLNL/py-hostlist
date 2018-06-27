@@ -43,6 +43,12 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.expand('machine2-[02-4]vm1')
 		self.assertEqual(test, expected)
 
+	# expand() prepends leading zeros if it is in the original input
+	def test_expand_leading_zeros(self):
+		expected = 'machine2-009vm1,machine2-010vm1,machine2-011vm1'
+		test = hl.expand('machine2-[009-11]vm1')
+		self.assertEqual(test, expected)
+
 	# compress_range() can compress a single range of nodes
 	def test_compress_range_simple(self):
 		expected = 'node[1-4]'
