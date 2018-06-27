@@ -1,43 +1,30 @@
+"""
+.. module:: hostlist
+   :platform: Unix, MacOS
+   :synopsis: A slurm-style hostlist processor.
+
+.. moduleauthor:: Christopher Moussa <moussa1@llnl.gov>
+
+
+"""
+
 import re
-
-"""
-This package processes slurm-style hostlist strings.
-
-append_hostname(machine_name, num_list)
-    helper method to append hostname to node numbers 
-
-sort_nodes(nodelist)
-    sort will return a sorted hostlist in ascending order
-
-expand(nodelist)
-    returns a list of individual hostnames given a hostlist string
-
-compress_range(nodelist)
-    returns an ordered hostlist string given a list of hostnames with a range
-
-compress(nodelist)
-    returns an ordered hostlist string given a list of hostnames
-
-diff(nodelist1, nodelist2)
-    subtract elements in list 2 from list 1 and return a remainding hostlist
-
-intersect(*arg)
-    return list of intersection nodes given n lists of nodes
-
-union(*arg)
-    returns the union between n lists of nodes
-
-   
-Author: Christopher Moussa (moussa1@llnl.gov)
-Mentor: Elsa Gonsiorowski (gonsiorowski1@llnl.gov)
-Date: June 15, 2018
-"""
 
 # ========== HELPER METHODS ========== #
 
 
-# helper method to append hostname to node numbers
 def append_hostname(machine_name, num_list):
+    """append_hostname is a helper method to append the hostname to node numbers.
+
+    Args:
+        machine_name (str): The name of the cluster.
+        num_list (list):    The list of nodes to be appended to the cluster name.
+
+    Returns:
+        hostlist (str): A hostlist string with the hostname and node numbers.
+
+    """
+
     hostlist = []
     for elem in num_list:
         hostlist.append(machine_name + str(elem))
@@ -46,8 +33,17 @@ def append_hostname(machine_name, num_list):
 
 
 
-# sort_nodes will sort the nodes in ascending order
+
 def sort_nodes(nodelist):
+    """sort_nodes is a helper method that sorts the nodes in ascending order.
+
+    Args:
+        nodelist (str): The hostlist string.
+
+    Returns:
+        hostlist (str): The hostlist string in ascending order.
+
+    """
 
     list_of_nodes = nodelist
 
@@ -77,15 +73,19 @@ def sort_nodes(nodelist):
 
 
 def expand(nodelist):
+    """expand takes in a compressed hostlist string and returns all hosts listed.
+
+    Args:
+        nodelist (str): The hostlist string.
+
+    Returns: 
+        final_hostlist (str): The expanded hostlist string.
+
+    .. note::
+
+        The expanded hostlist string does not return prepended zeros.
     """
-    expand will match an arbitrary number of ranges
-        ex. quartz[7,9,10-12] will return a hostlist string 
-        quartz7,quartz9,quartz10,quartz11,quartz12
-    nodelist_match will put the expression into three control groups:
-        (0) the full expression
-        (1) the cluster name
-        (2) the ranges of nodes
-    """
+
     nodelist_match = r"(\w+-?)\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
     if re.search(nodelist_match, nodelist):
         match = re.search(nodelist_match, nodelist) 
@@ -125,9 +125,13 @@ def expand(nodelist):
 
 
 def compress_range(nodelist):
-    """
-    compress_range will return a hostlist string compressed string given a list of hostnames
-    compress_range(['cab1','cab2','cab3','cab4','cab6']) will return cab[1-4,6]
+    """compress_range will return a compressed hostlist string given a list of hostnames.
+    
+    Args:
+        nodelist (str): The expanded hostlist string.
+
+    Returns:
+        final_list (str): The compressed hostlist string.
     """
 
     list_of_nodes = nodelist
@@ -178,9 +182,14 @@ def compress_range(nodelist):
 
 
 def compress(nodelist):
-    """
-    # compress will return a hostlist string given a list of hostnames
-    # compress('cab1','cab2','cab3','cab4','cab6') will return [cab1,cab2,cab3,cab4,cab6]
+    """compress will return a hostlist string given a list of hostnames.
+    
+    Args:
+        nodelist (str): The hostlist string.
+
+    Returns:
+        nodelist (str): The hostlist string. 
+    
     """
 
     if type(nodelist) == str:
@@ -194,8 +203,14 @@ def compress(nodelist):
 
 
 def diff(nodelist1, nodelist2):
-    """
-    diff will subtract elements in list 2 from list 1 and return remainder
+    """diff will subtract elements in list 2 from list 1 and return remainder.
+
+    Args:
+        nodelist1 (str): The hostlist string to be subtracted from. 
+        nodelist2 (str): The other hostlist string.
+
+    Returns:
+        diff_list (str): The remainding list from subtracting the two original lists.
     """
 
     list_of_nodes1 = nodelist1
@@ -220,8 +235,13 @@ def diff(nodelist1, nodelist2):
 
 
 def intersect(*arg):
-    """
-    given references to n lists, return list of intersecting nodes
+    """Given references to n lists, intersect return a list of intersecting nodes.
+
+    Args:
+        nodelist (str): Any number of nodelists to be intersected.
+
+    Returns:
+        first_list (str): The resulting intersected list.
     """
     
     num_of_lists = len(arg)
@@ -248,8 +268,13 @@ def intersect(*arg):
 
 
 def union_nodes(*arg):
-    """
-    returns the union between n lists of nodes
+    """union_nodes returns the union between n lists of nodes.
+
+    Args:
+        nodelist (str): Any number of nodelists to be combined.
+
+    Returns:
+        union_list (str): The resulting unioned list.
     """
 
     num_of_lists = len(arg)
@@ -277,8 +302,18 @@ def union_nodes(*arg):
 
 
 def nth(nodelist, n):
-    """
-    returns the nth node from a list of nodes
+    """nth returns the nth node from a list of nodes.
+
+    Args:
+        nodelist (str): The hostlist string.
+        n (int): The index desired.
+
+    Returns:
+        hostlist_indexed[int(n)-1] (int): The host at the specified index.
+
+    .. note::
+
+        The index specified is one-base indexed, not zero-based.
     """
 
     nodelist_match = r"([a-z]+[A-Z0-9]?)-?\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
@@ -320,6 +355,19 @@ def nth(nodelist, n):
 
 
 def find(nodelist, node):
+    """find outputs the position of the node in the nodelist passed in.
+
+    Args:
+        nodelist (str): The hostlist string.
+        node (str): The host to be searched inside of the hostlist string.
+
+    Returns:
+        nodelist.index(node) (int): The position of the host within the hostlist string.
+
+    .. note::
+
+        The index specified is one-base indexed, not zero-based.
+    """
 
     if type(nodelist) == list:
         if node in nodelist:
@@ -354,6 +402,15 @@ def find(nodelist, node):
 
 
 def count(nodelist):
+    """count returns the number of hosts.
+
+    Args:
+        nodelist (str): The hostlist string.
+
+    Returns:
+        len(nodelist) (int): The host at the specified index.
+
+    """
 
     if type(nodelist) == list:
         print len(nodelist)
