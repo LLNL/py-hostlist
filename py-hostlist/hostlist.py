@@ -79,10 +79,6 @@ def expand(nodelist):
 
     Returns: 
         final_hostlist (str): The expanded hostlist string.
-
-    .. note::
-
-        The expanded hostlist string does not return prepended zeros.
     """
 
     nodelist_match = r"(\w+-?)\[((,?[0-9]+,?-?[0-9]+-?){0,})\](.*)?"
@@ -96,12 +92,21 @@ def expand(nodelist):
         right_br = left_br.replace("]","")
         num_list = right_br.split(',')
 
+
         final_list = []
+        lead_zeros = 0
+        lead_zeros_str = ''
         for elem in num_list:
             # if it is a range of numbers, break it by the hyphen and create a list
             # will then be merged with final list
             if '-' in elem:
                 tmp_list = elem.replace("-", ",").split(",")
+
+                for digit in tmp_list[0]:
+                    if digit == '0':
+                        lead_zeros = lead_zeros + 1
+                        lead_zeros_str = lead_zeros_str + '0'
+
                 rng_list = range(int(tmp_list[0]), int(tmp_list[1]) + 1)
                 final_list.extend(rng_list)
             else:
@@ -110,13 +115,23 @@ def expand(nodelist):
         # put final list in ascending order and append cluster name to each node number
         final_list.sort()
 
-        # attach the hostname to each node and split it into a list
-        hostlist = append_hostname(match.group(1), final_list)
-        final_hostlist = hostlist.split(',')
+        # prepend leading zeros to numbers required
+        hostlist_tmp = []
+        for elem in final_list:
+            if ((lead_zeros > 0) and (len(str(elem)) <= len(lead_zeros_str))):
+                hostlist_tmp.append(str(elem).zfill(lead_zeros + 1))
+            else:
+                hostlist_tmp.append(str(elem))
 
-        # attach the suffix if the host has one (if not, will not attach anything)
-        for i in range(len(final_hostlist)):
-            final_hostlist[i] = final_hostlist[i] + match.group(4)
+        # append hostname to the node numbers
+        hostlist_no_suffix = []
+        for elem in hostlist_tmp:
+            hostlist_no_suffix.append(match.group(1) + elem)
+
+        # append suffix to hostlist if there is one
+        final_hostlist = []
+        for elem in hostlist_no_suffix:
+            final_hostlist.append(elem + match.group(4))
 
         print '%s' % ','.join(map(str, final_hostlist))
         return '%s' % ','.join(map(str, final_hostlist)) 

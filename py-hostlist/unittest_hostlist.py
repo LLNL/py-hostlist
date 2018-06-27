@@ -39,7 +39,7 @@ class TestHostlistMethods(unittest.TestCase):
 	# expand() can attach suffixes as well as
 	# 	recognize hostnames with numbers and dashes
 	def test_expand_prefix_and_suffix(self):
-		expected = 'machine2-2vm1,machine2-3vm1,machine2-4vm1'
+		expected = 'machine2-02vm1,machine2-03vm1,machine2-04vm1'
 		test = hl.expand('machine2-[02-4]vm1')
 		self.assertEqual(test, expected)
 
