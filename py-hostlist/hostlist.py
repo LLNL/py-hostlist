@@ -33,7 +33,6 @@ def append_hostname(machine_name, num_list):
 
 
 
-
 def sort_nodes(nodelist):
     """sort_nodes is a helper method that sorts the nodes in ascending order.
 
