@@ -20,6 +20,12 @@ For example, let's say you wanted to expand the following hostlist **node[1-4]**
 
 This will return **node1,node2,node3,node4**.
 
+Users can also use short-notation command line arguments. To execute the same expand function displayed above, users can run the following:
+
+`python cla_hostlist.py -e node[1-4]`
+
+which will return the same hostlist string.
+
 ****
 
 ## Methods
