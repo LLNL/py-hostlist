@@ -160,6 +160,14 @@ def compress_range(nodelist):
     count = 0
     num_list = []
 
+    # check to see if there are prepending zeros in first node
+    lead_zeros = 0
+    lead_zeros_str = ''
+    for digit in list_of_nodes[0]:
+        if digit == '0':
+                lead_zeros = lead_zeros + 1
+                lead_zeros_str = lead_zeros_str + '0'
+
     # check if node is in the following format: <node1-2,node1-3,node1-4>
     if "-" in list_of_nodes[0]:
         for node in list_of_nodes:
@@ -188,14 +196,14 @@ def compress_range(nodelist):
             last = high
             continue            
         if (last > low):
-            final_list.append(str(low) + "-" + str(last))
+            final_list.append(lead_zeros_str + str(low) + "-" + str(last))
         else:
-            final_list.append(str(low))
+            final_list.append(lead_zeros_str + str(low))
         low = high
         last = low
     if (len(num_list) > 0):
         if (last > low):
-            final_list.append(str(low)+"-"+str(last))
+            final_list.append(lead_zeros_str + str(low)+"-"+str(last))
         else:
             final_list.append(low)
 
