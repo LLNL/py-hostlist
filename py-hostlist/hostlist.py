@@ -294,6 +294,7 @@ def intersect(*arg):
     for i in range(1, len(conv_lists)):
         first_list = list(set(first_list) & set(conv_lists[i]))
 
+    print(sort_nodes(first_list))
     return sort_nodes(first_list)
 
 

@@ -66,10 +66,7 @@ if args.diff:
 if args.intersection:
 	hl.intersect(args.intersection[0], args.intersection[1])
 if args.union:
-	args_list = []
-	for i in args.union:
-		args_list.append(i)
-	hl.union_nodes(str(args_list))
+	hl.union_nodes(*args.union)
 if args.nth:
 	hl.nth(args.nth[0], args.nth[1])
 if args.sort:
