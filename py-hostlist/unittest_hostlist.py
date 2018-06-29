@@ -110,7 +110,7 @@ class TestHostlistMethods(unittest.TestCase):
 		self.assertEqual(test, expected)
 
 	def test_scr_diff(self):
-		expected = '[machine3,machine2]'
+		expected = '[machine2,machine3]'
 		list1 = 'machine1,machine2,machine3'
 		list2 = 'machine1,machine4'
 		test = hl.diff(list1,list2)

@@ -260,8 +260,8 @@ def diff(nodelist1, nodelist2):
     # use python's set features to get difference between two lists
     diff_list = set(list_of_nodes1).difference(set(list_of_nodes2))
 
-    print('[%s]' % ','.join(map(str, diff_list)))
-    return '[%s]' % ','.join(map(str, diff_list))
+    print sort_nodes(list(diff_list))
+    return sort_nodes(list(diff_list))
 
 
 
