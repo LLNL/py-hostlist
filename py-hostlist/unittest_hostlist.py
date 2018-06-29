@@ -109,6 +109,7 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.diff(list1,list2)
 		self.assertEqual(test, expected)
 
+	# unit test taken fom scr
 	def test_scr_diff(self):
 		expected = '[machine2,machine3]'
 		list1 = 'machine1,machine2,machine3'
@@ -122,6 +123,13 @@ class TestHostlistMethods(unittest.TestCase):
 		expected = '[node1,node8]'
 		list1 = ['node1','node2','node3','node4','node8']
 		list2 = ['node5','node6','node7','node8','node9','node1']
+		test = hl.intersect(list1,list2)
+		self.assertEqual(test, expected)
+
+	def test_scr_intersect(self):
+		expected = '[machine1,machine3]'
+		list1 = 'machine1,machine2,machine3'
+		list2 = 'machine1,machine3,machine4'
 		test = hl.intersect(list1,list2)
 		self.assertEqual(test, expected)
 
