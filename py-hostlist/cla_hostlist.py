@@ -64,7 +64,7 @@ if args.compress:
 if args.diff:
 	hl.diff(args.diff[0], args.diff[1])
 if args.intersection:
-	hl.intersect(args.intersection[0], args.intersection[1])
+	hl.intersect(*args.intersection)
 if args.union:
 	hl.union_nodes(*args.union)
 if args.nth:
