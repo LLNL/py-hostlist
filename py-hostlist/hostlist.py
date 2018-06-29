@@ -328,6 +328,7 @@ def union_nodes(*arg):
 
     union_list = list(set(first_list))
 
+    print(sort_nodes(union_list))
     return sort_nodes(union_list)
 
 
