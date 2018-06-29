@@ -1,6 +1,4 @@
-# <img src="https://openclipart.org/download/284280/publicdomainq-0008487gctues.svg" width="64" valign="middle" alt="Py"/> py-hostlist
-
-# py-hostlist: a tool for manipulating lists of hosts
+# <img src="https://openclipart.org/download/284280/publicdomainq-0008487gctues.svg" width="64" valign="middle" alt="Py"/> py-hostlist: a tool for manipulating lists of hosts
 
 #### Author: Christopher Moussa
 #### Mentor: Elsa Gonsiorowski
