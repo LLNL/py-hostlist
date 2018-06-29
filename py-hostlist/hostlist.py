@@ -91,7 +91,8 @@ def expand(nodelist):
         right_br = left_br.replace("]","")
         num_list = right_br.split(',')
 
-
+        # if the node numbers contain leading zeros, store them to be prepended in
+        # the final list
         final_list = []
         lead_zeros = 0
         lead_zeros_str = ''
@@ -167,7 +168,7 @@ def compress_range(nodelist):
                 lead_zeros = lead_zeros + 1
                 lead_zeros_str = lead_zeros_str + '0'
 
-    # check if node is in the following format: <node1-2,node1-3,node1-4>
+    # check if node is in the following format: node1-2,node3-4
     if "-" in list_of_nodes[0]:
         for node in list_of_nodes:
             iter_node = list_of_nodes[count]
@@ -402,6 +403,7 @@ def find(nodelist, node):
         The index specified is one-base indexed, not zero-based.
     """
 
+    # if input is a list, just search for it using index
     if type(nodelist) == list:
         if node in nodelist:
             print("At position " + str(nodelist.index(node) + 1))
@@ -409,6 +411,7 @@ def find(nodelist, node):
         else:
             print("node does not exist")
             return "node does not exist"
+    # if there is a range of nodes in the input
     elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
         left_br = list_of_nodes.replace("[","")
