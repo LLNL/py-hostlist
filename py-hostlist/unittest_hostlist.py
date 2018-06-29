@@ -109,6 +109,13 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.diff(list1,list2)
 		self.assertEqual(test, expected)
 
+	def test_scr_diff(self):
+		expected = '[machine3,machine2]'
+		list1 = 'machine1,machine2,machine3'
+		list2 = 'machine1,machine4'
+		test = hl.diff(list1,list2)
+		self.assertEqual(test, expected)
+
 	# intersect() can return a hostlist string of 
 	# 	intersecting nodes from two lists
 	def test_intersect_simple(self):

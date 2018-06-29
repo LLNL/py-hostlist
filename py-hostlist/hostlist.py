@@ -63,7 +63,6 @@ def sort_nodes(nodelist):
     
     hostlist = append_hostname(machine_name.group(1), num_list)
 
-    print('[%s]' % ''.join(map(str, hostlist)))
     return '[%s]' % ''.join(map(str, hostlist))
 
 
