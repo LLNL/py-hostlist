@@ -2,132 +2,56 @@
 Feature Overview
 ================
 
-This is a high-level overview of features that make Spack different
-from other `package managers
-<http://en.wikipedia.org/wiki/Package_management_system>`_ and `port
-systems <http://en.wikipedia.org/wiki/Ports_collection>`_.
+This is a high-level overview of features that make up py-hostlist.
 
----------------------------
-Simple package installation
----------------------------
+=======
+Methods
+=======
 
-Installing the default version of a package is simple. This will install
-the latest version of the ``mpileaks`` package and all of its dependencies:
+**expand(nodelist)**
 
-.. code-block:: console
+expand takes in a hostlist string and returns a list of individual hostnames. For example, the input string **node[1-4]** will return **node1,node2,node3,node4**. The expand method will return the suffix string in its final expansion; however, it will strip all leading zeros from the nodes.
 
-   $ spack install mpileaks
+**compress_range(nodelist)**
 
---------------------------------
-Custom versions & configurations
---------------------------------
+compress_range takes in a hostlist list string and returns an ordered hostlist with a range. For example, the input string **['node1','node2','node3','node4']** will return **node[1-4]**. The compress_range method can also recognize multiple ranges.
 
-Spack allows installation to be customized.  Users can specify the
-version, build compiler, compile-time options, and cross-compile
-platform, all on the command line.
+**compress(nodelist)**
 
-.. code-block:: console
+compress takes in a hostlist list string and returns an ordered hotlist string. For example, the input string **['node1','node2','node3','node4']** will return **[node1,node2,node3,node4]**.
 
-   # Install a particular version by appending @
-   $ spack install mpileaks@1.1.2
+**diff(nodelist1, nodelist2)**
 
-   # Specify a compiler (and its version), with %
-   $ spack install mpileaks@1.1.2 %gcc@4.7.3
+diff will subtract elements in nodelist2 from nodelist1 and return a remaining hostlist. 
 
-   # Add special compile-time options by name
-   $ spack install mpileaks@1.1.2 %gcc@4.7.3 debug=True
+**intersect(\*arg)**
 
-   # Add special boolean compile-time options with +
-   $ spack install mpileaks@1.1.2 %gcc@4.7.3 +debug
+intersect will return a list of intersection nodes given n lists of nodes.
 
-   # Add compiler flags using the conventional names
-   $ spack install mpileaks@1.1.2 %gcc@4.7.3 cppflags="-O3 -floop-block"
+**union(\*arg)**
 
-   # Cross-compile for a different architecture with arch=
-   $ spack install mpileaks@1.1.2 arch=bgqos_0
+union will return the union between n lists of nodes.
 
-Users can specify as many or few options as they care about. Spack
-will fill in the unspecified values with sensible defaults. The two listed
-syntaxes for variants are identical when the value is boolean.
+**nth(nodelist, n)**
 
-----------------------
-Customize dependencies
-----------------------
+nth takes in two parameters: a hostlist string (similar to expand()'s parameter) and an index *n*. It will return the *nth* node in that range. 
 
-Spack allows *dependencies* of a particular installation to be
-customized extensively.  Suppose that ``mpileaks`` depends indirectly
-on ``libelf`` and ``libdwarf``.  Using ``^``, users can add custom
-configurations for the dependencies:
+**find(nodelist, node)**
 
-.. code-block:: console
+find will return the position of the node in the passed in nodelist. 
 
-   # Install mpileaks and link it with specific versions of libelf and libdwarf
-   $ spack install mpileaks@1.1.2 %gcc@4.7.3 +debug ^libelf@0.8.12 ^libdwarf@20130729+debug
+**count(nodelist)**
 
-------------------------
-Non-destructive installs
-------------------------
+count will print the number of hosts in the nodelist.
 
-Spack installs every unique package/dependency configuration into its
-own prefix, so new installs will not break existing ones.
+--------------
+Helper Methods
+--------------
 
--------------------------------
-Packages can peacefully coexist
--------------------------------
+**append_hostname(machine_name, num_list)**
 
-Spack avoids library misconfiguration by using ``RPATH`` to link
-dependencies.  When a user links a library or runs a program, it is
-tied to the dependencies it was built with, so there is no need to
-manipulate ``LD_LIBRARY_PATH`` at runtime.
+append_hostname takes in two parameters: the name of the machine and its range of nodes; it is a helper method that will append the machine name (the host) to the node numbers it contains.
 
--------------------------
-Creating packages is easy
--------------------------
+**sort_nodes(nodelist)**
 
-To create a new packages, all Spack needs is a URL for the source
-archive.  The ``spack create`` command will create a boilerplate
-package file, and the package authors can fill in specific build steps
-in pure Python.
-
-For example, this command:
-
-.. code-block:: console
-
-   $ spack create http://www.mr511.de/software/libelf-0.8.13.tar.gz
-
-creates a simple python file:
-
-.. code-block:: python
-
-   from spack import *
-
-
-   class Libelf(Package):
-       """FIXME: Put a proper description of your package here."""
-
-       # FIXME: Add a proper url for your package's homepage here.
-       homepage = "http://www.example.com"
-       url      = "http://www.mr511.de/software/libelf-0.8.13.tar.gz"
-
-       version('0.8.13', '4136d7b4c04df68b686570afa26988ac')
-
-       # FIXME: Add dependencies if required.
-       # depends_on('foo')
-
-       def install(self, spec, prefix):
-           # FIXME: Modify the configure line to suit your build system here.
-           configure('--prefix={0}'.format(prefix))
-
-           # FIXME: Add logic to build and install here.
-           make()
-           make('install')
-
-It doesn't take much python coding to get from there to a working
-package:
-
-.. literalinclude:: ../../../var/spack/repos/builtin/packages/libelf/package.py
-   :lines: 25-
-
-Spack also provides wrapper functions around common commands like
-``configure``, ``make``, and ``cmake`` to make writing packages
-simple.
+sort_nodes takes in a list of nodes; it is a helper method that will return a sorted string of those nodes in ascending order.

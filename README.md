@@ -74,7 +74,7 @@ append_hostname takes in two parameters: the name of the machine and its range o
 
 **sort_nodes(nodelist)**
 
-sort_nodes takes in a list of nodes; it is a helper method that will return a sorted string of those nodes in ascending order.#
+sort_nodes takes in a list of nodes; it is a helper method that will return a sorted string of those nodes in ascending order.
 
 ## Release
 
