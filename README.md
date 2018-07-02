@@ -2,10 +2,16 @@
 
 #### Author: Christopher Moussa
 #### Mentor: Elsa Gonsiorowski
+
 ****
 ## Description
 
 py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion. 
+****
+
+## ReadTheDocs
+
+Full documentation on py-hostlist can be found at [ReadtheDocs](https://py-hostlist.readthedocs.io/en/latest/?)
 ****
 
 ## Using the Command Line 
