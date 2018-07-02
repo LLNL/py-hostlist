@@ -43,6 +43,13 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.expand('machine2-[02-4]vm1')
 		self.assertEqual(test, expected)
 
+	# expand() can take in comma separated values for different machines
+	def test_expand_multi_machine_names(self):
+		expected = 'machine2-02vm1,machine2-03vm1,' \
+				   'machine4-0003.vml2,machine4-0004.vml2,machine4-0005.vml2'
+		test = hl.expand("machine2-[02-3]vm1, machine4-[0003-5].vml2")
+		self.assertEqual(test, expected)
+
 	# expand() prepends leading zeros if it is in the original input
 	def test_expand_leading_zeros(self):
 		expected = 'machine2-009vm1,machine2-010vm1,machine2-011vm1'
