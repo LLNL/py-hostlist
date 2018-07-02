@@ -81,6 +81,6 @@ sort_nodes takes in a list of nodes; it is a helper method that will return a so
 Copyright (c) 2018, Lawrence Livermore National Security, LLC.
 Produced at the Lawrence Livermore National Laboratory.
 
-For release details and restrictions, please read the [LICENSE]() and [NOTICE]() files.
+For release details and restrictions, please read the [LICENSE](https://github.com/LLNL/py-hostlist/blob/master/LICENSE) and [NOTICE](https://github.com/LLNL/py-hostlist/blob/master/NOTICE) files.
 
 `LLNL-CODE-411039`
