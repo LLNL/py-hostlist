@@ -14,10 +14,14 @@ If you're new to py-hostlist and want to start using it, see :doc:`getting_start
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Basics:
 
    features 
    getting_started
+   basic_usage
+   workflows
+   tutorial
+   known_issues
 
 
 
