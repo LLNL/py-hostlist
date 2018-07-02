@@ -6,9 +6,18 @@
 Welcome to py-hostlist's documentation!
 =======================================
 
+py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion. 
+
+Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist>`_. 
+
+If you're new to py-hostlist and want to start using it, see :doc:`getting_started`, or refer to the full manual below.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   features 
+   getting_started
 
 
 
