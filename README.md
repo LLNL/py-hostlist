@@ -56,7 +56,7 @@ diff will subtract elements in nodelist2 from nodelist1 and return a remaining h
 
 intersect will return a list of intersection nodes given n lists of nodes.
 
-**union(\*arg)**
+**union_nodes(\*arg)**
 
 union will return the union between n lists of nodes.
 
