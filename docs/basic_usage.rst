@@ -35,4 +35,4 @@ For example, to execute the expand function displayed above, users can run the f
 
 ``python cla_hostlist.py -e node[1-4]``
 
-This will return **node1,node2,node3,node4**.
+This will return ``node1,node2,node3,node4``.
