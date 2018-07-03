@@ -1,6 +1,6 @@
-================
-Feature Overview
-================
+========
+Features
+========
 
 This is a high-level overview of features that make up py-hostlist.
 

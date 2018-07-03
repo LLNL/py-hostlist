@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-py-hostlist Home
+Home
 =======================================
 
 py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion. 
