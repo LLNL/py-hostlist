@@ -218,6 +218,11 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.count(['node1','node2','node3','node4','node5'])
 		self.assertEqual(test, expected)
 
+	def test_count_multi_ranges(self):
+		expected = 10
+		test = hl.count('node[1-5,6-10]')
+		self.assertEqual(test, expected)
+
 	# nth should return the nth node in a host list 
 	def test_nth(self):
 		expected = 'quartz7'
