@@ -14,7 +14,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
 
    $ git clone https://github.com/llnl/py-hostlist.git
    $ cd py-hostlist
- 
+
 
 .. toctree::
    :maxdepth: 2
@@ -22,6 +22,12 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
 
    features 
    basic_usage
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Reference
+
+   command_reference
 
 .. toctree::
    :maxdepth: 2

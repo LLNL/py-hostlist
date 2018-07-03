@@ -2,45 +2,32 @@
 Features
 ========
 
-This is a high-level overview of features that make up py-hostlist.
+This is a high-level overview of features that make up py-hostlist, a Python implementation of a hostlist manager.
 
--------
-Methods
--------
+-------------------------
+Using Regular Expressions
+-------------------------
 
-**expand(nodelist)**
- expand takes in a hostlist string and returns a list of individual hostnames. For example, the       input string **node[1-4]** will return **node1,node2,node3,node4**. The expand method will return the suffix string in its final expansion; however, it will strip all leading zeros from the nodes.
+py-hostlist utilizes the `re <https://docs.python.org/2/library/re.html>`_ package to look for certain types of hostlist strings to manipulate. Once it matches with a hostlist string, it breaks up the expression into certain control groups with which it can perform a number of operations on.
 
-**compress_range(nodelist)**
- compress_range takes in a hostlist list string and returns an ordered hostlist with a range. For example, the input string **['node1','node2','node3','node4']** will return **node[1-4]**. The compress_range method can also recognize multiple ranges.
+-------------------
+String Manipulation
+-------------------
 
-**compress(nodelist)**
- compress takes in a hostlist list string and returns an ordered hotlist string. For example, the input string **['node1','node2','node3','node4']** will return **[node1,node2,node3,node4]**.
+After an input string is matched, the hostlist input is cast to a string variable, where it can be stripped of characters such as brackets, dashes, and commas in order to perform necessary operations, such as expanding or compressing a list.
 
-**diff(nodelist1, nodelist2)**
- diff will subtract elements in nodelist2 from nodelist1 and return a remaining hostlist. 
+---------------------
+Different Input Types
+---------------------
 
-**intersect(\*arg)**
- intersect will return a list of intersection nodes given n lists of nodes.
+py-hostlist is flexible with the types of input passed into its methods. Both lists and strings can be passed into each of the operations that it supports. For example, the compress method accepts the following list input:
 
-**union(\*arg)**
- union will return the union between n lists of nodes.
+``['node1','node2','node3','node4']``
 
-**nth(nodelist, n)**
- nth takes in two parameters: a hostlist string (similar to expand()'s parameter) and an index *n*. It will return the *nth* node in that range. 
+as well as a simple string:
 
-**find(nodelist, node)**
- find will return the position of the node in the passed in nodelist. 
+``'node1,node2,node3,node4'``
 
-**count(nodelist)**
- count will print the number of hosts in the nodelist.
+Both will return the following: ``node[1-4]``
 
---------------
-Helper Methods
---------------
-
-**append_hostname(machine_name, num_list)**
- append_hostname takes in two parameters: the name of the machine and its range of nodes; it is a helper method that will append the machine name (the host) to the node numbers it contains.
-
-**sort_nodes(nodelist)**
- sort_nodes takes in a list of nodes; it is a helper method that will return a sorted string of those nodes in ascending order.
+py-hostlist achieves this functionality by checking the type of input before it attempts to do any manipulations/operations.
