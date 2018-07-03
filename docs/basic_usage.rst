@@ -4,7 +4,7 @@ Basic Usage
 
 You can use the command line to process your hostlist strings by using the following command:
 
-`python cla_hostlist.py <method> <args>...`
+``python cla_hostlist.py <method> <args>...``
 
 Here is a list of all of the methods available:
 
@@ -19,3 +19,9 @@ Here is a list of all of the methods available:
  -S, --sort                   Return sorted HOSTLIST 
  -c, --count                  Print the number of hosts
  -F, --find=HOST              Output position of HOST in result HOSTLIST
+
+For example, to execute the expand function displayed above, users can run the following:
+
+``python cla_hostlist.py -e node[1-4]``
+
+This will return **node1,node2,node3,node4**.
