@@ -12,7 +12,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
 
 .. toctree::
    :maxdepth: 2
-   :caption: Basics:
+   :caption: Basics
 
    features 
    basic_usage
