@@ -451,7 +451,7 @@ def count(nodelist):
         nodelist (str): The hostlist string.
 
     Returns:
-        len(nodelist) (int): The host at the specified index.
+        len(nodelist) (int): The number of nodes in the hostlist string.
 
     """
 
