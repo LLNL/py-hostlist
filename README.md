@@ -11,7 +11,7 @@ py-hostlist processes slurm-style hostlist strings and can return those strings 
 
 ## ReadTheDocs
 
-Full documentation on py-hostlist can be found at [ReadtheDocs](https://py-hostlist.readthedocs.io/en/latest/?).
+Full documentation on py-hostlist can be found at [ReadtheDocs](https://py-hostlist.readthedocs.io/en/latest/index.html#).
 ****
 
 ## Using the Command Line 
