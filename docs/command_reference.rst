@@ -44,11 +44,11 @@ Methods
  **Parameters**: 
   nodelist1 **(str)** or **(list)** - The hostlist string to be subtracted from. 
 
-  nodelist2 **(str)** or **(list)** - The other hostlist string.
+  following nodelists... **(str)** or **(list)**: The other hostlist strings.
 
- **Returns**: A remaining hostlist string resulting from subtracting nodelist2 from nodelist1.
+ **Returns**: A remaining hostlist string resulting from subtracting the following nodelists from nodelist1.
 
- **Description**: diff will subtract elements in nodelist2 from nodelist1 and return a remaining hostlist. It accepts both string and list inputs.
+ **Description**: diff will subtract elements in all following nodelists from nodelist1 and return a remaining hostlist. It accepts both string and list inputs.
 
 **intersect(\*arg)**
  **Parameters**: 
