@@ -140,7 +140,7 @@ def expand(nodelist):
 
             result_hostlist.append('%s' % ','.join(map(str, final_hostlist)))
             
-    print ','.join(result_hostlist)
+    # print ','.join(result_hostlist)
     return ','.join(result_hostlist) 
 
 

@@ -56,7 +56,7 @@ parser.add_argument("-f", "--find", dest="find", nargs="*")
 args = parser.parse_args()
 
 if args.expand:
-	hl.expand(args.expand)
+	print hl.expand(args.expand)
 if args.compress_range:
 	hl.compress_range(args.compress_range)
 if args.compress:
