@@ -26,7 +26,7 @@ def msg(name=None):
   	-i, --intersection           Intersection of all HOSTLIST args
   	-u, --union                  Union of all HOSTLIST arguments
   	-n, --nth=N                  Output the host at index N
-  	-S, --sort                   Return sorted HOSTLIST 
+  	-s, --sort                   Return sorted HOSTLIST 
   	-c, --count                  Print the number of hosts
   	-F, --find=HOST              Output position of HOST in result HOSTLIST
 		'''
@@ -70,7 +70,7 @@ if args.union:
 if args.nth:
 	hl.nth(args.nth[0], args.nth[1])
 if args.sort:
-	hl.sort_nodes(args.sort)
+	print hl.sort_nodes(args.sort)
 if args.count:
 	hl.count(args.count)
 if args.find:
