@@ -102,7 +102,7 @@ class TestHostlistMethods(unittest.TestCase):
 	# diff() will subtract nodelist2 from nodelist1 and return a 
 	# 	hostlist string of the remainder
 	def test_diff(self):
-		expected = '[node1,node10]'
+		expected = 'node[1,10]'
 		list1 = ['node1','node2','node3','node4','node5','node6','node7','node8','node9','node10']
 		list2 = ['node2','node3','node4','node5','node6','node7','node8','node9']
 		test = hl.diff(list1,list2)
@@ -110,7 +110,7 @@ class TestHostlistMethods(unittest.TestCase):
 
 	# diff() can take in a string as well
 	def test_diff_as_string(self):
-		expected = '[node1,node10]'
+		expected = 'node[1,10]'
 		list1 = 'node1,node2,node3,node4,node5,node6,node7,node8,node9,node10'
 		list2 = 'node2,node3,node4,node5,node6,node7,node8,node9'
 		test = hl.diff(list1,list2)
@@ -118,14 +118,14 @@ class TestHostlistMethods(unittest.TestCase):
 
 	# unit test taken fom scr
 	def test_scr_diff(self):
-		expected = '[machine2,machine3]'
+		expected = 'machine[2-3]'
 		list1 = 'machine1,machine2,machine3'
 		list2 = 'machine1,machine4'
 		test = hl.diff(list1,list2)
 		self.assertEqual(test, expected)
 
 	def test_diff_multiple(self):
-		expected = '[node1,node10]'
+		expected = 'node[1,10]'
 		list1 = 'node1,node2,node3,node4,node5,node6,node7,node8,node9,node10'
 		list2 = 'node2,node3'
 		list3 = 'node4,node5'

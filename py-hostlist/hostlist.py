@@ -271,7 +271,7 @@ def diff(*arg):
         diff_list = set(diff_list).difference(set(conv_lists[i]))
 
     print sort_nodes(list(diff_list))
-    return sort_nodes(list(diff_list))
+    return compress_range(sort_nodes(list(diff_list)))
 
 
 
