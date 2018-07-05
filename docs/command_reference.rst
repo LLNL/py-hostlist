@@ -12,9 +12,9 @@ Methods
  *Parameters*: 
   nodelist **(str)** - The hostlist string.
 
- *Returns*: An expanded hostlist string.  
+ **Returns**: An expanded hostlist string.  
 
- *Description*: expand takes in a hostlist string and returns a list of individual hostnames. For example, the input string ``node[1-4]`` will return ``node1,node2,node3,node4``. The expand method will return the suffix string in its final expansion, as well as prepend any leading zeros found in the input string. Multiple ranges can be specified within brackets of a cluster like so:
+ **Description**: expand takes in a hostlist string and returns a list of individual hostnames. For example, the input string ``node[1-4]`` will return ``node1,node2,node3,node4``. The expand method will return the suffix string in its final expansion, as well as prepend any leading zeros found in the input string. Multiple ranges can be specified within brackets of a cluster like so:
 
  ``node[1-4,6-10,19].suffix.com``
 
