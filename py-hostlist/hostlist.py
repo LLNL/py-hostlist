@@ -236,7 +236,7 @@ def compress(nodelist):
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
 
-    print('[%s]' % ','.join(map(str, nodelist)))
+    # print('[%s]' % ','.join(map(str, nodelist)))
     return '[%s]' % ','.join(map(str, nodelist))
 
 
@@ -304,7 +304,7 @@ def intersect(*arg):
     for i in range(1, len(conv_lists)):
         first_list = list(set(first_list) & set(conv_lists[i]))
 
-    print(sort_nodes(first_list))
+    # print(sort_nodes(first_list))
     return sort_nodes(first_list)
 
 

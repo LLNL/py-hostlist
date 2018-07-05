@@ -244,6 +244,11 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.nth('quartz[4-8]', 0)
 		self.assertEqual(test, expected)
 
+	def test_nth_no_range(self):
+		expected = 'node2'
+		test = hl.nth('node1,node2,node3', 2)
+		self.assertEqual(test, expected)
+
 	# find should return the index that the host is at
 	def test_find(self):
 		expected = 'At position 2'

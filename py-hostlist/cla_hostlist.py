@@ -58,13 +58,13 @@ args = parser.parse_args()
 if args.expand:
 	print hl.expand(args.expand)
 if args.compress_range:
-	hl.compress_range(args.compress_range)
+	print hl.compress_range(args.compress_range)
 if args.compress:
-	hl.compress(args.compress)
+	print hl.compress(args.compress)
 if args.diff:
 	print hl.diff(*args.diff)
 if args.intersection:
-	hl.intersect(*args.intersection)
+	print hl.intersect(*args.intersection)
 if args.union:
 	print hl.union_nodes(*args.union)
 if args.nth:
