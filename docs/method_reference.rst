@@ -32,7 +32,7 @@ Methods
 
  compress_range can also recognize a string input. Going back to the example above, the following input will also be recognized: ``'node1,node2,node3,node4'``. This will also return ``node[1-4]``.
 
-**compress(nodelist)**
+``compress(nodelist)``
  **Parameters**: 
   nodelist **(str)** - The hostlist string.
 
@@ -40,7 +40,7 @@ Methods
 
  **Description**: compress takes in a hostlist list string and returns an ordered hotlist string. For example, the input string ``['node1','node2','node3','node4']`` will return ``[node1,node2,node3,node4]``.
 
-**diff(nodelist1, nodelist2)**
+``diff(nodelist1, nodelist2)``
  **Parameters**: 
   nodelist1 **(str)** or **(list)** - The hostlist string to be subtracted from. 
 
@@ -50,7 +50,7 @@ Methods
 
  **Description**: diff will subtract elements in all following nodelists from nodelist1 and return a remaining hostlist. It accepts both string and list inputs.
 
-**intersect(\*arg)**
+``intersect(\*arg)``
  **Parameters**: 
   hostlist strings **(str)** or **(list)** - Any number of nodelists to be intersected.
 
@@ -58,7 +58,7 @@ Methods
 
  **Description**: intersect will return a list of intersection nodes given n lists of nodes. It will sort the nodes in ascending order upon returning. 
 
-**union_nodes(\*arg)**
+``union_nodes(\*arg)``
  **Parameters**: 
   hostlist strings **(str)** or **(list)** - Any number of nodelists to be combined.
 
@@ -66,7 +66,7 @@ Methods
 
  **Description**: union will return the union between n lists of nodes. It will sort the nodes in ascending order upon returning. 
  
-**nth(nodelist, n)**
+``nth(nodelist, n)``
  **Parameters**: 
   hostlist string **(str)** 
   n 
@@ -75,7 +75,7 @@ Methods
  
  **Description**: nth takes in two parameters: a hostlist string (similar to expand()'s parameter) and an index *n*. It will return the *nth* node in that range. 
 
-**find(nodelist, node)**
+``find(nodelist, node)``
  **Parameters**:
   nodelist **(str)** or **(list)** - The hostlist string. 
 
@@ -85,7 +85,7 @@ Methods
 
  **Description**: find will return the position of the node in the input nodelist. 
 
-**count(nodelist)**
+``count(nodelist)``
  **Parameters**:
   nodelist **(str)** or **(list)** - The hostlist string.
 
@@ -97,7 +97,7 @@ Methods
 Helper Methods
 --------------
 
-**append_hostname(machine_name, num_list)**
+``append_hostname(machine_name, num_list)``
  **Parameters**: 
   machine_name **(str)** - The name of the cluster.
 
@@ -107,7 +107,7 @@ Helper Methods
 
  **Description**: append_hostname takes in two parameters: the name of the machine and its range of nodes; it is a helper method that will append the machine name (the host) to the node numbers it contains.
 
-**sort_nodes(nodelist)**
+``sort_nodes(nodelist)``
  **Parameters**:
   nodelist **(str)** - The hostlist string.
 
