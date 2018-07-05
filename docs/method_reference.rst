@@ -8,7 +8,7 @@ This is a high-level overview of the methods that make up py-hostlist.
 Methods
 -------
 
-**expand(nodelist)**
+``expand(nodelist)``
  **Parameters**: 
   nodelist **(str)** - The hostlist string.
 
@@ -22,7 +22,7 @@ Methods
 
  ``node1-[1-4], node2-[5-9].suffix.com``
 
-**compress_range(nodelist)**
+``compress_range(nodelist)``
  **Parameters**: 
   nodelist **(str)** or **(list)** - The expanded hostlist string.
 
