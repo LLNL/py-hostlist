@@ -27,7 +27,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
    :maxdepth: 2
    :caption: Reference
 
-   command_reference
+   method_reference
 
 .. toctree::
    :maxdepth: 2
