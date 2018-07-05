@@ -241,32 +241,34 @@ def compress(nodelist):
 
 
 
-def diff(nodelist1, nodelist2):
-    """diff will subtract elements in list 2 from list 1 and return remainder.
+def diff(*arg):
+    """diff will subtract elements in all subsequent lists from list 1 and return the remainder.
 
     Args:
         nodelist1 (str): The hostlist string to be subtracted from. 
-        nodelist2 (str): The other hostlist string.
+        following nodelists... (str): The other hostlist strings.
 
     Returns:
         diff_list (str): The remainding list from subtracting the two original lists.
     """
 
-    list_of_nodes1 = nodelist1
-    list_of_nodes2 = nodelist2
+    num_of_lists = len(arg)
 
-    if type(list_of_nodes1) == str:
-        left_br = list_of_nodes1.replace("[","")
-        right_br = left_br.replace("]","")
-        list_of_nodes1 = right_br.split(',') 
+    conv_lists = []
+    for lst in arg:
+        # check to see if the list passed in is a string; if it is, convert to list
+        if type(lst) == str:
+            left_br = lst.replace("[","")
+            right_br = left_br.replace("]","")
+            lst = right_br.split(',')
+            
+        conv_lists.append(lst)
 
-    if type(list_of_nodes2) == str:
-        left_br = list_of_nodes2.replace("[","")
-        right_br = left_br.replace("]","")
-        list_of_nodes2 = right_br.split(',')  
+    diff_list = conv_lists[0]
 
-    # use python's set features to get difference between two lists
-    diff_list = set(list_of_nodes1).difference(set(list_of_nodes2))
+
+    for i in range(1, len(conv_lists)):
+        diff_list = set(diff_list).difference(set(conv_lists[i]))
 
     print sort_nodes(list(diff_list))
     return sort_nodes(list(diff_list))

@@ -62,7 +62,7 @@ if args.compress_range:
 if args.compress:
 	hl.compress(args.compress)
 if args.diff:
-	hl.diff(args.diff[0], args.diff[1])
+	hl.diff(*args.diff)
 if args.intersection:
 	hl.intersect(*args.intersection)
 if args.union:
