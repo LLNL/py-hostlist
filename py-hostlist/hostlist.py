@@ -215,7 +215,7 @@ def compress_range(nodelist):
             final_list.append(low)
 
     result_str = machine_name.group(1) + '[%s]' % ','.join(map(str, final_list))
-    print(result_str + machine_name.group(3))
+    # print(result_str + machine_name.group(3))
     return result_str + machine_name.group(3)
 
 
@@ -339,8 +339,7 @@ def union_nodes(*arg):
 
     union_list = list(set(first_list))
 
-    print(sort_nodes(union_list))
-    return sort_nodes(union_list)
+    return compress_range(sort_nodes(union_list))
 
 
 

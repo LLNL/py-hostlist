@@ -170,7 +170,7 @@ class TestHostlistMethods(unittest.TestCase):
 	# union() will return an ordered hostslist of the 
 	#	union of two lists 
 	def test_union_simple(self):
-		expected = '[node1,node2,node3,node4,node5,node6,node7,node8,node9,node10,node11,node12]'
+		expected = 'node[1-12]'
 		list1 = ['node1','node2','node3','node4','node5','node7','node8','node10','node11','node12']
 		list2 = ['node5','node6','node7','node8','node9','node1']
 		test = hl.union_nodes(list1,list2)
@@ -179,7 +179,7 @@ class TestHostlistMethods(unittest.TestCase):
 	# union() can also return an ordered hostlist of
 	#	multiple lists
 	def test_union_multiple(self):
-		expected = '[node1,node2,node3,node4,node5,node6]'
+		expected = 'node[1-6]'
 		list1 = ['node1','node2']
 		list2 = ['node3','node4']
 		list3 = ['node6']
@@ -189,14 +189,13 @@ class TestHostlistMethods(unittest.TestCase):
 
 	# union() can take in a string as well
 	def test_union_as_string(self):
-		expected = '[node1,node2,node3,node4,node5,node6]'
+		expected = 'node[1-6]'
 		list1 = ['node1','node2']
 		list2 = 'node3,node4'
 		list3 = ['node6']
 		list4 = 'node5'
 		test = hl.union_nodes(list1, list2, list3, list4)
 		self.assertEqual(test, expected)
-
 
 	# sort_nodes() will return an ordered hostlist
 	# 	of a list of nodes 
