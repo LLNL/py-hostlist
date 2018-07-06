@@ -430,10 +430,10 @@ def find(nodelist, node):
     # if input is a list, just search for it using index
     if type(nodelist) == list:
         if node in nodelist:
-            print("At position " + str(nodelist.index(node) + 1))
+            # print("At position " + str(nodelist.index(node) + 1))
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            print("node does not exist")
+            # print("node does not exist")
             return "node does not exist"
     # if there is a range of nodes in the input
     elif "[" in nodelist:
@@ -442,10 +442,10 @@ def find(nodelist, node):
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',')
         if node in nodelist:
-            print("At position " + str(nodelist.index(node) + 1))
+            # print("At position " + str(nodelist.index(node) + 1))
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            print("node does not exist")
+            # print("node does not exist")
             return "node does not exist"
     else:
         list_of_nodes = nodelist
@@ -453,10 +453,10 @@ def find(nodelist, node):
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
         if node in nodelist:
-            print("At position " + str(nodelist.index(node) + 1))
+            # print("At position " + str(nodelist.index(node) + 1))
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            print("node does not exist")
+            # print("node does not exist")
             return "node does not exist"       
 
 
