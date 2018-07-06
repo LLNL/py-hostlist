@@ -68,7 +68,7 @@ if args.intersection:
 if args.union:
 	print hl.union_nodes(*args.union)
 if args.nth:
-	hl.nth(args.nth[0], args.nth[1])
+	print hl.nth(args.nth[0], args.nth[1])
 if args.sort:
 	print hl.sort_nodes(args.sort)
 if args.count:

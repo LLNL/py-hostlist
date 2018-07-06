@@ -237,16 +237,21 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.nth('quartz[4-8]', 4)
 		self.assertEqual(test, expected)
 
+	def test_nth_as_str(self):
+		expected = 'node2'
+		test = hl.nth('node1,node2,node3,node4', 2)
+		self.assertEqual(test, expected)
+
+	def test_nth_as_list(self):
+		expected = 'node2'
+		test = hl.nth(['node1','node2','node3','node4'], 2)
+		self.assertEqual(test, expected)
+
 	# nth should just return a simple error message saying that 
 	# 	the index doesn't exist if it gets a bad index
 	def test_nth_doesnt_exist(self):
 		expected = 'node does not exist'
 		test = hl.nth('quartz[4-8]', 0)
-		self.assertEqual(test, expected)
-
-	def test_nth_no_range(self):
-		expected = 'node2'
-		test = hl.nth('node1,node2,node3', 2)
 		self.assertEqual(test, expected)
 
 	# find should return the index that the host is at
