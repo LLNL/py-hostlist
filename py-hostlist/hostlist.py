@@ -473,21 +473,21 @@ def count(nodelist):
     """
 
     if type(nodelist) == list:
-        print(len(nodelist))
+        # print(len(nodelist))
         return len(nodelist)
     elif "[" in nodelist: 
         list_of_nodes = expand(nodelist)
         left_br = list_of_nodes.replace("[","")
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
-        print(len(nodelist))
+        # print(len(nodelist))
         return len(nodelist)         
     else:
         list_of_nodes = nodelist
         left_br = list_of_nodes.replace("[","")
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
-        print(len(nodelist))
+        # print(len(nodelist))
         return len(nodelist)        
 
 

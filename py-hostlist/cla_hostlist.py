@@ -72,6 +72,6 @@ if args.nth:
 if args.sort:
 	print hl.sort_nodes(args.sort)
 if args.count:
-	hl.count(args.count)
+	print hl.count(args.count)
 if args.find:
 	print hl.find(args.find[0], args.find[1])
