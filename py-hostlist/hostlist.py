@@ -140,7 +140,6 @@ def expand(nodelist):
 
             result_hostlist.append('%s' % ','.join(map(str, final_hostlist)))
             
-    # print ','.join(result_hostlist)
     return ','.join(result_hostlist) 
 
 
@@ -215,7 +214,7 @@ def compress_range(nodelist):
             final_list.append(low)
 
     result_str = machine_name.group(1) + '[%s]' % ','.join(map(str, final_list))
-    # print(result_str + machine_name.group(3))
+
     return result_str + machine_name.group(3)
 
 
@@ -236,7 +235,6 @@ def compress(nodelist):
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
 
-    # print('[%s]' % ','.join(map(str, nodelist)))
     return '[%s]' % ','.join(map(str, nodelist))
 
 
@@ -270,7 +268,6 @@ def diff(*arg):
     for i in range(1, len(conv_lists)):
         diff_list = set(diff_list).difference(set(conv_lists[i]))
 
-    # print sort_nodes(list(diff_list))
     return compress_range(sort_nodes(list(diff_list)))
 
 
@@ -304,7 +301,6 @@ def intersect(*arg):
     for i in range(1, len(conv_lists)):
         first_list = list(set(first_list) & set(conv_lists[i]))
 
-    # print(sort_nodes(first_list))
     return sort_nodes(first_list)
 
 
@@ -389,25 +385,25 @@ def nth(nodelist, n):
             hostlist_indexed = hostlist.split(",")
 
             if (int(n) not in range(1, len(hostlist_indexed)+1)):
-                # print("node does not exist")
+                
                 return "node does not exist"
             else:
-                # print(hostlist_indexed[int(n)-1])
+
                 return hostlist_indexed[int(n)-1]
     elif type(nodelist) == str:
         hostlist_indexed = nodelist.split(",")
         if (int(n) not in range(1, len(hostlist_indexed)+1)):
-            # print("node does not exist")
+
             return "node does not exist"
         else:
-            # print(hostlist_indexed[int(n)-1])
+
             return hostlist_indexed[int(n)-1]
     else:
         if (int(n) not in range(1, len(nodelist)+1)):
-            # print("node does not exist")
+
             return "node does not exist"
         else:
-            # print(nodelist[int(n)-1])
+
             return nodelist[int(n)-1]   
 
 
@@ -430,10 +426,10 @@ def find(nodelist, node):
     # if input is a list, just search for it using index
     if type(nodelist) == list:
         if node in nodelist:
-            # print("At position " + str(nodelist.index(node) + 1))
+
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            # print("node does not exist")
+
             return "node does not exist"
     # if there is a range of nodes in the input
     elif "[" in nodelist:
@@ -442,10 +438,10 @@ def find(nodelist, node):
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',')
         if node in nodelist:
-            # print("At position " + str(nodelist.index(node) + 1))
+
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            # print("node does not exist")
+
             return "node does not exist"
     else:
         list_of_nodes = nodelist
@@ -453,10 +449,10 @@ def find(nodelist, node):
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
         if node in nodelist:
-            # print("At position " + str(nodelist.index(node) + 1))
+
             return "At position " + str(nodelist.index(node) + 1)
         else:
-            # print("node does not exist")
+
             return "node does not exist"       
 
 
@@ -473,21 +469,21 @@ def count(nodelist):
     """
 
     if type(nodelist) == list:
-        # print(len(nodelist))
+
         return len(nodelist)
     elif "[" in nodelist: 
         list_of_nodes = expand(nodelist)
         left_br = list_of_nodes.replace("[","")
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
-        # print(len(nodelist))
+
         return len(nodelist)         
     else:
         list_of_nodes = nodelist
         left_br = list_of_nodes.replace("[","")
         right_br = left_br.replace("]","")
         nodelist = right_br.split(',') 
-        # print(len(nodelist))
+
         return len(nodelist)        
 
 
