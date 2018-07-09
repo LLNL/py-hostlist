@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/LLNL/py-hostlist.svg?branch=master)](https://travis-ci.org/LLNL/py-hostlist)
 [![Documentation Status](https://readthedocs.org/projects/py-hostlist/badge/?version=latest)](https://py-hostlist.readthedocs.io/en/latest/?badge=latest)
 
-****
 ## Description
 
 py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion. 
