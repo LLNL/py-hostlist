@@ -1,5 +1,8 @@
 # <img src="https://openclipart.org/download/284280/publicdomainq-0008487gctues.svg" width="64" valign="middle" alt="Py"/> py-hostlist: a tool for manipulating lists of hosts
 
+[![Build Status](https://travis-ci.org/LLNL/py-hostlist.svg?branch=master)](https://travis-ci.org/LLNL/py-hostlist)
+[![Documentation Status](//readthedocs.org/projects/py-hostlist/badge/?version=latest)](https://py-hostlist.readthedocs.io/en/latest/?badge=latest)
+
 ****
 ## Description
 
