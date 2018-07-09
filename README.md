@@ -16,10 +16,8 @@ Full documentation on py-hostlist can be found at [ReadtheDocs](https://py-hostl
 
 ## Contributions
 
-Contributing to Spack is relatively easy.  Just send us a
-[pull request](https://help.github.com/articles/using-pull-requests/).
-When you send your request, make ``develop`` the destination branch on the
-[py-hostlist repository](https://github.com/LLNL/py-hostlist).
+Contributing to py-hostlist is relatively easy. Just send us a
+[pull request](https://help.github.com/articles/using-pull-requests/). When you send your request, make ``develop`` the destination branch on the [py-hostlist repository](https://github.com/LLNL/py-hostlist).
 
 Your PR must pass py-hostlist's unit tests. We enforce these guidelines with [Travis CI](https://travis-ci.org/LLNL/py-hostlist). To run these tests locally, and for helpful tips on git, see our [Contribution Guide](https://py-hostlist.readthedocs.io/en/latest/contribution_guide.html).
 
@@ -27,7 +25,7 @@ Spack uses a rough approximation of the [Git Flow](http://nvie.com/posts/a-succe
 
 ## Authors
 
-#### Christopher Moussa
+#### Christopher Moussa, moussa1@llnl.gov
 
 A huge thank you to Elsa Gonsiorowski for serving as a mentor on this project. 
 
