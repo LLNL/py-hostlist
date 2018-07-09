@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/LLNL/py-hostlist.svg?branch=master)](https://travis-ci.org/LLNL/py-hostlist)
 [![Documentation Status](https://readthedocs.org/projects/py-hostlist/badge/?version=latest)](https://py-hostlist.readthedocs.io/en/latest/?badge=latest)
+[![codecov](https://codecov.io/gh/LLNL/py-hostlist/branch/master/graph/badge.svg)](https://codecov.io/gh/LLNL/py-hostlist)
 
 ## Description
 
