@@ -1,14 +1,14 @@
 import unittest
 import hostlist as hl
 
-"""
-These are unit tests for hostlist.py. They go through each function
-and test its correctness.
+# """
+# These are unit tests for hostlist.py. They go through each function
+# and test its correctness.
 
-Author: Christopher Moussa (moussa1@llnl.gov)
-Mentor: Elsa Gonsiorowski (gonsiorowski1@llnl.gov)
-Date: June 21, 2018
-"""
+# Author: Christopher Moussa (moussa1@llnl.gov)
+# Mentor: Elsa Gonsiorowski (gonsiorowski1@llnl.gov)
+# Date: June 21, 2018
+# """
 
 class TestHostlistMethods(unittest.TestCase):
 
