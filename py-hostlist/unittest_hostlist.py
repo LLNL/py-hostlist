@@ -266,6 +266,11 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.find('node[1-3]', 'node0')
 		self.assertEqual(test, expected)
 
+	def test_find_as_list(self):
+		expected = 'At position 2'
+		test = hl.find(['node1','node2','node3','node4'], 'node2')
+		self.assertEqual(test, expected)
+
 if __name__ == '__main__':
 	unittest.main()
 
