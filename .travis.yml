@@ -11,4 +11,6 @@ python:
 # command to run tests
 script:
     - python py-hostlist/unittest_hostlist.py # Python versions 3.5 and below
-
+    - coverage run py-hostlist/unittest_hostlist.py
+after_success:
+    - codecov 
