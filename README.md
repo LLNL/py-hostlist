@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.org/LLNL/py-hostlist.svg?branch=master)](https://travis-ci.org/LLNL/py-hostlist)
 [![Documentation Status](https://readthedocs.org/projects/py-hostlist/badge/?version=latest)](https://py-hostlist.readthedocs.io/en/latest/?badge=latest)
 [![codecov](https://codecov.io/gh/LLNL/py-hostlist/branch/master/graph/badge.svg)](https://codecov.io/gh/LLNL/py-hostlist)
+[![Issues](https://img.shields.io/github/issues/LLNL/py-hostlist.svg)](https://github.com/LLNL/py-hostlist/issues)
+[![Stars](https://img.shields.io/github/stars/LLNL/py-hostlist.svg)](https://github.com/LLNL/py-hostlist/stargazers)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/LLNL/py-hostlist/master/LICENSE)
 
 ## Description
 
