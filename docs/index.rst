@@ -36,6 +36,13 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
    contribution_guide
    developer_guide
 
+.. toctree::
+   :maxdepth: 2
+   :caption: AutoDocs
+
+   source/py-hostlist
+   source/modules
+
 Indices and tables
 ==================
 
