@@ -11,4 +11,5 @@ python:
     - "3.7-dev"  # 3.7 development branch 
 # command to run tests
 script:
-    - py-hostlist/unittest_hostlist.py # Python versions 3.5 and below
+    - python py-hostlist/unittest_hostlist.py # Python versions 3.5 and below
+
