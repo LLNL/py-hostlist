@@ -1,12 +1,4 @@
-"""
-.. module:: hostlist
-   :platform: Unix, MacOS
-   :synopsis: A slurm-style hostlist processor.
-
-.. moduleauthor:: Christopher Moussa <moussa1@llnl.gov>
-
-
-"""
+"""A slurm-style hostlist processor."""
 
 import re
 
@@ -31,14 +23,11 @@ def append_hostname(machine_name, num_list):
 
 
 def sort_nodes(nodelist):
-    """sort_nodes is a helper method that sorts the nodes in ascending order.
+    """
+    sort_nodes is a helper method that sorts the nodes in ascending order.
 
-    Args:
-        nodelist (str): The hostlist string.
-
-    Returns:
-        hostlist (str): The hostlist string in ascending order.
-
+    :param nodelist: The hostlist string.
+    :return: The hostlist string in ascending order.
     """
 
     list_of_nodes = nodelist
@@ -68,13 +57,11 @@ def sort_nodes(nodelist):
 
 
 def expand(nodelist):
-    """expand takes in a compressed hostlist string and returns all hosts listed.
-
-    Args:
-        nodelist (str): The hostlist string.
-
-    Returns: 
-        final_hostlist (str): The expanded hostlist string.
+    """
+    expand takes in a compressed hostlist string and returns all hosts listed.
+    
+    :param: nodelist: The hostlist string. 
+    :return: The expanded hostlist string.
     """
     node_list = nodelist.split(", ")
     # print node_list
@@ -142,13 +129,11 @@ def expand(nodelist):
 
 
 def compress_range(nodelist):
-    """compress_range will return a compressed hostlist string given a list of hostnames.
+    """
+    compress_range will return a compressed hostlist string given a list of hostnames.
     
-    Args:
-        nodelist (str): The expanded hostlist string.
-
-    Returns:
-        final_list (str): The compressed hostlist string.
+    :param: nodelist: The expanded hostlist string.
+    :return: The compressed hostlist string.
     """
 
     list_of_nodes = nodelist
@@ -217,14 +202,11 @@ def compress_range(nodelist):
 
 
 def compress(nodelist):
-    """compress will return a hostlist string given a list of hostnames.
-    
-    Args:
-        nodelist (str): The hostlist string.
+    """
+    compress will return a hostlist string given a list of hostnames.
 
-    Returns:
-        nodelist (str): The hostlist string. 
-    
+    :param: nodelist: The hostlist string.
+    :return: The hostlist string. 
     """
 
     if type(nodelist) == str:
@@ -237,14 +219,12 @@ def compress(nodelist):
 
 
 def diff(*arg):
-    """diff will subtract elements in all subsequent lists from list 1 and return the remainder.
+    """
+    diff will subtract elements in all subsequent lists from list 1 and return the remainder.
 
-    Args:
-        nodelist1 (str): The hostlist string to be subtracted from. 
-        following nodelists... (str): The other hostlist strings.
-
-    Returns:
-        diff_list (str): The remainding list from subtracting the two original lists.
+    :param: nodelist1: The hostlist string to be subtracted from. 
+    :param: following nodelists: The other hostlist strings.
+    :return: The remainding list from subtracting the two original lists.
     """
 
     num_of_lists = len(arg)
@@ -270,13 +250,11 @@ def diff(*arg):
 
 
 def intersect(*arg):
-    """Given references to n lists, intersect return a list of intersecting nodes.
+    """
+    Given references to n lists, intersect return a list of intersecting nodes.
 
-    Args:
-        nodelist (str): Any number of nodelists to be intersected.
-
-    Returns:
-        first_list (str): The resulting intersected list.
+    :param: nodelist: Any number of nodelists to be intersected.
+    :return: The resulting intersected list.
     """
     
     num_of_lists = len(arg)
@@ -303,13 +281,11 @@ def intersect(*arg):
 
 
 def union_nodes(*arg):
-    """union_nodes returns the union between n lists of nodes.
+    """
+    union_nodes returns the union between n lists of nodes.
 
-    Args:
-        nodelist (str): Any number of nodelists to be combined.
-
-    Returns:
-        union_list (str): The resulting unioned list.
+    :param: nodelist: Any number of nodelists to be combined.
+    :return: The resulting unioned list.
     """
 
     num_of_lists = len(arg)
@@ -337,18 +313,12 @@ def union_nodes(*arg):
 
 
 def nth(nodelist, n):
-    """nth returns the nth node from a list of nodes.
-
-    Args:
-        nodelist (str): The hostlist string.
-        n (int): The index desired.
-
-    Returns:
-        hostlist_indexed[int(n)-1] (int): The host at the specified index.
-
-    .. note::
-
-        The index specified is one-base indexed, not zero-based.
+    """
+    nth returns the nth node from a list of nodes.
+    
+    :param: nodelist: The hostlist string.
+    :param: n: The index desired.
+    :return: The host at the specified index.
     """
 
     if "[" in nodelist:
@@ -406,18 +376,12 @@ def nth(nodelist, n):
 
 
 def find(nodelist, node):
-    """find outputs the position of the node in the nodelist passed in.
+    """
+    find outputs the position of the node in the nodelist passed in.
 
-    Args:
-        nodelist (str): The hostlist string.
-        node (str): The host to be searched inside of the hostlist string.
-
-    Returns:
-        nodelist.index(node) (int): The position of the host within the hostlist string.
-
-    .. note::
-
-        The index specified is one-base indexed, not zero-based.
+    :param: nodelist: The hostlist string.
+    :param: node: The host to be searched inside of the hostlist string.
+    :return: The position of the host within the hostlist string.
     """
 
     # if input is a list, just search for it using index
@@ -455,14 +419,11 @@ def find(nodelist, node):
 
 
 def count(nodelist):
-    """count returns the number of hosts.
+    """
+    count returns the number of hosts.
 
-    Args:
-        nodelist (str): The hostlist string.
-
-    Returns:
-        len(nodelist) (int): The number of nodes in the hostlist string.
-
+    :param: nodelist: The hostlist string.
+    :return: The number of nodes in the hostlist string.
     """
 
     if type(nodelist) == list:
