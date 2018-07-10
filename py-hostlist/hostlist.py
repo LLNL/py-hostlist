@@ -14,15 +14,12 @@ import re
 
 
 def append_hostname(machine_name, num_list):
-    """append_hostname is a helper method to append the hostname to node numbers.
+    """
+    Helper method to append the hostname to node numbers.
 
-    Args:
-        machine_name (str): The name of the cluster.
-        num_list (list):    The list of nodes to be appended to the cluster name.
-
-    Returns:
-        hostlist (str): A hostlist string with the hostname and node numbers.
-
+    :param machine_name: The name of the cluster.
+    :param num_list: The list of nodes to be appended to the cluster name.
+    :return: A hostlist string with the hostname and node numbers.
     """
 
     hostlist = []
