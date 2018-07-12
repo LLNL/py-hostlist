@@ -37,7 +37,7 @@ py-hostlist uses `Travis CI <https://travis-ci.org/LLNL/py-hostlist>`_ for Conti
    problems. If this is the case, please file an issue.
 
 If you take a look in ``py-hostlist/.travis.yml``, you'll notice that we test
-against Python 2.7, and 3.3-3.7 on macOS. We currently perform 3 types of tests:
+against Python 2.7, and 3.3-3.7 on macOS. We currently perform unit testing:
 
 Unit tests ensure that core py-hostlist features like expand or scompress_range are working as expected. If your PR only adds new packages or modifies existing ones, there's very little chance that your changes could cause the unit tests to fail. However, if you make changes to py-hostlist's core libraries, you should run the unit tests to make sure you didn't break anything.
 
