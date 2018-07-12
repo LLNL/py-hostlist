@@ -8,13 +8,19 @@ This is a high-level overview of features that make up py-hostlist, a Python imp
 Using Regular Expressions
 -------------------------
 
-py-hostlist utilizes the `re <https://docs.python.org/2/library/re.html>`_ package to look for certain types of hostlist strings to manipulate. Once it matches with a hostlist string, it breaks up the expression into certain control groups with which it can perform a number of operations on.
+py-hostlist utilizes the `re <https://docs.python.org/2/library/re.html>`_ package to look for certain types of hostlist strings to manipulate. Once it matches with a hostlist string, it breaks up the expression into certain control groups with which it can perform a number of operations on. In general, input hostlist strings are broken up into three control groups:
+
+1. the host name
+
+2. the range of nodes contained by the host
+
+3. any suffixes or domains appended to the hostlist
 
 -------------------
 String Manipulation
 -------------------
 
-After an input string is matched, the hostlist input is cast to a string variable, where it can be stripped of characters such as brackets, dashes, and commas in order to perform necessary operations, such as expanding or compressing a list.
+After an input string is matched, the control groups are cast to string variables, where they can be stripped of characters such as brackets, dashes, and commas in order to perform necessary operations, such as expanding or compressing a list.
 
 ---------------------
 Different Input Types
