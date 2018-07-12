@@ -14,7 +14,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
 
    $ git clone https://github.com/llnl/py-hostlist.git
    $ cd py-hostlist
-   
+
 
 .. toctree::
    :maxdepth: 2
@@ -41,6 +41,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
    :caption: AutoDocs
 
    source/py-hostlist
+   source/modules
 
 Indices and tables
 ==================
