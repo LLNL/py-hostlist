@@ -19,7 +19,7 @@ you send your request, make ``develop`` the destination branch on the
 Continuous Integration
 ----------------------
 
-py-hostlist uses `Travis CI <https://travis-ci.org/LLNL/py-hostlist>`_ for Continuous Integration testing. This means that every time you submit a pull request, a series of tests will be run to make sure you didn't accidentally introduce any bugs into Spack. **Your PR will not be accepted until it passes all of these tests.** While you can certainly wait for the results of these tests after submitting a PR, we recommend that you run them locally to speed up the review process.
+py-hostlist uses `Travis CI <https://travis-ci.org/LLNL/py-hostlist>`_ for Continuous Integration testing. This means that every time you submit a pull request, a series of tests will be run to make sure you didn't accidentally introduce any bugs into py-hostlist. **Your PR will not be accepted until it passes all of these tests.** While you can certainly wait for the results of these tests after submitting a PR, we recommend that you run them locally to speed up the review process.
 
 .. note::
 
@@ -28,12 +28,12 @@ py-hostlist uses `Travis CI <https://travis-ci.org/LLNL/py-hostlist>`_ for Conti
    dependencies for the test suite, or a transient bug will cause the unit tests
    to timeout. If Travis fails, click the "Details" link and click on the test(s)
    that is failing. If it doesn't look like it is failing for reasons related to
-   your PR, you have two options. If you have write permissions for the Spack
+   your PR, you have two options. If you have write permissions for the py-hostlist
    repository, you should see a "Restart job" button on the right-hand side. If
    not, you can close and reopen your PR to rerun all of the tests. If the same
    test keeps failing, there may be a problem with your PR. If you notice that
    every recent PR is failing with the same error message, it may be that Travis
-   is down or one of Spack's dependencies put out a new release that is causing
+   is down or one of py-hostlist's dependencies put out a new release that is causing
    problems. If this is the case, please file an issue.
 
 If you take a look in ``py-hostlist/.travis.yml``, you'll notice that we test
