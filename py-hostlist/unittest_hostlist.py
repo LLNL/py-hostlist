@@ -44,7 +44,7 @@ class TestHostlistMethods(unittest.TestCase):
 		self.assertEqual(test, expected)
 
 	# expand() can take in comma separated values for different machines
-	def test_expand_multi_machine_names(self):
+	def test_expand_scr(self):
 		expected = 'machine2-02vm1,machine2-03vm1,' \
 				   'machine4-0003.vml2,machine4-0004.vml2,machine4-0005.vml2'
 		test = hl.expand("machine2-[02-3]vm1, machine4-[0003-5].vml2")
@@ -117,7 +117,7 @@ class TestHostlistMethods(unittest.TestCase):
 		self.assertEqual(test, expected)
 
 	# unit test taken fom scr
-	def test_scr_diff(self):
+	def test_diff_scr(self):
 		expected = 'machine[2-3]'
 		list1 = 'machine1,machine2,machine3'
 		list2 = 'machine1,machine4'
@@ -142,7 +142,7 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.intersect(list1,list2)
 		self.assertEqual(test, expected)
 
-	def test_scr_intersect(self):
+	def test_intersect_scr(self):
 		expected = '[machine1,machine3]'
 		list1 = 'machine1,machine2,machine3'
 		list2 = 'machine1,machine3,machine4'
