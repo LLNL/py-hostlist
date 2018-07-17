@@ -124,13 +124,13 @@ Methods
 
  **Description**: This method will print at most *N* hosts from the hostlist input. If a negative *N* is passed in, the output will consist of the last N hosts from the hostlist input.
 
-``xor(*arg)**``
+``xor(*arg)``
  **Parameters**:
   hostlist strings **(str)** or **(list)** - Any number of nodelists to be combined.
 
  **Returns**: The resulting xor list.
 
- **Description: xor() takes the symmetric difference of an arbitrary number of hostlists passed in.
+ **Description**: xor() takes the symmetric difference of an arbitrary number of hostlists passed in.
 
 ``exclude(*arg)``
  **Parameters**:
