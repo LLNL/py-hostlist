@@ -545,9 +545,9 @@ def size_hostlist(nodelist, N):
 
 def xor(*arg):
     """
-    uxor returns the symmetric difference between n lists of nodes.
+    xor returns the symmetric difference between n lists of nodes.
 
-    :param: nodelist: Any number of nodelists to be combined.
+    :param: nodelist: Any number of nodelists to be xor.
     :return: The resulting xor list.
     """
 
@@ -582,3 +582,51 @@ def xor(*arg):
     return compress_range(sort_nodes(xor_list))
 
 
+def exclude(*arg):
+    """
+    excludes all HOSTLIST args from first HOSTLIST
+
+    :param: nodelist: The hostlist string.
+    :param: node: The node to be excluded.
+    :return: The resulting hostlist string without the node specified.
+    """
+    nodelist = arg[0]
+    len_nodes = arg[1:]
+
+    for node in len_nodes:
+        if type(nodelist) == list:
+            if node in nodelist:
+                nodelist = list(filter(lambda a: a != node, nodelist))
+                final_hostlist = ",".join(nodelist)
+            else:
+                return "node does not exist"
+        # if there is a range of nodes in the input
+        elif "[" in nodelist:
+            list_of_nodes = expand(nodelist)
+            left_br = list_of_nodes.replace("[","")
+            right_br = left_br.replace("]","")
+            nodelist = right_br.split(',')
+            if node in nodelist:
+                nodelist = list(filter(lambda a: a != node, nodelist))
+                final_hostlist = ",".join(nodelist)
+            else:
+                return "node does not exist"
+        else:
+            list_of_nodes = nodelist
+            left_br = list_of_nodes.replace("[","")
+            right_br = left_br.replace("]","")
+            nodelist = right_br.split(',') 
+            if node in nodelist:
+                nodelist = list(filter(lambda a: a != node, nodelist))
+                final_hostlist = ",".join(nodelist)
+            else:
+                return "node does not exist" 
+
+    if not final_hostlist:
+        return "hostlist empty"
+    elif ',' not in final_hostlist:
+        return final_hostlist
+    else:
+        return compress_range(final_hostlist)
+
+print exclude('foo1,foo2,foo3', 'foo1')
