@@ -26,7 +26,8 @@ def msg(name=None):
   	-i, --intersection           Intersection of all HOSTLIST args
   	-u, --union                  Union of all HOSTLIST arguments
   	-n, --nth=N                  Output the host at index N
-  	-S, --sort                   Return sorted HOSTLIST 
+  	-R, --remove=NODE            Remove all occurences of NODE from HOSTLIST
+   	-S, --sort                   Return sorted HOSTLIST 
   	-c, --count                  Print the number of hosts
   	-F, --find=HOST              Output position of HOST in result HOSTLIST
 		'''
@@ -46,6 +47,8 @@ parser.add_argument("-i", "--intersection", dest="intersection", nargs="*")
 parser.add_argument("-u", "--union", dest="union", nargs="*")
 
 parser.add_argument("-n", "--nth=N", dest="nth", nargs="*")
+
+parser.add_argument("-R", "--remove=node", dest="remove_node", nargs="*")
 
 parser.add_argument("-S", "--sort", dest="sort")
 
@@ -69,6 +72,8 @@ if args.union:
 	print hl.union_nodes(*args.union)
 if args.nth:
 	print hl.nth(args.nth[0], args.nth[1])
+if args.remove_node:
+	print hl.remove_node(args.remove_node[1], args.remove_node[0])
 if args.sort:
 	print hl.sort_nodes(args.sort)
 if args.count:
