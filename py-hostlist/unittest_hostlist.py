@@ -331,6 +331,21 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.size_hostlist('foo1,foo2,foo3', 2)
 		self.assertEqual(test, expected)
 
+	def test_xor_as_list(self):
+		expected = 'foo[1-2,4-5]'
+		test = hl.xor(['foo1','foo2','foo3'],['foo3','foo4','foo5'])
+		self.assertEqual(test, expected)
+
+	def test_xor_with_expand(self):
+		expected = 'foo[1-2,6-9]'
+		test = hl.xor('foo[1-3]', 'foo[3-5]', 'foo[4-9]')
+		self.assertEqual(test, expected)
+
+	def test_xor_as_string(self):
+		expected = 'foo[1-2,4-5]'
+		test = hl.xor('foo1,foo2,foo3', 'foo3,foo4,foo5')
+		self.assertEqual(test, expected)
+
 if __name__ == '__main__':
 	unittest.main()
 

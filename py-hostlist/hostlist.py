@@ -543,3 +543,42 @@ def size_hostlist(nodelist, N):
             return compress_range(nodelist[N:])                
 
 
+def xor(*arg):
+    """
+    uxor returns the symmetric difference between n lists of nodes.
+
+    :param: nodelist: Any number of nodelists to be combined.
+    :return: The resulting xor list.
+    """
+
+
+    # will hold a list of the lists passed in
+    conv_lists = []
+
+    for nodelist in arg:
+        # check to see if the list passed in is a string; if it is, convert to list
+        if type(nodelist) == list:
+            conv_lists.append(nodelist)
+        elif "[" in nodelist:
+            list_of_nodes = expand(nodelist)
+            left_br = list_of_nodes.replace("[","")
+            right_br = left_br.replace("]","")
+            nodelist = right_br.split(',') 
+            conv_lists.append(nodelist)
+        else:
+            list_of_nodes = nodelist
+            left_br = list_of_nodes.replace("[","")
+            right_br = left_br.replace("]","")
+            nodelist = right_br.split(',')
+            conv_lists.append(nodelist)
+
+    first_list = set(conv_lists[0])
+
+    for i in range(1, len(conv_lists)):
+        first_list = first_list.symmetric_difference(conv_lists[i])
+
+    xor_list = list(set(first_list))
+
+    return compress_range(sort_nodes(xor_list))
+
+print xor('foo[1-3]', 'foo[3-5]', 'foo[4-9]')
