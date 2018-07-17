@@ -20,6 +20,8 @@ def msg(name=None):
 
   	-h, --help                   Display this message.
   	-d, --delimiters			 Set output delimiter (default = ",")
+  	-c, --count                  Print the number of hosts
+  	-s, --size					 Output at most N hosts (-N for last N hosts)
   	-e, --expand                 Expand a compressed hostlist
   	-a, --abbreviate             Compress an expanded hostlist
   	-t, --tighten                Return a hostlist string
@@ -29,13 +31,14 @@ def msg(name=None):
   	-n, --nth                    Output the host at index N
   	-R, --remove                 Remove all occurences of NODE from HOSTLIST
    	-S, --sort                   Return sorted HOSTLIST 
-  	-c, --count                  Print the number of hosts
   	-F, --find=HOST              Output position of HOST in result HOSTLIST
 		'''
 
 parser = argparse.ArgumentParser(usage=msg())
 
 parser.add_argument("-d", "--delimiters", dest="delimiter", nargs="*")
+
+parser.add_argument("-s", "--size", dest="size_hostlist", nargs="*")
 
 parser.add_argument("-e", "--expand", dest="expand")
 
@@ -63,6 +66,8 @@ args = parser.parse_args()
 
 if args.delimiter:
 	print hl.delimiter(args.delimiter[1], args.delimiter[0])
+if args.size_hostlist:
+	print hl.size_hostlist(args.size_hostlist[1], int(args.size_hostlist[0]))
 if args.expand:
 	print hl.expand(args.expand)
 if args.compress_range:

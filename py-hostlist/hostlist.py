@@ -531,6 +531,15 @@ def size_hostlist(nodelist, N):
         if N > 0:
             return compress_range(nodelist[:N])
         else:
-            return compress_range(nodelist[N:])       
+            return compress_range(nodelist[N:])
+    else:
+        list_of_nodes = nodelist
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',')
+        if N > 0:
+            return compress_range(nodelist[:N])
+        else:
+            return compress_range(nodelist[N:])                
 
 

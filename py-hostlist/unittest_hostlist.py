@@ -326,6 +326,11 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.size_hostlist('node[1-10]', -5)
 		self.assertEqual(test, expected)
 
+	def test_size_as_string(self):
+		expected = 'foo[1-2]'
+		test = hl.size_hostlist('foo1,foo2,foo3', 2)
+		self.assertEqual(test, expected)
+
 if __name__ == '__main__':
 	unittest.main()
 
