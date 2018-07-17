@@ -630,3 +630,33 @@ def exclude(*arg):
         return compress_range(final_hostlist)
 
 
+
+def quiet(nodelist=[]):
+    """
+    quiet will return quiet output (or exit non-zero if there empty hostlist)
+
+    :param: nodelist: The hostlist string.
+    """
+    final_hostlist = nodelist
+
+    if not final_hostlist:
+        return "hostlist empty"
+
+    if type(nodelist) == list:
+            final_hostlist = ",".join(nodelist)
+    # if there is a range of nodes in the input
+    elif "[" in nodelist:
+        list_of_nodes = expand(nodelist)
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',')
+        final_hostlist = ",".join(nodelist)
+    else:
+        list_of_nodes = nodelist
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
+        final_hostlist = ",".join(nodelist)
+
+
+  

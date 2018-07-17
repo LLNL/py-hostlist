@@ -361,6 +361,26 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.exclude('foo1,foo2,foo3', 'foo3')
 		self.assertEqual(test, expected)
 
+	def test_quiet(self):
+		expected = None
+		test = hl.quiet('node1,node2,node3')
+		self.assertEqual(test, expected)
+
+	def test_quiet_empty(self):
+		expected = "hostlist empty"
+		test = hl.quiet()
+		self.assertEqual(test, expected)
+
+	def test_quiet_with_expand(self):
+		expected = None
+		test = hl.quiet("node[1-5]")
+		self.assertEqual(test, expected)
+
+	def test_quiet_as_list(self):
+		expected = None
+		test = hl.quiet(['node1','node2','node3','node4'])
+		self.assertEqual(test, expected)
+
 if __name__ == '__main__':
 	unittest.main()
 
