@@ -19,16 +19,17 @@ def msg(name=None):
 	Usage: python cla_hostlist.py [OPTION]... [HOSTLIST]...
 
   	-h, --help                   Display this message.
-  	-d, --delimiters			 Set output delimiter (default = ",")
+  	-q, --quiet                  Quiet output (exit non-zero if empty hostlist)
+  	-d, --delimiters             Set output delimiter (default = ",")
   	-c, --count                  Print the number of hosts
-  	-s, --size					 Output at most N hosts (-N for last N hosts)
+  	-s, --size                   Output at most N hosts (-N for last N hosts)
   	-e, --expand                 Expand a compressed hostlist
   	-a, --abbreviate             Compress an expanded hostlist
   	-t, --tighten                Return a hostlist string
   	-m, --minus                  Subtract second HOSTLIST arg from first HOSTLIST
   	-i, --intersection           Intersection of all HOSTLIST args
-  	-x, --exclude				 Exclude all HOSTLIST args from first HOSTLIST
-  	-X, --xor					 Symmetric difference of all HOSTLIST args
+  	-x, --exclude                Exclude all HOSTLIST args from first HOSTLIST
+  	-X, --xor                    Symmetric difference of all HOSTLIST args
   	-u, --union                  Union of all HOSTLIST arguments
   	-n, --nth                    Output the host at index N
   	-R, --remove                 Remove all occurences of NODE from HOSTLIST
@@ -68,6 +69,8 @@ parser.add_argument("-X", "--xor", dest="xor", nargs="*")
 
 parser.add_argument("-x", "--exclude", dest="exclude", nargs="*")
 
+parser.add_argument("-q", "--quiet", dest="quiet")
+
 args = parser.parse_args()
 
 if args.delimiter:
@@ -100,3 +103,5 @@ if args.xor:
 	print hl.xor(*args.xor)
 if args.exclude:
 	print hl.exclude(*args.exclude)
+if args.quiet:
+	hl.quiet(args.quiet)
