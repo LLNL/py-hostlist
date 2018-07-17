@@ -291,6 +291,16 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.remove_node('node[1-5,5-9]', 'node5')
 		self.assertEqual(test, expected)
 
+	def test_delimiter_as_list(self):
+		expected = 'foo1-foo2-foo3'
+		test = hl.delimiter(['foo1','foo2','foo3'], '-')
+		self.assertEqual(test, expected)
+
+	def test_delimiter_with_expand(self):
+		expected = 'foo1*foo2*foo3'
+		test = hl.delimiter('foo[1-3]', '*')
+		self.assertEqual(test, expected)
+
 if __name__ == '__main__':
 	unittest.main()
 

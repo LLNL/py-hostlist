@@ -451,6 +451,7 @@ def remove_node(nodelist, node):
     removes a node from a passed in hostlist.
 
     :param: nodelist: The hostlist string.
+    :param: node: The node to be removed.
     :return: The resulting hostlist upon deletion.
     """
     if type(nodelist) == list:
@@ -481,17 +482,29 @@ def remove_node(nodelist, node):
         else:
             return "node does not exist"    
 
-remove_node('node1,node2,node3', 'node3')
-remove_node('node[1-5,5-9]', 'node5')
 
 
+def delimiter(nodelist, d):
+    """
+    delimiter sets the output delimiter (default = ",")
 
-
-
-
-
-
-
-
-
+    :param: nodelist: The hostlist string.
+    :param: d: The delimiter.
+    :return: The resulting hostlist string with custom delimiter.
+    """
+    if type(nodelist) == list:
+        return d.join(nodelist)
+    # if there is a range of nodes in the input
+    elif "[" in nodelist:
+        list_of_nodes = expand(nodelist)
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',')
+        return d.join(nodelist)
+    else:
+        list_of_nodes = nodelist
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
+        return d.join(nodelist)
 
