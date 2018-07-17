@@ -445,3 +445,53 @@ def count(nodelist):
         return len(nodelist)        
 
 
+
+def remove_node(nodelist, node):
+    """
+    removes a node from a passed in hostlist.
+
+    :param: nodelist: The hostlist string.
+    :return: The resulting hostlist upon deletion.
+    """
+    if type(nodelist) == list:
+        if node in nodelist:
+            nodelist = list(filter(lambda a: a != node, nodelist))
+            return ",".join(nodelist)
+        else:
+            return "node does not exist"
+    # if there is a range of nodes in the input
+    elif "[" in nodelist:
+        list_of_nodes = expand(nodelist)
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',')
+        if node in nodelist:
+            nodelist = list(filter(lambda a: a != node, nodelist))
+            return ",".join(nodelist)
+        else:
+            return "node does not exist"
+    else:
+        list_of_nodes = nodelist
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
+        if node in nodelist:
+            nodelist = list(filter(lambda a: a != node, nodelist))
+            return ",".join(nodelist)
+        else:
+            return "node does not exist"    
+
+remove_node('node1,node2,node3', 'node3')
+remove_node('node[1-5,5-9]', 'node5')
+
+
+
+
+
+
+
+
+
+
+
+
