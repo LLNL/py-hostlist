@@ -581,4 +581,4 @@ def xor(*arg):
 
     return compress_range(sort_nodes(xor_list))
 
-print xor('foo[1-3]', 'foo[3-5]', 'foo[4-9]')
+

@@ -27,6 +27,7 @@ def msg(name=None):
   	-t, --tighten                Return a hostlist string
   	-m, --minus                  Subtract second HOSTLIST arg from first HOSTLIST
   	-i, --intersection           Intersection of all HOSTLIST args
+  	-X, --xor					 Symmetric difference of all HOSTLIST args
   	-u, --union                  Union of all HOSTLIST arguments
   	-n, --nth                    Output the host at index N
   	-R, --remove                 Remove all occurences of NODE from HOSTLIST
@@ -62,6 +63,8 @@ parser.add_argument("-c", "--count", dest="count")
 
 parser.add_argument("-F", "--find", dest="find", nargs="*")
 
+parser.add_argument("-X", "--xor", dest="xor", nargs="*")
+
 args = parser.parse_args()
 
 if args.delimiter:
@@ -90,3 +93,5 @@ if args.count:
 	print hl.count(args.count)
 if args.find:
 	print hl.find(args.find[1], args.find[0])
+if args.xor:
+	print hl.xor(*args.xor)
