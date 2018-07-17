@@ -74,34 +74,34 @@ parser.add_argument("-q", "--quiet", dest="quiet")
 args = parser.parse_args()
 
 if args.delimiter:
-	print hl.delimiter(args.delimiter[1], args.delimiter[0])
+	print(hl.delimiter(args.delimiter[1], args.delimiter[0]))
 if args.size_hostlist:
-	print hl.size_hostlist(args.size_hostlist[1], int(args.size_hostlist[0]))
+	print(hl.size_hostlist(args.size_hostlist[1], int(args.size_hostlist[0])))
 if args.expand:
-	print hl.expand(args.expand)
+	print(hl.expand(args.expand))
 if args.compress_range:
-	print hl.compress_range(args.compress_range)
+	print(hl.compress_range(args.compress_range))
 if args.compress:
-	print hl.compress(args.compress)
+	print(hl.compress(args.compress))
 if args.diff:
-	print hl.diff(*args.diff)
+	print(hl.diff(*args.diff))
 if args.intersection:
-	print hl.intersect(*args.intersection)
+	print(hl.intersect(*args.intersection))
 if args.union:
-	print hl.union_nodes(*args.union)
+	print(hl.union_nodes(*args.union))
 if args.nth:
-	print hl.nth(args.nth[1], args.nth[0])
+	print(hl.nth(args.nth[1], args.nth[0]))
 if args.remove_node:
-	print hl.remove_node(args.remove_node[1], args.remove_node[0])
+	print(hl.remove_node(args.remove_node[1], args.remove_node[0]))
 if args.sort:
-	print hl.sort_nodes(args.sort)
+	print(hl.sort_nodes(args.sort))
 if args.count:
-	print hl.count(args.count)
+	print(hl.count(args.count))
 if args.find:
-	print hl.find(args.find[1], args.find[0])
+	print(hl.find(args.find[1], args.find[0]))
 if args.xor:
-	print hl.xor(*args.xor)
+	print(hl.xor(*args.xor))
 if args.exclude:
-	print hl.exclude(*args.exclude)
+	print(hl.exclude(*args.exclude))
 if args.quiet:
 	hl.quiet(args.quiet)
