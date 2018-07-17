@@ -588,7 +588,7 @@ def exclude(*arg):
 
     :param: nodelist: The hostlist string.
     :param: node: The node to be excluded.
-    :return: The resulting hostlist string without the node specified.
+    :return: The resulting hostlist string without the nodes specified.
     """
     nodelist = arg[0]
     len_nodes = arg[1:]
@@ -633,7 +633,7 @@ def exclude(*arg):
 
 def quiet(nodelist=[]):
     """
-    quiet will return quiet output (or exit non-zero if there empty hostlist)
+    quiet will return quiet output (or exit non-zero if there is an empty hostlist)
 
     :param: nodelist: The hostlist string.
     """
