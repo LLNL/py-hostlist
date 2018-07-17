@@ -19,6 +19,7 @@ def msg(name=None):
 	Usage: python cla_hostlist.py [OPTION]... [HOSTLIST]...
 
   	-h, --help                   Display this message.
+  	-d, --delimiters			 Set output delimiter (default = ",")
   	-e, --expand                 Expand a compressed hostlist
   	-a, --abbreviate             Compress an expanded hostlist
   	-t, --tighten                Return a hostlist string
@@ -33,6 +34,8 @@ def msg(name=None):
 		'''
 
 parser = argparse.ArgumentParser(usage=msg())
+
+parser.add_argument("-d", "--delimiters", dest="delimiter", nargs="*")
 
 parser.add_argument("-e", "--expand", dest="expand")
 
@@ -58,6 +61,8 @@ parser.add_argument("-F", "--find", dest="find", nargs="*")
 
 args = parser.parse_args()
 
+if args.delimiter:
+	print hl.delimiter(args.delimiter[1], args.delimiter[0])
 if args.expand:
 	print hl.expand(args.expand)
 if args.compress_range:
