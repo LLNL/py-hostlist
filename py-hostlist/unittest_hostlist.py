@@ -56,6 +56,11 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.expand('machine2-[009-11]vm1')
 		self.assertEqual(test, expected)
 
+	def test_expand_only_commas(self):
+		expected = 'node1,node2,node3'
+		test = hl.expand('node[1,2,3]')
+		self.assertEqual(test, expected)
+
 	# compress_range() can compress a single range of nodes
 	def test_compress_range_simple(self):
 		expected = 'node[1-4]'
