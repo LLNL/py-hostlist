@@ -26,7 +26,7 @@ def msg(name=None):
   	-i, --intersection           Intersection of all HOSTLIST args
   	-u, --union                  Union of all HOSTLIST arguments
   	-n, --nth=N                  Output the host at index N
-  	-s, --sort                   Return sorted HOSTLIST 
+  	-S, --sort                   Return sorted HOSTLIST 
   	-c, --count                  Print the number of hosts
   	-f, --find=HOST              Output position of HOST in result HOSTLIST
 		'''
@@ -47,7 +47,7 @@ parser.add_argument("-u", "--union", dest="union", nargs="*")
 
 parser.add_argument("-n", "--nth=N", dest="nth", nargs="*")
 
-parser.add_argument("-s", "--sort", dest="sort")
+parser.add_argument("-S", "--sort", dest="sort")
 
 parser.add_argument("-c", "--count", dest="count")
 
