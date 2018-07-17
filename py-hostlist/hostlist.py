@@ -510,7 +510,7 @@ def delimiter(nodelist, d):
 
 
 
-def size(nodelist, N):
+def size_hostlist(nodelist, N):
     """
     size will output at most N hosts (-N for last N hosts)
 
@@ -533,9 +533,4 @@ def size(nodelist, N):
         else:
             return compress_range(nodelist[N:])       
 
-
-print size(['node1','node2','node3','node4','node5','node6'], 3)
-print size(['node1','node2','node3','node4','node5','node6'], -3)
-print size('node[1-10]', 5)
-print size('node[1-10]', -5)
 
