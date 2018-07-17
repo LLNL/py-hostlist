@@ -306,6 +306,26 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.delimiter('foo[1-3]', '*')
 		self.assertEqual(test, expected)
 
+	def test_size_as_list(self):
+		expected = 'node[1-3]'
+		test = hl.size(['node1','node2','node3','node4','node5','node6'], 3)
+		self.assertEqual(test, expected)
+
+	def test_size_backwards(self):
+		expected = 'node[4-6]'
+		test = hl.size(['node1','node2','node3','node4','node5','node6'], -3)
+		self.assertEqual(test, expected)
+
+	def test_size_with_expand(self):
+		expected = 'node[1-5]'
+		test = hl.size('node[1-10]', 5)
+		self.assertEqual(test, expected)
+
+	def test_size_with_expand_backwards(self):
+		expected = 'node[6-10]'
+		test = hl.size('node[1-10]', -5)
+		self.assertEqual(test, expected)
+
 if __name__ == '__main__':
 	unittest.main()
 

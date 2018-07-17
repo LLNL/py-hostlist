@@ -508,3 +508,34 @@ def delimiter(nodelist, d):
         nodelist = right_br.split(',') 
         return d.join(nodelist)
 
+
+
+def size(nodelist, N):
+    """
+    size will output at most N hosts (-N for last N hosts)
+
+    :param: nodelist: The hostlist string.
+    :param: N: the number of hosts to print.
+    :return: The resulting hostlist string with custom size.
+    """
+    if type(nodelist) == list:
+        if N > 0:
+            return compress_range(nodelist[:N])
+        else:
+            return compress_range(nodelist[N:])
+    elif "[" in nodelist:
+        list_of_nodes = expand(nodelist)
+        left_br = list_of_nodes.replace("[","")
+        right_br = left_br.replace("]","")
+        nodelist = right_br.split(',') 
+        if N > 0:
+            return compress_range(nodelist[:N])
+        else:
+            return compress_range(nodelist[N:])       
+
+
+print size(['node1','node2','node3','node4','node5','node6'], 3)
+print size(['node1','node2','node3','node4','node5','node6'], -3)
+print size('node[1-10]', 5)
+print size('node[1-10]', -5)
+
