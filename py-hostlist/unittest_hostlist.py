@@ -281,6 +281,11 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.find('node1,node2,node3,node4', 'node2')
 		self.assertEqual(test, expected)
 
+	def test_remove_node_as_list(self):
+		expected = 'node1,node2'
+		test = hl.remove_node(['node1','node2','node3'], 'node3')
+		self.assertEqual(test, expected)
+
 	def test_remove_node(self):
 		expected = 'node1,node2'
 		test = hl.remove_node('node1,node2,node3', 'node3')
