@@ -10,6 +10,14 @@ Here is a list of all of the methods available:
 
 ``-h, --help``                   
  Display this message.
+``-q, --quiet``
+ Quiet output (exit non-zero if empty hostlist)
+``-d, --delimiters``
+ Set output delimiter (default = ",")
+``-c, --count``
+ Print the number of hosts
+``-s, --size``
+ Output at most N hosts (-N for last N hosts)
 ``-e, --expand``                 
  Expand a compressed hostlist
 ``-a, --abbreviate``            
@@ -17,17 +25,21 @@ Here is a list of all of the methods available:
 ``-t, --tighten``                
  Return a hostlist string
 ``-m, --minus``                  
- Subtract second HOSTLIST arg from first HOSTLIST
+ Subtract all HOSTLIST args from first HOSTLIST
 ``-i, --intersection``           
  Intersection of all HOSTLIST args
+``-x, --exclude``
+ Exclude all HOSTLIST args from first HOSTLIST
+``-X, --xor``
+ Symmetric difference of all HOSTLIST args
 ``-u, --union``                  
  Union of all HOSTLIST arguments
 ``-n, --nth=N``                  
  Output the host at index N
+``-R, --remove``
+ Remove all occurences of NODE from HOSTLIST
 ``-S, --sort``                   
  Return sorted HOSTLIST 
-``-c, --count``                  
- Print the number of hosts
 ``-F, --find=HOST``              
  Output position of HOST in result HOSTLIST
 

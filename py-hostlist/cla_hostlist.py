@@ -26,7 +26,7 @@ def msg(name=None):
   	-e, --expand                 Expand a compressed hostlist
   	-a, --abbreviate             Compress an expanded hostlist
   	-t, --tighten                Return a hostlist string
-  	-m, --minus                  Subtract second HOSTLIST arg from first HOSTLIST
+  	-m, --minus                  Subtract all HOSTLIST args from first HOSTLIST
   	-i, --intersection           Intersection of all HOSTLIST args
   	-x, --exclude                Exclude all HOSTLIST args from first HOSTLIST
   	-X, --xor                    Symmetric difference of all HOSTLIST args
