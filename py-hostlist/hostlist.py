@@ -629,4 +629,4 @@ def exclude(*arg):
     else:
         return compress_range(final_hostlist)
 
-print exclude('foo1,foo2,foo3', 'foo1')
+
