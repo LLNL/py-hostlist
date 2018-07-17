@@ -28,7 +28,7 @@ def msg(name=None):
   	-n, --nth=N                  Output the host at index N
   	-S, --sort                   Return sorted HOSTLIST 
   	-c, --count                  Print the number of hosts
-  	-f, --find=HOST              Output position of HOST in result HOSTLIST
+  	-F, --find=HOST              Output position of HOST in result HOSTLIST
 		'''
 
 parser = argparse.ArgumentParser(usage=msg())
@@ -51,7 +51,7 @@ parser.add_argument("-S", "--sort", dest="sort")
 
 parser.add_argument("-c", "--count", dest="count")
 
-parser.add_argument("-f", "--find", dest="find", nargs="*")
+parser.add_argument("-F", "--find", dest="find", nargs="*")
 
 args = parser.parse_args()
 
