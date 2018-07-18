@@ -10,10 +10,6 @@ First, what is a PR? Quoting `Bitbucket's tutorials <https://www.atlassian.com/g
 
 Important is **completed feature**. The changes one proposes in a PR should correspond to one feature/bugfix/extension/etc. One can create PRs with changes relevant to different ideas, however reviewing such PRs becomes tedious and error prone. If possible, try to follow the **one-PR-one-package/feature** rule.
 
-py-hostlist uses a rough approximation of the `Git Flow <http://nvie.com/posts/a-successful-git-branching-model/>`_ branching model. The develop branch contains the latest contributions, and
-master is always tagged and points to the latest stable release. Therefore, when
-you send your request, make ``develop`` the destination branch on the
-`py-hostlist repository <https://github.com/LLNL/py-hostlist>`_.
 
 ----------------------
 Continuous Integration
