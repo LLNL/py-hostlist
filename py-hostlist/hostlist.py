@@ -31,6 +31,7 @@ def sort_nodes(nodelist):
     """
 
     list_of_nodes = nodelist
+    result_hostlist = []
 
     if type(list_of_nodes) == str:
         left_br = list_of_nodes.replace("[","")
@@ -41,15 +42,26 @@ def sort_nodes(nodelist):
     num_list = []
     for node in nodelist:
         iter_node = nodelist[count]
-        nodelist_match = r"([a-z]+)(\d+)"
+        nodelist_match = r"([a-z]+)(\d+)(.*)"
         machine_name = re.search(nodelist_match, iter_node)
         num_list.append(int(machine_name.group(2)))
         count = count+1
     num_list.sort()
-    
-    hostlist = append_hostname(machine_name.group(1), num_list)
 
-    return '[%s]' % ''.join(map(str, hostlist))
+    # append hostname to the node numbers
+    hostlist_no_suffix = []
+    for elem in num_list:
+        hostlist_no_suffix.append(machine_name.group(1) + str(elem))
+
+    # append suffix to hostlist if there is one
+    final_hostlist = []
+    for elem in hostlist_no_suffix:
+        final_hostlist.append(elem + machine_name.group(3))
+
+    result_hostlist.append('%s' % ','.join(map(str, final_hostlist)))    
+
+
+    return '%s' % ','.join(map(str, final_hostlist))
 
 
 # ========== END OF HELPER METHODS =========== # 
