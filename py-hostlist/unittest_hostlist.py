@@ -148,6 +148,13 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.diff(list1, list2, list3, list4)
 		self.assertEqual(test, expected)
 
+	def test_diff_with_expand(self):
+		expected = 'node[1,4]'
+		list1 = 'node[1-4]'
+		list2 = 'node[2-3]'
+		test = hl.diff(list1, list2)
+		self.assertEqual(test, expected)
+
 	# intersect() can return a hostlist string of
 	# 	intersecting nodes from two lists
 	def test_intersect_simple(self):
@@ -182,6 +189,13 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.intersect(list1, list2)
 		self.assertEqual(test, expected)
 
+	def test_intersect_with_expand(self):
+		expected = 'node[1,8]'
+		list1 = 'node[1-4,8]'
+		list2 = 'node[1,5-9]'
+		test = hl.intersect(list1, list2)
+		self.assertEqual(test, expected)
+
 	# union() will return an ordered hostslist of the
 	# union of two lists
 	def test_union_simple(self):
@@ -210,6 +224,15 @@ class TestHostlistMethods(unittest.TestCase):
 		list1 = ['node1', 'node2']
 		list2 = 'node3,node4'
 		list3 = ['node6']
+		list4 = 'node5'
+		test = hl.union_nodes(list1, list2, list3, list4)
+		self.assertEqual(test, expected)
+
+	def test_union_with_expand(self):
+		expected = 'node[1-6]'
+		list1 = 'node[1-2]'
+		list2 = 'node[3-4]'
+		list3 = 'node6'
 		list4 = 'node5'
 		test = hl.union_nodes(list1, list2, list3, list4)
 		self.assertEqual(test, expected)
@@ -248,7 +271,7 @@ class TestHostlistMethods(unittest.TestCase):
 		test = hl.count('node[1-5,6-10]')
 		self.assertEqual(test, expected)
 
-	# nth should return the nth node in a host list 
+	# nth should return the nth node in a host list
 	def test_nth(self):
 		expected = 'quartz7'
 		test = hl.nth('quartz[4-8]', 4)
@@ -316,6 +339,11 @@ class TestHostlistMethods(unittest.TestCase):
 	def test_delimiter_with_expand(self):
 		expected = 'foo1*foo2*foo3'
 		test = hl.delimiter('foo[1-3]', '*')
+		self.assertEqual(test, expected)
+
+	def test_delimiter_as_string(self):
+		expected = 'foo1-foo2-foo3'
+		test = hl.delimiter('foo1,foo2,foo3', '-')
 		self.assertEqual(test, expected)
 
 	def test_size_as_list(self):
