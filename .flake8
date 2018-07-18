@@ -1,0 +1,14 @@
+# -*- conf -*-
+# flake8 settings for py-hostlist.
+#
+# These exceptions are for py-hostlist's core files.
+# 
+# Let people line things up nicely:
+# 
+# - E303: too many blank lines (3)
+# - E231: missing whitespace after ','
+# - W291: blank line contains whitespace
+# - W293: blank line contains whitespace
+[flake8]
+ignore = E303,E231,W291,W293
+max-line-length = 90

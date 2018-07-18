@@ -21,7 +21,6 @@ def append_hostname(machine_name, num_list):
     return '%s' % ','.join(map(str, hostlist))
 
 
-
 def sort_nodes(nodelist):
     """
     sort_nodes is a helper method that sorts the nodes in ascending order.
@@ -34,8 +33,8 @@ def sort_nodes(nodelist):
     result_hostlist = []
 
     if type(list_of_nodes) == str:
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
         nodelist = right_br.split(',')
 
     count = 0
@@ -45,7 +44,7 @@ def sort_nodes(nodelist):
         nodelist_match = r"([a-z]+)(\d+)(.*)"
         machine_name = re.search(nodelist_match, iter_node)
         num_list.append(int(machine_name.group(2)))
-        count = count+1
+        count = count + 1
     num_list.sort()
 
     # append hostname to the node numbers
@@ -58,21 +57,19 @@ def sort_nodes(nodelist):
     for elem in hostlist_no_suffix:
         final_hostlist.append(elem + machine_name.group(3))
 
-    result_hostlist.append('%s' % ','.join(map(str, final_hostlist)))    
-
+    result_hostlist.append('%s' % ','.join(map(str, final_hostlist)))
 
     return '%s' % ','.join(map(str, final_hostlist))
 
 
-# ========== END OF HELPER METHODS =========== # 
-
+# ========== END OF HELPER METHODS =========== #
 
 
 def expand(nodelist):
     """
     expand takes in a compressed hostlist string and returns all hosts listed.
-    
-    :param: nodelist: The hostlist string. 
+
+    :param: nodelist: The hostlist string.
     :return: The expanded hostlist string.
     """
     node_list = nodelist.split(", ")
@@ -82,23 +79,24 @@ def expand(nodelist):
     for node in node_list:
         nodelist_match = r"(\w+-?)\[((,?[0-9]+-?,?-?){0,})\](.*)?"
         if re.search(nodelist_match, node):
-            match = re.search(nodelist_match, node) 
-
+            match = re.search(nodelist_match, node)
 
             # holds the ranges of nodes as a string
             # now we can manipulate the string and cast it to a list of numbers
             oldstr = str(match.group(2))
-            left_br = oldstr.replace("[","")
-            right_br = left_br.replace("]","")
+            left_br = oldstr.replace("[", "")
+            right_br = left_br.replace("]", "")
             num_list = right_br.split(',')
 
-            # if the node numbers contain leading zeros, store them to be prepended in
-            # the final list
+            # if the node numbers contain leading zeros, store them to be
+            # prepended in the final list
             final_list = []
             lead_zeros = 0
             lead_zeros_str = ''
             for elem in num_list:
-                # if it is a range of numbers, break it by the hyphen and create a list
+                # if it is a range of numbers, break it by the hyphen and
+                # create a list
+                #
                 # will then be merged with final list
                 if '-' in elem:
                     tmp_list = elem.replace("-", ",").split(",")
@@ -113,7 +111,8 @@ def expand(nodelist):
                 else:
                     final_list.append(int(elem))
 
-            # put final list in ascending order and append cluster name to each node number
+            # put final list in ascending order and append cluster name to
+            # each node number
             final_list.sort()
 
             # prepend leading zeros to numbers required
@@ -135,15 +134,15 @@ def expand(nodelist):
                 final_hostlist.append(elem + match.group(4))
 
             result_hostlist.append('%s' % ','.join(map(str, final_hostlist)))
-            
-    return ','.join(result_hostlist) 
 
+    return ','.join(result_hostlist)
 
 
 def compress_range(nodelist):
     """
-    compress_range will return a compressed hostlist string given a list of hostnames.
-    
+    compress_range will return a compressed hostlist string given a
+    list of hostnames.
+
     :param: nodelist: The expanded hostlist string.
     :return: The compressed hostlist string.
     """
@@ -151,8 +150,8 @@ def compress_range(nodelist):
     list_of_nodes = nodelist
 
     if type(list_of_nodes) == str:
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
         list_of_nodes = right_br.split(',')
 
     # get machine name and numbers for nodes
@@ -175,15 +174,15 @@ def compress_range(nodelist):
             nodelist_match = r"(\w+-?)(\d+)(.*)"
             machine_name = re.search(nodelist_match, iter_node)
             num_list.append(int(machine_name.group(2)))
-            count = count+1
+            count = count + 1
     else:
         for node in list_of_nodes:
             iter_node = list_of_nodes[count]
             nodelist_match = r"([a-zA-Z]+)(\d+)(.*)"
             machine_name = re.search(nodelist_match, iter_node)
             num_list.append(int(machine_name.group(2)))
-            count = count+1
-    
+            count = count + 1
+
     # build the ranges
     final_list = []
     num_list.sort()
@@ -192,9 +191,9 @@ def compress_range(nodelist):
     i = 1
     for i in range(1, len(num_list)):
         high = num_list[i]
-        if (high == last+1):
+        if (high == last + 1):
             last = high
-            continue            
+            continue
         if (last > low):
             final_list.append(lead_zeros_str + str(low) + "-" + str(last))
         else:
@@ -203,7 +202,7 @@ def compress_range(nodelist):
         last = low
     if (len(num_list) > 0):
         if (last > low):
-            final_list.append(lead_zeros_str + str(low)+"-"+str(last))
+            final_list.append(lead_zeros_str + str(low) + "-" + str(last))
         else:
             final_list.append(low)
 
@@ -212,34 +211,31 @@ def compress_range(nodelist):
     return result_str + machine_name.group(3)
 
 
-
 def compress(nodelist):
     """
     compress will return a hostlist string given a list of hostnames.
 
     :param: nodelist: The hostlist string.
-    :return: The hostlist string. 
+    :return: The hostlist string.
     """
 
     if type(nodelist) == str:
-        left_br = nodelist.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
+        left_br = nodelist.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
 
     return '[%s]' % ','.join(map(str, nodelist))
 
 
-
 def diff(*arg):
     """
-    diff will subtract elements in all subsequent lists from list 1 and return the remainder.
+    diff will subtract elements in all subsequent lists from list 1 and return
+    the remainder.
 
-    :param: nodelist1: The hostlist string to be subtracted from. 
+    :param: nodelist1: The hostlist string to be subtracted from.
     :param: following nodelists: The other hostlist strings.
     :return: The remainding list from subtracting the two original lists.
     """
-
-    num_of_lists = len(arg)
 
     conv_lists = []
     for nodelist in arg:
@@ -248,15 +244,15 @@ def diff(*arg):
         # if there is a range of nodes in the input
         elif "[" in nodelist:
             list_of_nodes = expand(nodelist)
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
             nodelist = right_br.split(',')
             conv_lists.append(nodelist)
         else:
             list_of_nodes = nodelist
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
-            nodelist = right_br.split(',') 
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
+            nodelist = right_br.split(',')
             conv_lists.append(nodelist)
 
     diff_list = conv_lists[0]
@@ -267,7 +263,6 @@ def diff(*arg):
     return compress_range(sort_nodes(list(diff_list)))
 
 
-
 def intersect(*arg):
     """
     Given references to n lists, intersect return a list of intersecting nodes.
@@ -275,8 +270,6 @@ def intersect(*arg):
     :param: nodelist: Any number of nodelists to be intersected.
     :return: The resulting intersected list.
     """
-    
-    num_of_lists = len(arg)
 
     # will hold a list of the lists passed in
     conv_lists = []
@@ -286,15 +279,15 @@ def intersect(*arg):
         # if there is a range of nodes in the input
         elif "[" in nodelist:
             list_of_nodes = expand(nodelist)
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
             nodelist = right_br.split(',')
             conv_lists.append(nodelist)
         else:
             list_of_nodes = nodelist
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
-            nodelist = right_br.split(',') 
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
+            nodelist = right_br.split(',')
             conv_lists.append(nodelist)
 
     first_list = conv_lists[0]
@@ -306,7 +299,6 @@ def intersect(*arg):
     return compress_range(sort_nodes(list(first_list)))
 
 
-
 def union_nodes(*arg):
     """
     union_nodes returns the union between n lists of nodes.
@@ -314,8 +306,6 @@ def union_nodes(*arg):
     :param: nodelist: Any number of nodelists to be combined.
     :return: The resulting unioned list.
     """
-
-    num_of_lists = len(arg)
 
     # will hold a list of the lists passed in
     conv_lists = []
@@ -325,15 +315,15 @@ def union_nodes(*arg):
         # if there is a range of nodes in the input
         elif "[" in nodelist:
             list_of_nodes = expand(nodelist)
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
             nodelist = right_br.split(',')
             conv_lists.append(nodelist)
         else:
             list_of_nodes = nodelist
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
-            nodelist = right_br.split(',') 
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
+            nodelist = right_br.split(',')
             conv_lists.append(nodelist)
 
     first_list = conv_lists[0]
@@ -346,11 +336,10 @@ def union_nodes(*arg):
     return compress_range(sort_nodes(union_list))
 
 
-
 def nth(nodelist, n):
     """
     nth returns the nth node from a list of nodes.
-    
+
     :param: nodelist: The hostlist string.
     :param: n: The index desired.
     :return: The host at the specified index.
@@ -364,13 +353,15 @@ def nth(nodelist, n):
             # holds the ranges of nodes as a string
             # now we can manipulate the string and cast it to a list of numbers
             oldstr = str(match.group(2))
-            left_br = oldstr.replace("[","")
-            right_br = left_br.replace("]","")
+            left_br = oldstr.replace("[", "")
+            right_br = left_br.replace("]", "")
             num_list = right_br.split(',')
 
             final_list = []
             for elem in num_list:
-                # if it is a range of numbers, break it by the hyphen and create a list
+                # if it is a range of numbers, break it by the hyphen and
+                # create a list
+                #
                 # will then be merged with final list
                 if '-' in elem:
                     tmp_list = elem.replace("-", ",").split(",")
@@ -379,35 +370,36 @@ def nth(nodelist, n):
                 else:
                     final_list.append(int(elem))
 
-            # put final list in ascending order and append cluster name to each node number
+            # put final list in ascending order and append cluster name to each
+            # node number
             final_list.sort()
             hostlist = append_hostname(match.group(1), final_list)
 
-            # put sorted hostlist into a list, use comma as delimiter so it can be accessed by an index
+            # put sorted hostlist into a list, use comma as delimiter so it can
+            # be accessed by an index
             hostlist_indexed = hostlist.split(",")
 
-            if (int(n) not in range(1, len(hostlist_indexed)+1)):
-                
+            if (int(n) not in range(1, len(hostlist_indexed) + 1)):
+
                 return "node does not exist"
             else:
 
-                return hostlist_indexed[int(n)-1]
+                return hostlist_indexed[int(n) - 1]
     elif type(nodelist) == str:
         hostlist_indexed = nodelist.split(",")
-        if (int(n) not in range(1, len(hostlist_indexed)+1)):
+        if (int(n) not in range(1, len(hostlist_indexed) + 1)):
 
             return "node does not exist"
         else:
 
-            return hostlist_indexed[int(n)-1]
+            return hostlist_indexed[int(n) - 1]
     else:
-        if (int(n) not in range(1, len(nodelist)+1)):
+        if (int(n) not in range(1, len(nodelist) + 1)):
 
             return "node does not exist"
         else:
 
-            return nodelist[int(n)-1]   
-
+            return nodelist[int(n) - 1]
 
 
 def find(nodelist, node):
@@ -430,8 +422,8 @@ def find(nodelist, node):
     # if there is a range of nodes in the input
     elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
         nodelist = right_br.split(',')
         if node in nodelist:
 
@@ -441,16 +433,15 @@ def find(nodelist, node):
             return "node does not exist"
     else:
         list_of_nodes = nodelist
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
         if node in nodelist:
 
             return "At position " + str(nodelist.index(node) + 1)
         else:
 
-            return "node does not exist"       
-
+            return "node does not exist"
 
 
 def count(nodelist):
@@ -464,21 +455,20 @@ def count(nodelist):
     if type(nodelist) == list:
 
         return len(nodelist)
-    elif "[" in nodelist: 
+    elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
 
-        return len(nodelist)         
+        return len(nodelist)
     else:
         list_of_nodes = nodelist
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
 
-        return len(nodelist)        
-
+        return len(nodelist)
 
 
 def remove_node(nodelist, node):
@@ -498,8 +488,8 @@ def remove_node(nodelist, node):
     # if there is a range of nodes in the input
     elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
         nodelist = right_br.split(',')
         if node in nodelist:
             nodelist = list(filter(lambda a: a != node, nodelist))
@@ -508,15 +498,14 @@ def remove_node(nodelist, node):
             return "node does not exist"
     else:
         list_of_nodes = nodelist
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
         if node in nodelist:
             nodelist = list(filter(lambda a: a != node, nodelist))
             return ",".join(nodelist)
         else:
-            return "node does not exist"    
-
+            return "node does not exist"
 
 
 def delimiter(nodelist, d):
@@ -532,17 +521,16 @@ def delimiter(nodelist, d):
     # if there is a range of nodes in the input
     elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
         nodelist = right_br.split(',')
         return d.join(nodelist)
     else:
         list_of_nodes = nodelist
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
         return d.join(nodelist)
-
 
 
 def size_hostlist(nodelist, N):
@@ -560,22 +548,22 @@ def size_hostlist(nodelist, N):
             return compress_range(nodelist[N:])
     elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
         if N > 0:
             return compress_range(nodelist[:N])
         else:
             return compress_range(nodelist[N:])
     else:
         list_of_nodes = nodelist
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
         nodelist = right_br.split(',')
         if N > 0:
             return compress_range(nodelist[:N])
         else:
-            return compress_range(nodelist[N:])                
+            return compress_range(nodelist[N:])
 
 
 def xor(*arg):
@@ -586,24 +574,24 @@ def xor(*arg):
     :return: The resulting xor list.
     """
 
-
     # will hold a list of the lists passed in
     conv_lists = []
 
     for nodelist in arg:
-        # check to see if the list passed in is a string; if it is, convert to list
+        # check to see if the list passed in is a string; if it is, convert
+        # to list
         if type(nodelist) == list:
             conv_lists.append(nodelist)
         elif "[" in nodelist:
             list_of_nodes = expand(nodelist)
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
-            nodelist = right_br.split(',') 
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
+            nodelist = right_br.split(',')
             conv_lists.append(nodelist)
         else:
             list_of_nodes = nodelist
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
             nodelist = right_br.split(',')
             conv_lists.append(nodelist)
 
@@ -638,8 +626,8 @@ def exclude(*arg):
         # if there is a range of nodes in the input
         elif "[" in nodelist:
             list_of_nodes = expand(nodelist)
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
             nodelist = right_br.split(',')
             if node in nodelist:
                 nodelist = list(filter(lambda a: a != node, nodelist))
@@ -648,14 +636,14 @@ def exclude(*arg):
                 return "node does not exist"
         else:
             list_of_nodes = nodelist
-            left_br = list_of_nodes.replace("[","")
-            right_br = left_br.replace("]","")
-            nodelist = right_br.split(',') 
+            left_br = list_of_nodes.replace("[", "")
+            right_br = left_br.replace("]", "")
+            nodelist = right_br.split(',')
             if node in nodelist:
                 nodelist = list(filter(lambda a: a != node, nodelist))
                 final_hostlist = ",".join(nodelist)
             else:
-                return "node does not exist" 
+                return "node does not exist"
 
     if not final_hostlist:
         return "hostlist empty"
@@ -665,10 +653,10 @@ def exclude(*arg):
         return compress_range(final_hostlist)
 
 
-
 def quiet(nodelist=[]):
     """
-    quiet will return quiet output (or exit non-zero if there is an empty hostlist)
+    quiet will return quiet output (or exit non-zero if there is an
+    empty hostlist)
 
     :param: nodelist: The hostlist string.
     """
@@ -682,15 +670,13 @@ def quiet(nodelist=[]):
     # if there is a range of nodes in the input
     elif "[" in nodelist:
         list_of_nodes = expand(nodelist)
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
         nodelist = right_br.split(',')
         final_hostlist = ",".join(nodelist)
     else:
         list_of_nodes = nodelist
-        left_br = list_of_nodes.replace("[","")
-        right_br = left_br.replace("]","")
-        nodelist = right_br.split(',') 
-        final_hostlist = ",".join(nodelist)        
-
-
+        left_br = list_of_nodes.replace("[", "")
+        right_br = left_br.replace("]", "")
+        nodelist = right_br.split(',')
+        final_hostlist = ",".join(nodelist)
