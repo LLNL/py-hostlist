@@ -268,14 +268,22 @@ def intersect(*arg):
 
     # will hold a list of the lists passed in
     conv_lists = []
-    for lst in arg:
-        # check to see if the list passed in is a string; if it is, convert to list
-        if type(lst) == str:
-            left_br = lst.replace("[","")
+    for nodelist in arg:
+        if type(nodelist) == list:
+            conv_lists.append(nodelist)
+        # if there is a range of nodes in the input
+        elif "[" in nodelist:
+            list_of_nodes = expand(nodelist)
+            left_br = list_of_nodes.replace("[","")
             right_br = left_br.replace("]","")
-            lst = right_br.split(',')
-            
-        conv_lists.append(lst)
+            nodelist = right_br.split(',')
+            conv_lists.append(nodelist)
+        else:
+            list_of_nodes = nodelist
+            left_br = list_of_nodes.replace("[","")
+            right_br = left_br.replace("]","")
+            nodelist = right_br.split(',') 
+            conv_lists.append(nodelist)
 
     first_list = conv_lists[0]
 
@@ -283,7 +291,7 @@ def intersect(*arg):
     for i in range(1, len(conv_lists)):
         first_list = list(set(first_list) & set(conv_lists[i]))
 
-    return sort_nodes(first_list)
+    return compress_range(sort_nodes(list(first_list)))
 
 
 

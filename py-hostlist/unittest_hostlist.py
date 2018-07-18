@@ -141,14 +141,14 @@ class TestHostlistMethods(unittest.TestCase):
 	# intersect() can return a hostlist string of 
 	# 	intersecting nodes from two lists
 	def test_intersect_simple(self):
-		expected = '[node1,node8]'
+		expected = 'node[1,8]'
 		list1 = ['node1','node2','node3','node4','node8']
 		list2 = ['node5','node6','node7','node8','node9','node1']
 		test = hl.intersect(list1,list2)
 		self.assertEqual(test, expected)
 
 	def test_intersect_scr(self):
-		expected = '[machine1,machine3]'
+		expected = 'machine[1,3]'
 		list1 = 'machine1,machine2,machine3'
 		list2 = 'machine1,machine3,machine4'
 		test = hl.intersect(list1,list2)
@@ -157,7 +157,7 @@ class TestHostlistMethods(unittest.TestCase):
 	# intersect() can also return a hostlist string of
 	#	intersecting nodes from multiple lists
 	def test_intersect_multiple(self):
-		expected = '[node1,node6,node8]'
+		expected = 'node[1,6,8]'
 		list1 = ['node1','node2','node3','node4','node8','node6']
 		list2 = ['node5','node6','node7','node8','node9','node1']
 		list3 = ['node1','node6','node8','node7']
@@ -166,7 +166,7 @@ class TestHostlistMethods(unittest.TestCase):
 
 	# intersect() can take in a string as well
 	def test_instersect_as_string(self):
-		expected = '[node1,node8]'
+		expected = 'node[1,8]'
 		list1 = 'node1,node2,node3,node4,node8'
 		list2 = 'node5,node6,node7,node8,node9,node1'
 		test = hl.intersect(list1,list2)
