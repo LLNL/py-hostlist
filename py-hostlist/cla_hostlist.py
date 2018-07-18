@@ -1,9 +1,8 @@
 import argparse
-import sys
-import hostlist as hl 
+import hostlist as hl
 
 """
-Command-line arguments for hostlist.py 
+Command-line arguments for hostlist.py
 
 Author: Christopher Moussa (moussa1@llnl.gov)
 Mentor: Elsa Gonsiorowski (gonsiorowski1@llnl.gov)
@@ -13,29 +12,29 @@ Date: June 26, 2018
 
 def msg(name=None):
 	return '''
-	Description: cla_hostlist processes slurm-style hostlist strings and 
-	can return those strings in manipulated fashion. 
-	
+	Description: cla_hostlist processes slurm-style hostlist strings and
+	can return those strings in manipulated fashion.
+
 	Usage: python cla_hostlist.py [OPTION]... [HOSTLIST]...
 
-  	-h, --help                   Display this message.
-  	-q, --quiet                  Quiet output (exit non-zero if empty hostlist)
-  	-d, --delimiters             Set output delimiter (default = ",")
-  	-c, --count                  Print the number of hosts
-  	-s, --size                   Output at most N hosts (-N for last N hosts)
-  	-e, --expand                 Expand a compressed hostlist
-  	-a, --abbreviate             Compress an expanded hostlist
-  	-t, --tighten                Return a hostlist string
-  	-m, --minus                  Subtract all HOSTLIST args from first HOSTLIST
-  	-i, --intersection           Intersection of all HOSTLIST args
-  	-x, --exclude                Exclude all HOSTLIST args from first HOSTLIST
-  	-X, --xor                    Symmetric difference of all HOSTLIST args
-  	-u, --union                  Union of all HOSTLIST arguments
-  	-n, --nth                    Output the host at index N
-  	-R, --remove                 Remove all occurences of NODE from HOSTLIST
-   	-S, --sort                   Return sorted HOSTLIST 
-  	-F, --find=HOST              Output position of HOST in result HOSTLIST
-		'''
+	-h, --help                   Display this message.
+	-q, --quiet                  Quiet output (exit non-zero if empty hostlist)
+	-d, --delimiters             Set output delimiter (default = ",")
+	-c, --count                  Print the number of hosts
+	-s, --size                   Output at most N hosts (-N for last N hosts)
+	-e, --expand                 Expand a compressed hostlist
+	-a, --abbreviate             Compress an expanded hostlist
+	-t, --tighten                Return a hostlist string
+	-m, --minus                  Subtract all HOSTLIST args from first HOSTLIST
+	-i, --intersection           Intersection of all HOSTLIST args
+	-x, --exclude                Exclude all HOSTLIST args from first HOSTLIST
+	-X, --xor                    Symmetric difference of all HOSTLIST args
+	-u, --union                  Union of all HOSTLIST arguments
+	-n, --nth                    Output the host at index N
+	-R, --remove                 Remove all occurences of NODE from HOSTLIST
+	-S, --sort                   Return sorted HOSTLIST 
+	-F, --find=HOST              Output position of HOST in result HOSTLIST
+'''
 
 parser = argparse.ArgumentParser(usage=msg())
 

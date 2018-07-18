@@ -7,8 +7,10 @@
 # 
 # - E303: too many blank lines (3)
 # - E231: missing whitespace after ','
+# - E305: expected 2 blank lines after class or function definition, found 1
 # - W291: blank line contains whitespace
 # - W293: blank line contains whitespace
+# - W191: indentation contains tabs
 [flake8]
-ignore = E303,E231,W291,W293
+ignore = E303,E231,E305,W291,W293,W191
 max-line-length = 90
