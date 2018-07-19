@@ -4,7 +4,7 @@ py-hostlist
 SYNOPSIS
 --------
 
-**python cla_hostlist.py [OPTION] ARGS
+``**python cla_hostlist.py [OPTION] ARGS**``
 
 DESCRIPTION
 -----------
@@ -80,7 +80,18 @@ OPTIONS
 
 .. option:: -F, --find
 
-   Output position of HOST in result HOSTLIST 
+   Output position of HOST in result HOSTLIST.
+
+RESTRICTIONS
+------------
+
+For most of the functions, hostlists can be input as any of the following three formats:
+
+   - ``foo1,foo2,foo3,foo4,foo5``
+
+   - ``foo[1-5]`` 
+
+   - ``[foo1,foo2,foo3,foo4,foo5]``
 
 EXAMPLES
 --------
@@ -88,5 +99,31 @@ EXAMPLES
 1. To expand a hostlist:
 
    ``python cla_hostlist.py -e foo[1-5]``
+
+2. To set a custom delimiter:
+
+   ``python cla_hostlist.py -d [DELIMITER] foo[1-5]``
+
+3. To see the first N hosts:
+
+   ``python cla_hostlist.py -s [N] foo[1-5]``
+
+4. To exclude a node from a hostlist:
+
+   ``python cla_hostlist.py -x foo[1-5] [EXCLUDED NODE] [EXCLUDED NODE]...``
+
+5. To find the nth host in a hostlist:
+
+   ``python cla_hostlist.py -n [N] foo[1-5]``
+
+6. To remove all occurences of a node from a hostlist:
+
+   ``python cla_hostlist.py -R [NODE] foo[1-5]``
+
+7. To find the position of a specific node:
+
+   ``python cla_hostlist.py -F [NODE] foo[1-50]``
+
+
 
 The py-hostlist source code and all documentation may be downloaded from <https://github.com/llnl/py-hostlist.git>

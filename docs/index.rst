@@ -28,6 +28,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
    :caption: Reference
 
    source/method_reference
+   source/manpage
 
 .. toctree::
    :maxdepth: 2
@@ -42,7 +43,6 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
 
    source/py-hostlist
    source/modules
-   source/manpage
 
 
 Indices and tables
