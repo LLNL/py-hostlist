@@ -168,6 +168,14 @@
 <dl class="docutils">
 <dt><code class="docutils literal notranslate"><span class="pre">-h,</span> <span class="pre">--help</span></code></dt>
 <dd>Display this message.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-q,</span> <span class="pre">--quiet</span></code></dt>
+<dd>Quiet output (exit non-zero if empty hostlist)</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-d,</span> <span class="pre">--delimiters</span></code></dt>
+<dd>Set output delimiter (default = “,”)</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-c,</span> <span class="pre">--count</span></code></dt>
+<dd>Print the number of hosts</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-s,</span> <span class="pre">--size</span></code></dt>
+<dd>Output at most N hosts (-N for last N hosts)</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-e,</span> <span class="pre">--expand</span></code></dt>
 <dd>Expand a compressed hostlist</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-a,</span> <span class="pre">--abbreviate</span></code></dt>
@@ -175,17 +183,21 @@
 <dt><code class="docutils literal notranslate"><span class="pre">-t,</span> <span class="pre">--tighten</span></code></dt>
 <dd>Return a hostlist string</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-m,</span> <span class="pre">--minus</span></code></dt>
-<dd>Subtract second HOSTLIST arg from first HOSTLIST</dd>
+<dd>Subtract all HOSTLIST args from first HOSTLIST</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-i,</span> <span class="pre">--intersection</span></code></dt>
 <dd>Intersection of all HOSTLIST args</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-x,</span> <span class="pre">--exclude</span></code></dt>
+<dd>Exclude all HOSTLIST args from first HOSTLIST</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-X,</span> <span class="pre">--xor</span></code></dt>
+<dd>Symmetric difference of all HOSTLIST args</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-u,</span> <span class="pre">--union</span></code></dt>
 <dd>Union of all HOSTLIST arguments</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-n,</span> <span class="pre">--nth=N</span></code></dt>
 <dd>Output the host at index N</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">-R,</span> <span class="pre">--remove</span></code></dt>
+<dd>Remove all occurences of NODE from HOSTLIST</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-S,</span> <span class="pre">--sort</span></code></dt>
 <dd>Return sorted HOSTLIST</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">-c,</span> <span class="pre">--count</span></code></dt>
-<dd>Print the number of hosts</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">-F,</span> <span class="pre">--find=HOST</span></code></dt>
 <dd>Output position of HOST in result HOSTLIST</dd>
 </dl>

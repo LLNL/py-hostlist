@@ -144,7 +144,8 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'py-hostlist', u'py-hostlist Documentation',
-     [author], 1)
+     [author], 1),
+    ('manpage', 'manpage', u'py-hostlist', [author], 1)
 ]
 
 

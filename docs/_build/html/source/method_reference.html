@@ -208,7 +208,7 @@
 <p><strong>Returns</strong>: A remaining hostlist string resulting from subtracting the following nodelists from nodelist1.</p>
 <p class="last"><strong>Description</strong>: diff will subtract elements in all following nodelists from nodelist1 and return a remaining hostlist. It accepts both string and list inputs.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">intersect(\*arg)</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">intersect(*arg)</span></code></dt>
 <dd><dl class="first docutils">
 <dt><strong>Parameters</strong>:</dt>
 <dd>hostlist strings <strong>(str)</strong> or <strong>(list)</strong> - Any number of nodelists to be intersected.</dd>
@@ -216,7 +216,7 @@
 <p><strong>Returns</strong>: An intersecting hostlist string from all hostlist args.</p>
 <p class="last"><strong>Description</strong>: intersect will return a list of intersection nodes given n lists of nodes. It will sort the nodes in ascending order upon returning.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">union_nodes(\*arg)</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">union_nodes(*arg)</span></code></dt>
 <dd><dl class="first docutils">
 <dt><strong>Parameters</strong>:</dt>
 <dd>hostlist strings <strong>(str)</strong> or <strong>(list)</strong> - Any number of nodelists to be combined.</dd>
@@ -227,8 +227,9 @@
 <dt><code class="docutils literal notranslate"><span class="pre">nth(nodelist,</span> <span class="pre">n)</span></code></dt>
 <dd><dl class="first docutils">
 <dt><strong>Parameters</strong>:</dt>
-<dd>hostlist string <strong>(str)</strong>
-n</dd>
+<dd><p class="first">nodelist <strong>(str)</strong> or <strong>(list)</strong> - The hostlist string.</p>
+<p class="last">n <strong>(int)</strong> - The index to search.</p>
+</dd>
 </dl>
 <p><strong>Returns</strong>: The host at the specified index.</p>
 <p class="last"><strong>Description</strong>: nth takes in two parameters: a hostlist string (similar to expand()’s parameter) and an index <em>n</em>. It will return the <em>nth</em> node in that range.</p>
@@ -250,6 +251,62 @@ n</dd>
 </dl>
 <p><strong>Returns</strong>: The number of nodes in the hostlist string.</p>
 <p class="last"><strong>Description</strong>: count will print the number of hosts in the nodelist. The input can accept a hostlist that is already expanded or one that contains ranges. For example, the input <code class="docutils literal notranslate"><span class="pre">node[1-5]</span></code> will return <code class="docutils literal notranslate"><span class="pre">5</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">remove_node(nodelist,</span> <span class="pre">node)</span></code></dt>
+<dd><dl class="first docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><p class="first">nodelist <strong>(str)</strong> or <strong>(list)</strong> - The hostlist string.</p>
+<p class="last">node <strong>(str)</strong> - The node to be removed.</p>
+</dd>
+</dl>
+<p><strong>Returns</strong>: The resulting hostlist upon deletion.</p>
+<p class="last"><strong>Description</strong>: remove_node() will remove all occurences of <em>node</em> in the nodelist. The input can accept a hostlist that is already expanded or one that contains ranges.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">delimiter(nodelist,</span> <span class="pre">d)</span></code></dt>
+<dd><dl class="first docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><p class="first">nodelist <strong>(str)</strong> or <strong>(list)</strong> - The hostlist string.</p>
+<p class="last">d <strong>(str)</strong> - The custom delimiter.</p>
+</dd>
+</dl>
+<p><strong>Returns</strong>: The resulting hostlist string with its custom delimiter.</p>
+<p class="last"><strong>Description</strong>: delimiter() will take the hostlist string and output it with the specified delimiter <em>d</em>, which can be any string.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">size_hostlist(nodelist,</span> <span class="pre">N)</span></code></dt>
+<dd><dl class="first docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><p class="first">nodelist <strong>(str)</strong> or <strong>(list)</strong> - The hostlist string.</p>
+<p class="last">N <strong>(int)</strong> - The number of hosts to print.</p>
+</dd>
+</dl>
+<p><strong>Returns</strong>: The resulting hostlist string with custom size.</p>
+<p class="last"><strong>Description</strong>: This method will print at most <em>N</em> hosts from the hostlist input. If a negative <em>N</em> is passed in, the output will consist of the last N hosts from the hostlist input.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">xor(*arg)</span></code></dt>
+<dd><dl class="first docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd>hostlist strings <strong>(str)</strong> or <strong>(list)</strong> - Any number of nodelists to be combined.</dd>
+</dl>
+<p><strong>Returns</strong>: The resulting xor list.</p>
+<p class="last"><strong>Description</strong>: xor() takes the symmetric difference of an arbitrary number of hostlists passed in.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">exclude(*arg)</span></code></dt>
+<dd><dl class="first docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd><p class="first">nodelist <strong>(str)</strong> or <strong>(list)</strong> - The hostlist string.</p>
+<p class="last">node <strong>(str)</strong> - The node to be excluded.</p>
+</dd>
+</dl>
+<p><strong>Returns</strong>: The resulting hostlist string without the nodes specified.</p>
+<p class="last"><strong>Description</strong>: exclude() will return a hostlist that excludes any nodes specified after the first argument, which is the original hostlist. Each node to be excluded must be passed in one at a time as separate arguments.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">quiet(nodelist=[])</span></code></dt>
+<dd><dl class="first docutils">
+<dt><strong>Parameters</strong>:</dt>
+<dd>nodelist <strong>(str)</strong> or <strong>(list)</strong> - The hostlist string.</dd>
+</dl>
+<p><strong>Returns</strong>: None or non-zero output if an empty hostlist is passed in.</p>
+<p class="last"><strong>Description</strong>: returns quiet output for a hostlist input. It will exit non-zero if there is an empty hostlist passed in.</p>
 </dd>
 </dl>
 </div>

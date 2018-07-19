@@ -42,6 +42,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
 
    source/py-hostlist
    source/modules
+   source/manpage
 
 
 Indices and tables

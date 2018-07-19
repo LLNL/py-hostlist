@@ -10,16 +10,12 @@ First, what is a PR? Quoting `Bitbucket's tutorials <https://www.atlassian.com/g
 
 Important is **completed feature**. The changes one proposes in a PR should correspond to one feature/bugfix/extension/etc. One can create PRs with changes relevant to different ideas, however reviewing such PRs becomes tedious and error prone. If possible, try to follow the **one-PR-one-package/feature** rule.
 
-py-hostlist uses a rough approximation of the `Git Flow <http://nvie.com/posts/a-successful-git-branching-model/>`_ branching model. The develop branch contains the latest contributions, and
-master is always tagged and points to the latest stable release. Therefore, when
-you send your request, make ``develop`` the destination branch on the
-`py-hostlist repository <https://github.com/LLNL/py-hostlist>`_.
 
 ----------------------
 Continuous Integration
 ----------------------
 
-py-hostlist uses `Travis CI <https://travis-ci.org/LLNL/py-hostlist>`_ for Continuous Integration testing. This means that every time you submit a pull request, a series of tests will be run to make sure you didn't accidentally introduce any bugs into Spack. **Your PR will not be accepted until it passes all of these tests.** While you can certainly wait for the results of these tests after submitting a PR, we recommend that you run them locally to speed up the review process.
+py-hostlist uses `Travis CI <https://travis-ci.org/LLNL/py-hostlist>`_ for Continuous Integration testing. This means that every time you submit a pull request, a series of tests will be run to make sure you didn't accidentally introduce any bugs into py-hostlist. **Your PR will not be accepted until it passes all of these tests.** While you can certainly wait for the results of these tests after submitting a PR, we recommend that you run them locally to speed up the review process.
 
 .. note::
 
@@ -28,18 +24,18 @@ py-hostlist uses `Travis CI <https://travis-ci.org/LLNL/py-hostlist>`_ for Conti
    dependencies for the test suite, or a transient bug will cause the unit tests
    to timeout. If Travis fails, click the "Details" link and click on the test(s)
    that is failing. If it doesn't look like it is failing for reasons related to
-   your PR, you have two options. If you have write permissions for the Spack
+   your PR, you have two options. If you have write permissions for the py-hostlist
    repository, you should see a "Restart job" button on the right-hand side. If
    not, you can close and reopen your PR to rerun all of the tests. If the same
    test keeps failing, there may be a problem with your PR. If you notice that
    every recent PR is failing with the same error message, it may be that Travis
-   is down or one of Spack's dependencies put out a new release that is causing
+   is down or one of py-hostlist's dependencies put out a new release that is causing
    problems. If this is the case, please file an issue.
 
 If you take a look in ``py-hostlist/.travis.yml``, you'll notice that we test
 against Python 2.7, and 3.3-3.7 on macOS. We currently perform unit testing:
 
-Unit tests ensure that core py-hostlist features like expand or scompress_range are working as expected. If your PR only adds new packages or modifies existing ones, there's very little chance that your changes could cause the unit tests to fail. However, if you make changes to py-hostlist's core libraries, you should run the unit tests to make sure you didn't break anything.
+Unit tests ensure that core py-hostlist features like expand or compress_range are working as expected. If your PR only adds new packages or modifies existing ones, there's very little chance that your changes could cause the unit tests to fail. However, if you make changes to py-hostlist's core libraries, you should run the unit tests to make sure you didn't break anything.
 
 To run the unit tests, use:
 

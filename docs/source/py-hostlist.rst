@@ -1,6 +1,11 @@
 py\-hostlist package
 ====================
 
+.. automodule:: py-hostlist
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 Submodules
 ----------
 
@@ -37,10 +42,3 @@ py\-hostlist.unittest\_hostlist module
     :show-inheritance:
 
 
-Module contents
----------------
-
-.. automodule:: py-hostlist
-    :members:
-    :undoc-members:
-    :show-inheritance:
