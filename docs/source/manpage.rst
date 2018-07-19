@@ -20,13 +20,73 @@ OPTIONS
 
 .. option:: -q, --quiet
 
-   Quiet output (exit non-zero if empty hostlist)
+   Quiet output (exit non-zero if empty hostlist).
+
+.. option:: -d, --delimiters
+
+   Set output delimiter (default = ",").
+
+.. option:: -c, --count
+
+   Print the number of hosts.
+
+.. option:: -s, --size
+
+   Output at most N hosts (-N for last N hosts).
+
+.. option:: -e, --expand
+
+   Expand a compressed hostlist.
+
+.. option:: -a, --abbreviate
+
+   Compress an expanded hostlist.
+
+.. option:: -t, --tighten
+
+   Return a hostlist string.
+
+.. option:: -m, --minus
+
+   Subtract all HOSTLIST args from first HOSTLIST.
+
+.. option:: -i, --intersection
+
+   Intersection of all HOSTLIST args.
+
+.. option:: -x, --exclude
+   
+   Exclude all HOSTLIST args from first HOSTLIST.
+
+.. option:: -X, --xor
+
+   Symmetric difference of all HOSTLIST args.
+
+.. option:: -u, --union
+
+   Union of all HOSTLIST arguments.
+
+.. option:: -n, --nth
+
+   Output the host at index N.
+
+.. option:: -R, --remove
+
+   Remove all occurences of NODE from HOSTLIST.
+
+.. option:: -S, --sort
+  
+   Return a sorted HOSTLIST.
+
+.. option:: -F, --find
+
+   Output position of HOST in result HOSTLIST 
 
 EXAMPLES
 --------
 
 1. To expand a hostlist:
 
-   python cla_hostlist.py -e foo[1-5]
+   ``python cla_hostlist.py -e foo[1-5]``
 
 The py-hostlist source code and all documentation may be downloaded from <https://github.com/llnl/py-hostlist.git>
