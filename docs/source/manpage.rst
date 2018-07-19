@@ -4,7 +4,7 @@ py-hostlist
 SYNOPSIS
 --------
 
-``**python cla_hostlist.py [OPTION] ARGS**``
+**``python cla_hostlist.py [OPTION] ARGS``**
 
 DESCRIPTION
 -----------
