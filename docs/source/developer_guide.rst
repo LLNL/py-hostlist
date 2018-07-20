@@ -24,8 +24,8 @@ Here is a high level view of py-hostlist's directory structure:
 
     py-hostlist/
        build/
-   	      lib/
-   		     py-hostlist/ 
+          lib/
+             py-hostlist/ 
    		
       dist/                         <- packaged build
 
