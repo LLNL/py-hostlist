@@ -34,13 +34,13 @@ Here is a list of all of the methods available:
  Symmetric difference of all HOSTLIST args
 ``-u, --union``                  
  Union of all HOSTLIST arguments
-``-n, --nth=N``                  
+``-n, --nth``                  
  Output the host at index N
 ``-R, --remove``
  Remove all occurences of NODE from HOSTLIST
 ``-S, --sort``                   
  Return sorted HOSTLIST 
-``-F, --find=HOST``              
+``-F, --find``              
  Output position of HOST in result HOSTLIST
 
 For example, to execute the expand function displayed above, users can run the following:

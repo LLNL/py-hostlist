@@ -86,11 +86,17 @@
 <p class="caption"><span class="caption-text">Reference</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="method_reference.html">Method Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manpage.html">py-hostlist</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Contributing</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="contribution_guide.html">Contribution Guide</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#directory-structure">Directory Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-structure">Code Structure</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">AutoDocs</span></p>
 <ul>
@@ -162,6 +168,48 @@
             
   <div class="section" id="developer-guide">
 <h1>Developer Guide<a class="headerlink" href="#developer-guide" title="Permalink to this headline">¶</a></h1>
+<p>This guide is intended for people who want to work on py-hostlist itself.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>py-hostlist is designed with two separate roles in mind:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><strong>Users</strong>, who need to use the hostlist tool without knowing all of the details about how it is built.</li>
+<li><strong>Developers</strong> who work on py-hostlist, add new features, and try to make the jobs of users easier.</li>
+</ol>
+</div></blockquote>
+<p>As you might expect, there are many types of users with different levels of sophistication, and py-hostlist is designed to accommodate both simple and complex use cases for this tool. A user who only knows that he needs a small task, like expanding a hostlist, should be able to type something simple like <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">cla_hostlist.py</span> <span class="pre">-e</span> <span class="pre">foo[1-4]</span></code> and get a result in return.</p>
+</div>
+<div class="section" id="directory-structure">
+<h2>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this headline">¶</a></h2>
+<p>Here is a high level view of py-hostlist’s directory structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>py-hostlist/
+  build/
+    lib/
+      py-hostlist/
+
+  dist/                       &lt;- packaged build
+
+  docs/
+    _build/                   &lt;- HTML pages
+    _static
+    _templates
+    source/                   &lt;- ReadTheDocs pages
+      .doctrees/
+
+  py-hostlist/
+    __init.py
+    args_hostlist.py
+    cla_hostlist.py           &lt;- command-line arguments
+    hostlist.py               &lt;- main features and methods
+    unittest_hostlist.py      &lt;- unit tests for hostlist.py
+</pre></div>
+</div>
+</div>
+<div class="section" id="code-structure">
+<h2>Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this headline">¶</a></h2>
+<p>For an overview of the various Python modules in py-hostlist, please see the Method Reference section.</p>
+</div>
 </div>
 
 
