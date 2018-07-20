@@ -22,28 +22,28 @@ Here is a high level view of py-hostlist's directory structure:
 
 .. code-block:: none
 
-   py-hostlist/
-   		build/
-   			lib/
-   				py-hostlist/ 
+    py-hostlist/
+       build/
+   	      lib/
+   		     py-hostlist/ 
    		
-   		dist/						<- packaged build
+      dist/                         <- packaged build
 
-   		docs/
-   			_build/					<- HTML pages
-   			_static
-   			_templates
-   			source/					<- ReadTheDocs pages
-   				.doctrees/
+      docs/
+   	     _build/                    <- HTML pages
+   	     _static
+         _templates
+         source/                    <- ReadTheDocs pages
+   		    .doctrees/
 
-   		py-hostlist/
-   			__init.py
-   			args_hostlist.py
-   			cla_hostlist.py 		<- command-line arguments
-   			hostlist.py 			<- main features and methods
-   			unittest_hostlist.py 	<- unit tests for hostlist.py
+      py-hostlist/
+         __init.py
+         args_hostlist.py
+         cla_hostlist.py            <- command-line arguments
+         hostlist.py                <- main features and methods
+         unittest_hostlist.py       <- unit tests for hostlist.py
 
 Code Structure
 --------------
 
-For an overview of the various Python modules in Spack, please see the :ref:`method_reference`.
+For an overview of the various Python modules in py-hostlist, please see the :ref:`source/method_reference` section.
