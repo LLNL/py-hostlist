@@ -4,34 +4,34 @@ py\-hostlist package
 Submodules
 ----------
 
-py\-hostlist.args\_hostlist module
+hostlist.args\_hostlist module
 ----------------------------------
 
-.. automodule:: py-hostlist.args_hostlist
+.. automodule:: hostlist.args_hostlist
     :members:
     :undoc-members:
     :show-inheritance:
 
-py\-hostlist.cla\_hostlist module
+hostlist.cla\_hostlist module
 ---------------------------------
 
-.. automodule:: py-hostlist.cla_hostlist
+.. automodule:: hostlist.cla_hostlist
     :members:
     :undoc-members:
     :show-inheritance:
 
-py\-hostlist.hostlist module
+hostlist.hostlist module
 ----------------------------
 
-.. automodule:: py-hostlist.hostlist
+.. automodule:: hostlist.hostlist
     :members:
     :undoc-members:
     :show-inheritance:
 
-py\-hostlist.unittest\_hostlist module
+hostlist.unittest\_hostlist module
 --------------------------------------
 
-.. automodule:: py-hostlist.unittest_hostlist
+.. automodule:: hostlist.unittest_hostlist
     :members:
     :undoc-members:
     :show-inheritance:
@@ -40,7 +40,7 @@ py\-hostlist.unittest\_hostlist module
 Module contents
 ---------------
 
-.. automodule:: py-hostlist
+.. automodule:: hostlist
     :members:
     :undoc-members:
     :show-inheritance:
