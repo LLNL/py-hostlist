@@ -4,14 +4,6 @@ py\-hostlist package
 Submodules
 ----------
 
-hostlist.args\_hostlist module
-----------------------------------
-
-.. automodule:: hostlist.args_hostlist
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 hostlist.cla\_hostlist module
 ---------------------------------
 
