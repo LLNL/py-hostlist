@@ -33,6 +33,7 @@ def msg(name=None):
 	-n, --nth                    Output the host at index N
 	-R, --remove                 Remove all occurences of NODE from HOSTLIST
 	-S, --sort                   Return sorted HOSTLIST
+	-f, --filter                 Map Python code over result HOSTLIST
 	-F, --find=HOST              Output position of HOST in result HOSTLIST
 '''
 
@@ -56,6 +57,7 @@ if __name__ == "__main__":
         parser.add_argument("-X", "--xor", dest="xor", nargs="*")
         parser.add_argument("-x", "--exclude", dest="exclude", nargs="*")
         parser.add_argument("-q", "--quiet", dest="quiet")
+        parser.add_argument("-f", "--filter", dest="filter")
 
         args = parser.parse_args()
 
@@ -91,3 +93,5 @@ if __name__ == "__main__":
 	        print(hl.exclude(*args.exclude))
         if args.quiet:
 	        hl.quiet(args.quiet)
+        if args.filter:
+	    	print hl.filter_python(args.filter)

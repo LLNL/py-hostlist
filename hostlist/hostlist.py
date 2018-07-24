@@ -680,3 +680,13 @@ def quiet(nodelist=[]):
         right_br = left_br.replace("]", "")
         nodelist = right_br.split(',')
         final_hostlist = ",".join(nodelist)
+
+
+def filter_python(nodelist):
+    """
+    TODO: filter maps Python code over all hosts in result HOSTLIST
+
+    :param: nodelist: The hostlist string.
+    """
+    return "This feature is not yet supported. You can file an issue on " \
+        "GitHub: https://github.com/llnl/py-hostlist"
