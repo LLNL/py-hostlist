@@ -22,23 +22,19 @@ Here is a high level view of py-hostlist's directory structure:
 
 .. code-block:: none
 
-    py-hostlist/
-      build/
-        lib/
-          py-hostlist/ 
-
       dist/                       <- packaged build
 
       docs/
-        _build/                   <- HTML pages
-        _static
-        _templates
+        Makefile
+        conf.py
+        index.rst
+        make.bat
+        build/                    <- HTML pages
         source/                   <- ReadTheDocs pages
           .doctrees/
 
-      py-hostlist/
-        __init.py
-        args_hostlist.py
+      hostlist/
+        __init__.py
         cla_hostlist.py           <- command-line arguments
         hostlist.py               <- main features and methods
         unittest_hostlist.py      <- unit tests for hostlist.py
