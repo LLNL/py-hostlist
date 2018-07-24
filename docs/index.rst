@@ -41,7 +41,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
    :maxdepth: 2
    :caption: AutoDocs
 
-   source/py-hostlist
+   source/hostlist
    source/modules
 
 
