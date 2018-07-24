@@ -1,5 +1,5 @@
-py-hostlist
-===========
+py-hostlist Man Page
+====================
 
 SYNOPSIS
 --------
