@@ -42,8 +42,7 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
    :caption: AutoDocs
 
    source/hostlist
-   source/modules
-
+   
 
 Indices and tables
 ==================
