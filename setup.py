@@ -11,7 +11,7 @@ setuptools.setup(
     description="A slurm-style hostlist processor.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/example-project",
+    url="https://github.com/llnl/py-hostlist",
     packages=setuptools.find_packages(),
     entry_points={
         'console_scripts': [
