@@ -2,18 +2,17 @@
 # flake8 settings for py-hostlist.
 #
 # These exceptions are for py-hostlist's core files.
-# 
+#
 # Let people line things up nicely:
-# 
+#
 # - E303: too many blank lines (3)
 # - E231: missing whitespace after ','
 # - E305: expected 2 blank lines after class or function definition, found 1
-# - E101: indentation contains mixed spaces and tabs
 # - W291: blank line contains whitespace
 # - W293: blank line contains whitespace
 # - W191: indentation contains tabs
 # - E122: continuation line missing indentation or outdented
 # - E126: continuation line over-indented for hanging indent
 [flake8]
-ignore = E101,E122,E126,E303,E231,E305,W191,W291,W293
+ignore = E122,E126,E303,E231,E305,W191,W291,W293
 max-line-length = 90
