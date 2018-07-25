@@ -13,6 +13,11 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/pypa/example-project",
     packages=setuptools.find_packages(),
+    entry_points={
+        'console_scripts': [
+            'hostlist = hostlist.cla_hostlist:main',
+        ]
+    },
     classifiers=(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
