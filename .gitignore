@@ -3,3 +3,4 @@
 py_hostlist.egg-info
 docs/_build/
 dist/
+build/
