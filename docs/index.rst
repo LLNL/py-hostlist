@@ -6,7 +6,7 @@
 py-hostlist
 =======================================
 
-py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion. 
+py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion.
 
 Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist>`_ and start using it!
 
@@ -15,7 +15,6 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
    $ git clone https://github.com/llnl/py-hostlist.git
    $ cd py-hostlist
 
-   
 .. toctree::
    :maxdepth: 2
    :caption: Basics
@@ -36,13 +35,13 @@ Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist
 
    source/contribution_guide
    source/developer_guide
+   source/adding_unit_tests
 
 .. toctree::
    :maxdepth: 2
    :caption: AutoDocs
 
    source/hostlist
-   
 
 Indices and tables
 ==================
