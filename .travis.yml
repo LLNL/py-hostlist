@@ -15,6 +15,7 @@ script:
     - python hostlist/unittest_hostlist.py
     - coverage run hostlist/unittest_hostlist.py
     - python setup.py sdist bdist_wheel
+    - pip install dist/py_hostlist-0.0.1.dev0-py2.py3-none-any.whl
     - hostlist -h
 after_success:
     - codecov
