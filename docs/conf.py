@@ -255,6 +255,8 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'hostlist', u'hostlist Documentation',
+     [author], 1),
+    ('source/manpage', 'manpage', u'Man Page Documentation',
      [author], 1)
 ]
 
