@@ -14,6 +14,7 @@ install:
 script:
     - python hostlist/unittest_hostlist.py
     - coverage run hostlist/unittest_hostlist.py
-    - hostlist/hostlist -h 
+    - python setup.py sdist bdist_wheel bdist_rpm
+    - hostlist -h
 after_success:
     - codecov
