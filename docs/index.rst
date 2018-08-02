@@ -8,12 +8,25 @@ py-hostlist
 
 py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion.
 
-Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist>`_ and start using it!
+Get py-hostlist from the `github repository <https://github.com/LLNL/py-hostlist>`_:
 
 .. code-block:: console
 
    $ git clone https://github.com/llnl/py-hostlist.git
    $ cd py-hostlist
+
+From here, build and install the package on your machine:
+
+.. code-block:: console
+
+   $ python setup.py sdist bdist_wheel
+   $ pip install dist/py_hostlist-0.0.1.dev0-py2.py3-none-any.whl
+
+Now you can start using it!
+
+.. code-block:: console
+
+   $ hostlist -h
 
 .. toctree::
    :maxdepth: 2
