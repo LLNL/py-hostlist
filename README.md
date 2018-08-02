@@ -9,7 +9,7 @@
 
 ## Description
 
-py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion. 
+py-hostlist processes slurm-style hostlist strings and can return those strings in manipulated fashion.
 
 See the [Feature Overview](https://py-hostlist.readthedocs.io/en/latest/features.html) for examples and highlights.
 
@@ -22,14 +22,14 @@ Full documentation on py-hostlist can be found at [ReadtheDocs](https://py-hostl
 Contributing to py-hostlist is relatively easy. Just send us a
 [pull request](https://help.github.com/articles/using-pull-requests/). When you send your request, make ``develop`` the destination branch on the [py-hostlist repository](https://github.com/LLNL/py-hostlist).
 
-Your PR must pass py-hostlist's unit tests. We enforce these guidelines with [Travis CI](https://travis-ci.org/LLNL/py-hostlist). To run these tests locally, and for helpful tips on git, see our [Contribution Guide](https://py-hostlist.readthedocs.io/en/latest/contribution_guide.html).
+Your PR must pass py-hostlist's unit tests. We enforce these guidelines with [Travis CI](https://travis-ci.org/LLNL/py-hostlist). To run these tests locally, and for helpful tips on git, see our [Contribution Guide](https://py-hostlist.readthedocs.io/en/latest/source/contribution_guide.html).
 
 
 ## Authors
 
 #### Christopher Moussa, moussa1@llnl.gov
 
-A huge thank you to **Elsa Gonsiorowski** for serving as a mentor on this project. 
+A huge thank you to **Elsa Gonsiorowski** for serving as a mentor on this project.
 
 ## Release
 
