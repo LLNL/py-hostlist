@@ -162,10 +162,10 @@ def compress_range(nodelist):
     # check to see if there are prepending zeros in first node
     lead_zeros = 0
     lead_zeros_str = ''
-    for digit in list_of_nodes[0]:
-        if digit == '0':
-                lead_zeros = lead_zeros + 1
-                lead_zeros_str = lead_zeros_str + '0'
+    num_range = re.sub("a-zA-Z]*", "", list_of_nodes[0])
+    if num_range[0] == '0': # if first digit in range is 0
+        lead_zeros = lead_zeros + 1
+        lead_zeros_str = lead_zeros_str + '0'
 
     # check if node is in the following format: node1-2,node3-4
     if "-" in list_of_nodes[0]:
