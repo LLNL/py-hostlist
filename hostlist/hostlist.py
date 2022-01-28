@@ -105,6 +105,8 @@ def expand(nodelist):
                         if digit == '0':
                             lead_zeros = lead_zeros + 1
                             lead_zeros_str = lead_zeros_str + '0'
+                        else:
+                            break
 
                     rng_list = range(int(tmp_list[0]), int(tmp_list[1]) + 1)
                     final_list.extend(rng_list)
